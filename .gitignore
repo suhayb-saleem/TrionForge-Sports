@@ -23,3 +23,6 @@ trionforge-sports/npm-debug.log*
 trionforge-sports/yarn-debug.log*
 trionforge-sports/yarn-error.log*
 trionforge-sports/.pnpm-debug.log*
+
+# Specification Documents
+TrionForge_Agent_Spec.md
