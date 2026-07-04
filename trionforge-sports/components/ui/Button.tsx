@@ -1,9 +1,11 @@
 import React from 'react';
+import Link from 'next/link';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
+  href?: string;
 }
 
 export function Button({
@@ -11,6 +13,7 @@ export function Button({
   size = 'md',
   className = '',
   children,
+  href,
   ...props
 }: ButtonProps) {
   const baseClasses = 'inline-flex items-center justify-center font-body uppercase font-semibold tracking-widest transition-all duration-200 cursor-pointer rounded-none select-none';
@@ -28,13 +31,24 @@ export function Button({
   };
 
   const paddingClass = variant === 'ghost' ? '' : sizeClasses[size];
+  const combinedClass = `${baseClasses} ${variantClasses[variant]} ${paddingClass} ${className}`;
+
+  if (href) {
+    return (
+      <Link href={href} className={combinedClass}>
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <button
-      className={`${baseClasses} ${variantClasses[variant]} ${paddingClass} ${className}`}
+      className={combinedClass}
       {...props}
     >
       {children}
     </button>
   );
 }
+
+export default Button;

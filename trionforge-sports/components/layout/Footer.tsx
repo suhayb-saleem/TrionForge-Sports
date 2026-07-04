@@ -79,8 +79,13 @@ export function Footer() {
             </h3>
             <ul className="space-y-3">
               {[
-                { name: 'Home', href: '/' },
-                { name: 'Products', href: '/catalogue' },
+                { name: 'Home',         href: '/' },
+                { name: 'About Us',     href: '/about' },
+                { name: 'Products',     href: '/catalogue' },
+                { name: 'Capabilities', href: '/capabilities' },
+                { name: 'Quality',      href: '/quality' },
+                { name: 'Blog',         href: '/blog' },
+                { name: 'Contact',      href: '/contact' },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
@@ -103,7 +108,7 @@ export function Footer() {
               {[
                 { name: 'Pickleball Paddles', href: '/catalogue?filter=pickleball' },
                 { name: 'Padel Rackets', href: '/catalogue?filter=padel' },
-                { name: 'OEM & ODM Programs', href: '/#capabilities' },
+                { name: 'OEM & ODM Programs', href: '/capabilities' },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
@@ -165,3 +170,5 @@ export function Footer() {
     </footer>
   );
 }
+
+export default Footer;

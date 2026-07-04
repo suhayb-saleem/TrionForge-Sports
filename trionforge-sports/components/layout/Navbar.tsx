@@ -43,8 +43,13 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Products', href: '/catalogue' },
+    { name: 'HOME',         href: '/' },
+    { name: 'ABOUT US',     href: '/about' },
+    { name: 'PRODUCTS',     href: '/catalogue' },
+    { name: 'CAPABILITIES', href: '/capabilities' },
+    { name: 'QUALITY',      href: '/quality' },
+    { name: 'BLOG',         href: '/blog' },
+    { name: 'CONTACT',      href: '/contact' },
   ];
 
   const handleLinkClick = () => {
@@ -106,7 +111,7 @@ export function Navbar() {
 
           {/* Quote Button (Desktop) */}
           <div className="hidden lg:block">
-            <Link href="/#contact">
+            <Link href="/contact">
               <Button variant="primary" size="sm" className="!px-6 !py-3">
                 Get A Quote
               </Button>
@@ -145,7 +150,7 @@ export function Navbar() {
             })}
           </nav>
 
-          <Link href="/#contact" onClick={handleLinkClick}>
+          <Link href="/contact" onClick={handleLinkClick}>
             <Button variant="primary" size="lg">
               Get A Quote
             </Button>
@@ -155,3 +160,5 @@ export function Navbar() {
     </>
   );
 }
+
+export default Navbar;

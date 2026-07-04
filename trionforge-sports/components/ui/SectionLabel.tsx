@@ -14,3 +14,5 @@ export function SectionLabel({ children, showDash = true, className = '' }: Sect
     </div>
   );
 }
+
+export default SectionLabel;

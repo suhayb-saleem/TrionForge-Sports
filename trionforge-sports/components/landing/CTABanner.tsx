@@ -6,7 +6,23 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
-export function CTABanner() {
+interface CTABannerProps {
+  headline?: string;
+  subtext?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+export function CTABanner({
+  headline = 'READY TO STOCK PREMIUM PADDLES?',
+  subtext = "Let's talk manufacturing, private label, and wholesale.",
+  primaryLabel = 'GET A QUOTE TODAY',
+  primaryHref = '/contact',
+  secondaryLabel = 'VIEW CATALOGUE',
+  secondaryHref = '/catalogue',
+}: CTABannerProps) {
   return (
     <section className="relative min-h-[420px] flex items-center justify-center py-20 font-body overflow-hidden border-y border-white/8">
       {/* Background Cinematic Image */}
@@ -31,22 +47,22 @@ export function CTABanner() {
       <div className="container-custom relative z-20 text-center space-y-6 max-w-4xl">
         <AnimatedSection direction="up" className="space-y-6">
           <h2 className="font-display text-[44px] sm:text-[64px] text-white leading-[1.0] uppercase select-none">
-            READY TO STOCK PREMIUM PADDLES?
+            {headline}
           </h2>
           
           <p className="text-[#9A9A9A] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Let&apos;s talk manufacturing, private label, and wholesale.
+            {subtext}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link href="/#contact">
+            <Link href={primaryHref}>
               <Button variant="primary" size="lg" className="w-full sm:w-auto">
-                Get A Quote Today
+                {primaryLabel}
               </Button>
             </Link>
-            <Link href="/catalogue">
+            <Link href={secondaryHref}>
               <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                View Catalogue
+                {secondaryLabel}
               </Button>
             </Link>
           </div>
@@ -55,3 +71,5 @@ export function CTABanner() {
     </section>
   );
 }
+
+export default CTABanner;
