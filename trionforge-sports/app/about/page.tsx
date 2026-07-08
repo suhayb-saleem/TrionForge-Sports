@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 import CTABanner from '@/components/landing/CTABanner';
 import AboutHero from '@/components/about/AboutHero';
 import AboutStory from '@/components/about/AboutStory';
@@ -14,23 +12,19 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <AboutHero />
-        <AboutStory />
-        <AboutStats />
-        <AboutValues />
-        <CTABanner
-          headline="WANT TO KNOW MORE ABOUT OUR PROCESS?"
-          subtext="Let's talk manufacturing, samples, and timelines."
-          primaryLabel="GET A QUOTE"
-          primaryHref="/contact"
-          secondaryLabel="VIEW PRODUCTS"
-          secondaryHref="/catalogue"
-        />
-      </main>
-      <Footer />
-    </>
+    <main>
+      <AboutHero />
+      <AboutStory />
+      <AboutStats />
+      <AboutValues />
+      <CTABanner
+        headline="WANT TO KNOW MORE ABOUT OUR PROCESS?"
+        subtext="Let's talk manufacturing, samples, and timelines."
+        primaryLabel="GET A QUOTE"
+        primaryHref="/contact"
+        secondaryLabel="VIEW PRODUCTS"
+        secondaryHref="/catalogue"
+      />
+    </main>
   );
 }

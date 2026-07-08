@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 import CTABanner from '@/components/landing/CTABanner';
 import CapabilitiesHero from '@/components/capabilities/CapabilitiesHero';
 import CapabilityCards from '@/components/capabilities/CapabilityCards';
@@ -14,23 +12,19 @@ export const metadata: Metadata = {
 
 export default function CapabilitiesPage() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <CapabilitiesHero />
-        <CapabilityCards />
-        <ProcessTimeline />
-        <MaterialsBadges />
-        <CTABanner
-          headline="READY TO SPEC YOUR FIRST ORDER?"
-          subtext="Send us your requirements and we'll respond within 24 hours."
-          primaryLabel="GET A QUOTE"
-          primaryHref="/contact"
-          secondaryLabel="VIEW PRODUCTS"
-          secondaryHref="/catalogue"
-        />
-      </main>
-      <Footer />
-    </>
+    <main>
+      <CapabilitiesHero />
+      <CapabilityCards />
+      <ProcessTimeline />
+      <MaterialsBadges />
+      <CTABanner
+        headline="READY TO SPEC YOUR FIRST ORDER?"
+        subtext="Send us your requirements and we'll respond within 24 hours."
+        primaryLabel="GET A QUOTE"
+        primaryHref="/contact"
+        secondaryLabel="VIEW PRODUCTS"
+        secondaryHref="/catalogue"
+      />
+    </main>
   );
 }

@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 import ContactHero from '@/components/contact/ContactHero';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactFAQ from '@/components/contact/ContactFAQ';
@@ -12,14 +10,10 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <ContactHero />
-        <ContactForm />
-        <ContactFAQ />
-      </main>
-      <Footer />
-    </>
+    <main>
+      <ContactHero />
+      <ContactForm />
+      <ContactFAQ />
+    </main>
   );
 }
