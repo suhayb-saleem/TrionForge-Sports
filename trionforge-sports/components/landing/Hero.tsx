@@ -124,10 +124,10 @@ export function Hero() {
             initial="hidden"
             animate="visible"
             variants={itemVariants}
-            className="font-body text-[#9A9A9A] text-base sm:text-lg max-w-[420px] leading-relaxed mb-10"
+            className="font-body text-[#C8C8C8] text-base sm:text-lg max-w-[420px] leading-relaxed mb-10"
             style={{ transitionDelay: '300ms' }}
           >
-            We manufacture premium pickleball paddles and padel rackets for brands that demand the best. Direct from factory to your market.
+            Premium pickleball paddles and padel rackets. Factory-direct from Sialkot to the US market.
           </motion.p>
 
           {/* Two buttons side-by-side */}
@@ -152,12 +152,12 @@ export function Hero() {
         </motion.div>
 
         {/* Right Visual Panel */}
-        <div className="relative bg-[#0b0b0b] min-h-[380px] lg:min-h-0 flex items-center justify-center overflow-hidden border-t lg:border-t-0 lg:border-l border-white/8">
+        <div className="relative bg-[#0f0f0f] min-h-[380px] lg:min-h-0 flex items-center justify-center overflow-hidden border-t lg:border-t-0 lg:border-l border-white/8">
           {/* Subtle Ambient Red Glow */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(215,25,32,0.08) 0%, transparent 70%)',
+              background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(232,0,28,0.08) 0%, transparent 70%)',
             }}
           />
 
@@ -166,7 +166,7 @@ export function Hero() {
             initial="hidden"
             animate="visible"
             variants={imageVariants}
-            className="relative w-[75%] h-[75%] min-h-[300px] flex items-center justify-center z-10 filter drop-shadow-[0_40px_80px_rgba(215,25,32,0.15)]"
+            className="relative w-[75%] h-[75%] min-h-[300px] flex items-center justify-center z-10 filter drop-shadow-[0_40px_80px_rgba(232,0,28,0.15)]"
           >
             <motion.div
               className="relative w-full h-full"
@@ -179,10 +179,10 @@ export function Hero() {
                 ease: "easeInOut"
               }}
             >
-              {/* TODO: Replace with real product image — place file at /public/images/products/tf-alpha-16mm.jpg */}
+              {/* TODO: Replace with real product image — place file at /public/images/products/sa-alpha-16mm.jpg */}
               <Image
-                src="/images/products/tf-alpha-16mm.jpg"
-                alt="Featured TF Alpha Carbon Paddle"
+                src="/images/products/sa-alpha-16mm.jpg"
+                alt="Featured SA Alpha Carbon Paddle"
                 fill
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-contain"

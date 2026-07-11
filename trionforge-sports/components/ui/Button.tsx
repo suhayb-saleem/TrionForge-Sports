@@ -19,7 +19,7 @@ export function Button({
   const baseClasses = 'inline-flex items-center justify-center font-body uppercase font-semibold tracking-widest transition-all duration-200 cursor-pointer rounded-none select-none';
   
   const variantClasses = {
-    primary: 'bg-brand-red text-white hover:bg-[#b01218] hover:scale-[1.02] active:scale-[0.98]',
+    primary: 'bg-brand-red text-white hover:bg-[#8B0010] hover:scale-[1.02] active:scale-[0.98]',
     outline: 'bg-transparent border border-white text-white hover:bg-brand-red hover:border-brand-red hover:scale-[1.02] active:scale-[0.98]',
     ghost: 'bg-transparent text-white hover:text-brand-red hover:translate-x-1 border-none p-0 inline-flex items-center gap-2',
   };

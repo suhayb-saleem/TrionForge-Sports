@@ -5,8 +5,8 @@ import QualityChecklist from '@/components/quality/QualityChecklist';
 import QualityStandards from '@/components/quality/QualityStandards';
 
 export const metadata: Metadata = {
-  title: 'Quality Standards — TrionForge Sports',
-  description: 'USAPA-compliant manufacturing. Every TrionForge paddle meets strict surface roughness, deflection, and dimensional standards.',
+  title: 'Quality Standards — SIAL Athletics',
+  description: 'USAPA-compliant manufacturing. Every SIAL Athletics paddle meets strict surface roughness, deflection, and dimensional standards.',
 };
 
 export default function QualityPage() {

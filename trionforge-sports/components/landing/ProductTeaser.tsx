@@ -11,7 +11,7 @@ import { ProductImageSlider } from '@/components/ui/ProductImageSlider';
 export function ProductTeaser() {
   // Select 3 signature products for teaser (e.g. Bestsellers and Pro models)
   const teaserProducts = products.filter(p => 
-    p.id === 'tf-alpha-16mm' || p.id === 'tf-forge-padel-round' || p.id === 'tf-forge-padel-diamond'
+    p.id === 'sa-alpha-16mm' || p.id === 'sa-forge-padel-round' || p.id === 'sa-forge-padel-diamond'
   );
 
   return (
@@ -27,7 +27,7 @@ export function ProductTeaser() {
           <h2 className="font-display text-[44px] sm:text-[52px] text-white leading-none uppercase mb-4">
             OUR SIGNATURE LINE
           </h2>
-          <p className="font-body text-[#9A9A9A] text-base">
+          <p className="font-body text-[#C8C8C8] text-base">
             Precision-built paddles and rackets for every level of play.
           </p>
         </div>
@@ -39,7 +39,7 @@ export function ProductTeaser() {
               key={product.id}
               direction="up"
               delay={idx * 0.1}
-              className="bg-[#141414] border border-white/8 rounded-none group hover:-translate-y-1 hover:border-brand-red/50 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-300 flex flex-col justify-between"
+              className="bg-[#1a1a1a] border border-white/8 rounded-none group hover:-translate-y-1 hover:border-brand-red/50 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-300 flex flex-col justify-between"
             >
               {/* Product Image Slider */}
               <ProductImageSlider
@@ -58,7 +58,7 @@ export function ProductTeaser() {
                   <h3 className="font-display text-[26px] sm:text-[28px] text-white uppercase leading-tight mb-2">
                     {product.name}
                   </h3>
-                  <p className="font-body text-[#9A9A9A] text-[13px] leading-relaxed mb-6">
+                  <p className="font-body text-[#8A8A8A] text-[13px] leading-relaxed mb-6">
                     {product.tagline}
                   </p>
                 </div>

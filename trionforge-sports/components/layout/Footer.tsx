@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-[#050505] border-t border-white/8 font-body">
+    <footer className="bg-[#0a0a0a] border-t border-white/8 font-body">
       <div className="container-custom py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Column 1: Logo + Desc + Socials */}
@@ -13,13 +13,13 @@ export function Footer() {
             <Link href="/" className="relative block h-10 w-[160px]">
               <Image
                 src="/images/logo.svg"
-                alt="TrionForge Sports Logo"
+                alt="SIAL Athletics Logo"
                 fill
                 className="object-contain object-left"
               />
             </Link>
-            <p className="text-[#9A9A9A] text-sm leading-relaxed max-w-sm">
-              Factory-direct premium sports equipment. Bringing Sialkot&apos;s legendary craftsmanship and advanced carbon fiber tech to the US market.
+            <p className="text-[#8A8A8A] text-sm leading-relaxed max-w-sm">
+              Premium pickleball paddles and padel rackets. Factory-direct from Sialkot to the US market.
             </p>
             <div className="flex items-center gap-4">
               <a
@@ -90,7 +90,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[#9A9A9A] hover:text-white text-sm transition-colors duration-200"
+                    className="text-[#8A8A8A] hover:text-white text-sm transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -113,7 +113,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[#9A9A9A] hover:text-white text-sm transition-colors duration-200"
+                    className="text-[#8A8A8A] hover:text-white text-sm transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -130,22 +130,22 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-brand-red mt-0.5 shrink-0" />
-                <span className="text-[#9A9A9A] text-sm">
+                <span className="text-[#8A8A8A] text-sm">
                   Sialkot, Pakistan
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={16} className="text-brand-red mt-0.5 shrink-0" />
                 <a
-                  href="mailto:info@trionforgesports.com"
-                  className="text-[#9A9A9A] hover:text-white text-sm transition-colors duration-200"
+                  href="mailto:info@sialathletics.com"
+                  className="text-[#8A8A8A] hover:text-white text-sm transition-colors duration-200"
                 >
-                  info@trionforgesports.com
+                  info@sialathletics.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Phone size={16} className="text-brand-red mt-0.5 shrink-0" />
-                <span className="text-[#9A9A9A] text-sm">
+                <span className="text-[#8A8A8A] text-sm">
                   +1 (xxx) xxx-xxxx
                 </span>
               </li>
@@ -154,8 +154,8 @@ export function Footer() {
         </div>
 
         {/* Bottom copyright bar */}
-        <div className="mt-16 pt-8 border-t border-white/8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#9A9A9A]">
-          <p>© 2025 TrionForge Sports LLC. All Rights Reserved.</p>
+        <div className="mt-16 pt-8 border-t border-white/8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#8A8A8A]">
+          <p>© 2025 SIAL Athletics. All Rights Reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="hover:text-white transition-colors duration-200">
               Privacy Policy

@@ -4,13 +4,13 @@ import { SectionLabel } from '@/components/ui/SectionLabel';
 
 export function CatalogueHero() {
   return (
-    <section className="bg-[#0b0b0b] pt-32 pb-16 border-b border-white/8 relative overflow-hidden font-body">
+    <section className="bg-[#0f0f0f] pt-32 pb-16 border-b border-white/8 relative overflow-hidden font-body">
       <div className="absolute inset-0 texture-steel pointer-events-none" />
       <div className="absolute inset-0 texture-noise pointer-events-none" />
 
       <div className="container-custom relative z-10">
         {/* Breadcrumb */}
-        <div className="text-xs text-[#9A9A9A] uppercase tracking-wider mb-8">
+        <div className="text-xs text-[#8A8A8A] uppercase tracking-wider mb-8">
           <Link href="/" className="hover:text-white transition-colors duration-200">
             Home
           </Link>
@@ -26,7 +26,7 @@ export function CatalogueHero() {
           <h1 className="font-display text-[56px] sm:text-[72px] text-white leading-none uppercase select-none">
             THE FULL LINEUP
           </h1>
-          <p className="text-[#9A9A9A] text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#C8C8C8] text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
             Premium pickleball paddles and padel rackets. Factory-direct. Pro-grade. US-ready.
           </p>
         </div>

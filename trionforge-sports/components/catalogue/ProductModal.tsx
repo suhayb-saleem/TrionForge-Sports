@@ -107,7 +107,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 z-30 text-[#9A9A9A] hover:text-white hover:bg-brand-red transition-all duration-200 cursor-pointer p-2 bg-[#1a1a1a] border border-white/10"
+                className="absolute top-4 right-4 z-30 text-[#8A8A8A] hover:text-white hover:bg-brand-red transition-all duration-200 cursor-pointer p-2 bg-[#1a1a1a] border border-white/10"
                 aria-label="Close details"
               >
                 <X size={18} />
@@ -118,13 +118,13 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] min-h-full">
 
                   {/* ═══ LEFT: IMAGE GALLERY ═══ */}
-                  <div className="relative bg-[#070707] flex flex-col border-r border-white/6 min-h-[300px] lg:min-h-0 lg:sticky lg:top-0 lg:h-screen">
+                  <div className="relative bg-[#0a0a0a] flex flex-col border-r border-white/6 min-h-[300px] lg:min-h-0 lg:sticky lg:top-0 lg:h-screen">
 
                     {/* Main image area */}
                     <div className="relative flex-1 overflow-hidden flex items-center justify-center p-6 pb-2 min-h-[280px] sm:min-h-[360px]">
                       {/* Ambient glow */}
                       <div className="absolute inset-0 pointer-events-none"
-                        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(215,25,32,0.06) 0%, transparent 70%)' }}
+                        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(232,0,28,0.06) 0%, transparent 70%)' }}
                       />
 
                       {/* Animated image */}
@@ -173,7 +173,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                       )}
 
                       {/* Image counter */}
-                      <div className="absolute bottom-3 right-4 z-20 text-[10px] text-[#9A9A9A] tracking-widest">
+                      <div className="absolute bottom-3 right-4 z-20 text-[10px] text-[#8A8A8A] tracking-widest">
                         {activeImg + 1} / {slideImages.length}
                       </div>
                     </div>
@@ -191,7 +191,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                             <motion.div
                               animate={{
                                 width: idx === activeImg ? 20 : 6,
-                                backgroundColor: idx === activeImg ? '#D71920' : 'rgba(255,255,255,0.25)',
+                                backgroundColor: idx === activeImg ? '#E8001C' : 'rgba(255,255,255,0.25)',
                               }}
                               transition={{ duration: 0.25 }}
                               className="h-[3px] rounded-full"
@@ -257,7 +257,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.25, duration: 0.4 }}
-                          className="text-[#9A9A9A] text-sm italic font-medium"
+                          className="text-[#8A8A8A] text-sm italic font-medium"
                         >
                           &ldquo;{product.tagline}&rdquo;
                         </motion.p>
@@ -268,7 +268,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.4 }}
-                        className="text-sm leading-relaxed text-[#9A9A9A] border-l-2 border-brand-red/40 pl-4"
+                        className="text-sm leading-relaxed text-[#C8C8C8] border-l-2 border-brand-red/40 pl-4"
                       >
                         {product.description}
                       </motion.p>
@@ -290,7 +290,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                                 key={sIdx}
                                 className="border-b border-white/5 last:border-b-0 hover:bg-white/2 transition-colors duration-150"
                               >
-                                <td className="py-3 pr-4 text-[#9A9A9A] font-medium w-1/2">{spec.label}</td>
+                                <td className="py-3 pr-4 text-[#8A8A8A] font-medium w-1/2">{spec.label}</td>
                                 <td className="py-3 text-white font-semibold w-1/2">{spec.value}</td>
                               </tr>
                             ))}
@@ -304,9 +304,9 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.4, duration: 0.4 }}
-                          className="bg-[#141414] border border-white/8 p-4 flex justify-between items-center"
+                          className="bg-[#1a1a1a] border border-white/8 p-4 flex justify-between items-center"
                         >
-                          <span className="text-xs text-[#9A9A9A] uppercase tracking-wider font-semibold">
+                          <span className="text-xs text-[#8A8A8A] uppercase tracking-wider font-semibold">
                             Minimum Order Quantity
                           </span>
                           <span className="text-sm text-brand-red font-bold uppercase tracking-wider">
@@ -319,7 +319,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                     {/* Sticky Bottom Action Bar */}
                     <div className="bg-[#0f0f0f] border-t border-white/8 p-5 sm:p-6 flex flex-col sm:flex-row gap-4 items-center justify-between shrink-0">
                       <div className="text-center sm:text-left">
-                        <div className="text-[11px] text-[#9A9A9A] uppercase tracking-wider">Interested in private label?</div>
+                        <div className="text-[11px] text-[#8A8A8A] uppercase tracking-wider">Interested in private label?</div>
                         <div className="text-xs text-white mt-0.5">OEM / Custom mold options available for this model.</div>
                       </div>
                       <Button

@@ -39,7 +39,7 @@ export function Capabilities() {
             <h2 className="font-display text-[40px] sm:text-[56px] text-white leading-[1.05] uppercase">
               CAPABILITIES & SERVICES
             </h2>
-            <p className="font-body text-[#9A9A9A] text-base leading-relaxed">
+            <p className="font-body text-[#C8C8C8] text-base leading-relaxed">
               We offer full-service OEM manufacturing, private label ODM solutions, and white-label supply chain fulfillment. From initial raw material selection to final US customs landing, we handle it all.
             </p>
           </div>
@@ -53,7 +53,7 @@ export function Capabilities() {
                   key={idx}
                   direction="up"
                   delay={idx * 0.1}
-                  className="bg-[#141414] border border-white/8 p-8 flex flex-col justify-between h-full group hover:border-brand-red/45 transition-all duration-300"
+                  className="bg-[#1a1a1a] border border-white/8 p-8 flex flex-col justify-between h-full group hover:border-brand-red/45 transition-all duration-300"
                 >
                   <div className="space-y-4">
                     <div className="inline-block p-3 bg-brand-dark border border-white/8 group-hover:border-brand-red/30 transition-colors duration-300">
@@ -62,7 +62,7 @@ export function Capabilities() {
                     <h3 className="font-display text-2xl text-white uppercase">
                       {item.title}
                     </h3>
-                    <p className="font-body text-sm text-[#9A9A9A] leading-relaxed">
+                    <p className="font-body text-sm text-[#8A8A8A] leading-relaxed">
                       {item.desc}
                     </p>
                   </div>

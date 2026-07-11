@@ -16,7 +16,7 @@ interface CTABannerProps {
 }
 
 export function CTABanner({
-  headline = 'READY TO STOCK PREMIUM PADDLES?',
+  headline = 'READY TO BUILD YOUR NEXT PRODUCT WITH US?',
   subtext = "Let's talk manufacturing, private label, and wholesale.",
   primaryLabel = 'GET A QUOTE TODAY',
   primaryHref = '/contact',
@@ -29,15 +29,15 @@ export function CTABanner({
       {/* TODO: Replace with real product lifestyle image — place file at /public/images/cta_background.jpg */}
       <Image
         src="/images/cta_background.jpg"
-        alt="TrionForge Sports Manufacturing Background"
+        alt="SIAL Athletics Manufacturing Background"
         fill
         sizes="100vw"
         className="object-cover object-center"
         priority
       />
 
-      {/* Dark Overlay (rgba(5,5,5,0.85)) */}
-      <div className="absolute inset-0 bg-[#050505]/85 z-10" />
+      {/* Dark Overlay (rgba(10,10,10,0.85)) */}
+      <div className="absolute inset-0 bg-[#0a0a0a]/85 z-10" />
 
       {/* Subtle Steel/Noise Textures */}
       <div className="absolute inset-0 texture-steel pointer-events-none z-10" />
@@ -50,7 +50,7 @@ export function CTABanner({
             {headline}
           </h2>
           
-          <p className="text-[#9A9A9A] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[#C8C8C8] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             {subtext}
           </p>
 

@@ -12,7 +12,7 @@ const steps = [
 
 export default function ProcessTimeline() {
   return (
-    <section style={{ background: '#0b0b0b', padding: '6rem 1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+    <section style={{ background: '#0f0f0f', padding: '6rem 1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         <div style={{ marginBottom: '3.5rem', textAlign: 'center' }}>
           <SectionLabel>HOW IT WORKS</SectionLabel>
@@ -22,7 +22,7 @@ export default function ProcessTimeline() {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0', position: 'relative' }}>
           {/* Connecting line */}
-          <div style={{ position: 'absolute', top: '24px', left: '10%', right: '10%', height: '1px', background: 'rgba(215,25,32,0.3)', zIndex: 0 }} />
+          <div style={{ position: 'absolute', top: '24px', left: '10%', right: '10%', height: '1px', background: 'rgba(232,0,28,0.3)', zIndex: 0 }} />
           {steps.map(({ num, title, desc }, i) => (
             <motion.div
               key={num}
@@ -32,11 +32,11 @@ export default function ProcessTimeline() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               style={{ textAlign: 'center', padding: '0 1rem', position: 'relative', zIndex: 1 }}
             >
-              <div style={{ width: '48px', height: '48px', background: '#D71920', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: '#fff' }}>
+              <div style={{ width: '48px', height: '48px', background: '#E8001C', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: '#fff' }}>
                 {num}
               </div>
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: '#fff', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>{title}</h3>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: '#9A9A9A', lineHeight: 1.6 }}>{desc}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: '#8A8A8A', lineHeight: 1.6 }}>{desc}</p>
             </motion.div>
           ))}
         </div>

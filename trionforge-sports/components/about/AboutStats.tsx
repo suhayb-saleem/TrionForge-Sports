@@ -28,10 +28,10 @@ function StatCounter({ target, suffix, label, duration = 2000, isMillions = fals
 
   return (
     <div ref={ref} style={{ textAlign: 'center', padding: '2rem 1.5rem' }}>
-      <div style={{ fontFamily: 'var(--font-display)', fontSize: '3.5rem', color: '#D71920', lineHeight: 1 }}>
+      <div style={{ fontFamily: 'var(--font-display)', fontSize: '3.5rem', color: '#E8001C', lineHeight: 1 }}>
         {display}{suffix}
       </div>
-      <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: '#9A9A9A', textTransform: 'uppercase', letterSpacing: '0.15em', marginTop: '0.5rem' }}>
+      <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: '#8A8A8A', textTransform: 'uppercase', letterSpacing: '0.15em', marginTop: '0.5rem' }}>
         {label}
       </div>
     </div>
@@ -40,7 +40,7 @@ function StatCounter({ target, suffix, label, duration = 2000, isMillions = fals
 
 export default function AboutStats() {
   return (
-    <section style={{ background: '#0b0b0b', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+    <section style={{ background: '#0f0f0f', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
         {[
           { target: 10, suffix: '+', label: 'Years Manufacturing', duration: 1800 },

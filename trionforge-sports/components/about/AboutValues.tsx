@@ -12,7 +12,7 @@ const values = [
 
 export default function AboutValues() {
   return (
-    <section style={{ background: '#101010', padding: '6rem 1.5rem' }}>
+    <section style={{ background: '#141414', padding: '6rem 1.5rem' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         <div style={{ marginBottom: '3rem' }}>
           <SectionLabel>WHAT DRIVES US</SectionLabel>
@@ -28,11 +28,11 @@ export default function AboutValues() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              style={{ background: '#141414', border: '1px solid rgba(255,255,255,0.08)', padding: '2rem' }}
+              style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.08)', padding: '2rem' }}
             >
-              <Icon size={24} color="#D71920" style={{ marginBottom: '1rem' }} />
+              <Icon size={24} color="#E8001C" style={{ marginBottom: '1rem' }} />
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: '#fff', marginBottom: '0.75rem' }}>{title}</h3>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: '#9A9A9A', lineHeight: 1.7 }}>{desc}</p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: '#8A8A8A', lineHeight: 1.7 }}>{desc}</p>
             </motion.div>
           ))}
         </div>

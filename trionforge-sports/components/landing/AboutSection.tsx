@@ -65,15 +65,15 @@ export function AboutSection() {
           {/* Left Column: Text & Content */}
           <AnimatedSection direction="up" className="space-y-6">
             <SectionLabel showDash={true}>
-              ABOUT TRIONFORGE SPORTS
+              ABOUT SIAL ATHLETICS
             </SectionLabel>
             
             <h2 className="font-display text-[40px] sm:text-[56px] text-white leading-[1.05] uppercase">
               YOUR EDGE STARTS<br />AT THE SOURCE.
             </h2>
             
-            <p className="font-body text-[#9A9A9A] text-base leading-[1.7] max-w-[480px]">
-              TrionForge Sports manufactures premium pickleball paddles and padel rackets in Sialkot — Pakistan&apos;s sporting goods capital and the source of 70% of the world&apos;s hand-stitched footballs. We combine decades of craftsmanship with modern carbon fiber and composite technology to deliver pro-grade equipment at factory-direct pricing. We work with US brands, retailers, and wholesalers who want quality without compromise.
+            <p className="font-body text-[#C8C8C8] text-base leading-[1.7] max-w-[480px]">
+              SIAL Athletics manufactures premium pickleball paddles and padel rackets in Sialkot — Pakistan&apos;s sporting goods capital. We combine decades of craftsmanship with modern carbon fiber technology to deliver pro-grade equipment at factory-direct pricing. Precision. Performance. Durability. Innovation.
             </p>
             
             <div className="pt-4">
@@ -92,7 +92,7 @@ export function AboutSection() {
               {/* TODO: Replace with real product lifestyle image — place file at /public/images/about_lifestyle.jpg */}
               <Image
                 src="/images/about_lifestyle.jpg"
-                alt="TrionForge Premium Manufacturing Craftsmanship"
+                alt="SIAL Athletics Premium Manufacturing Craftsmanship"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

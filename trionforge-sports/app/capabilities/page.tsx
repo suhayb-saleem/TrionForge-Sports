@@ -6,7 +6,7 @@ import ProcessTimeline from '@/components/capabilities/ProcessTimeline';
 import MaterialsBadges from '@/components/capabilities/MaterialsBadges';
 
 export const metadata: Metadata = {
-  title: 'Manufacturing Capabilities — TrionForge Sports',
+  title: 'Manufacturing Capabilities — SIAL Athletics',
   description: 'End-to-end sports equipment manufacturing: OEM, ODM, private label, carbon fiber molding, quality control, and global logistics from Sialkot.',
 };
 

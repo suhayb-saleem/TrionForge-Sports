@@ -6,8 +6,8 @@ import AboutStats from '@/components/about/AboutStats';
 import AboutValues from '@/components/about/AboutValues';
 
 export const metadata: Metadata = {
-  title: 'About TrionForge Sports — Our Story & Manufacturing Heritage',
-  description: 'Learn about TrionForge Sports, our manufacturing heritage in Sialkot, and our mission to bring premium pickleball and padel equipment to the US market.',
+  title: 'About SIAL Athletics — Our Story & Manufacturing Heritage',
+  description: 'Learn about SIAL Athletics, our manufacturing heritage in Sialkot, and our mission to bring premium pickleball and padel equipment to the US market.',
 };
 
 export default function AboutPage() {

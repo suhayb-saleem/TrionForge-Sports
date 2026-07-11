@@ -37,8 +37,8 @@ export function ProductGrid({ products, onViewDetails, onInquire }: ProductGridP
 
   if (products.length === 0) {
     return (
-      <div className="py-24 text-center border border-white/8 bg-[#101010] z-10 relative">
-        <p className="font-body text-[#9A9A9A] text-sm uppercase tracking-widest">
+      <div className="py-24 text-center border border-white/8 bg-[#141414] z-10 relative">
+        <p className="font-body text-[#8A8A8A] text-sm uppercase tracking-widest">
           No products found matching your filter selections.
         </p>
       </div>

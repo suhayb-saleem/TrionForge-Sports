@@ -69,7 +69,7 @@ function CatalogueContent() {
   // B2B Inquiry handler
   const handleInquire = (product: Product) => {
     const subject = `Factory Quote Inquiry: ${product.name}`;
-    const body = `Hello TrionForge Sports Team,
+    const body = `Hello SIAL Athletics Team,
 
 I am interested in requesting a wholesale factory quote for the "${product.name}" (MOQ: ${product.moq || 'N/A'}).
 
@@ -83,7 +83,7 @@ Country/US State:
 
 Best regards,`;
     
-    window.location.href = `mailto:info@trionforgesports.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:info@sialathletics.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (

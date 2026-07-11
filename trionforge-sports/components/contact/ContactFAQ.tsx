@@ -14,7 +14,7 @@ const faqs = [
 export default function ContactFAQ() {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section style={{ background: '#0b0b0b', padding: '6rem 1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+    <section style={{ background: '#0f0f0f', padding: '6rem 1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
           <SectionLabel>COMMON QUESTIONS</SectionLabel>
@@ -25,12 +25,12 @@ export default function ContactFAQ() {
             <div key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
               <button onClick={() => setOpen(open === i ? null : i)} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 0', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem' }}>
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: '#fff', letterSpacing: '0.03em' }}>{q}</span>
-                {open === i ? <Minus size={18} color="#D71920" /> : <Plus size={18} color="#D71920" />}
+                {open === i ? <Minus size={18} color="#E8001C" /> : <Plus size={18} color="#E8001C" />}
               </button>
               <AnimatePresence>
                 {open === i && (
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: 'easeInOut' }} style={{ overflow: 'hidden' }}>
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: '#9A9A9A', lineHeight: 1.7, paddingBottom: '1.5rem' }}>{a}</p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: '#8A8A8A', lineHeight: 1.7, paddingBottom: '1.5rem' }}>{a}</p>
                   </motion.div>
                 )}
               </AnimatePresence>

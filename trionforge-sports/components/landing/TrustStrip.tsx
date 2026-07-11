@@ -5,12 +5,12 @@ export function TrustStrip() {
   const items = [
     { icon: Layers, text: 'OEM & ODM Programs' },
     { icon: Shield, text: 'Carbon Fiber & Premium Materials' },
-    { icon: CheckCircle, text: 'US Safety Standards Compliant' },
+    { icon: CheckCircle, text: 'US Market Ready' },
     { icon: Tag, text: 'Direct Factory Pricing' },
   ];
 
   return (
-    <div className="bg-[#0b0b0b] border-y border-white/8 font-body z-20 relative">
+    <div className="bg-[#0f0f0f] border-y border-white/8 font-body z-20 relative">
       <div className="container-custom py-5 md:py-0 md:h-[72px] flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
         {items.map((item, idx) => {
           const Icon = item.icon;

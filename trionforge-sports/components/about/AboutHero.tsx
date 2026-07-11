@@ -6,7 +6,7 @@ export default function AboutHero() {
   return (
     <section
       style={{
-        background: '#0b0b0b',
+        background: '#0f0f0f',
         minHeight: '320px',
         display: 'flex',
         alignItems: 'center',
@@ -42,7 +42,7 @@ export default function AboutHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          style={{ color: '#9A9A9A', fontSize: '1.125rem', fontFamily: 'var(--font-body)' }}
+          style={{ color: '#C8C8C8', fontSize: '1.125rem', fontFamily: 'var(--font-body)' }}
         >
           Built in Sialkot. Trusted worldwide.
         </motion.p>

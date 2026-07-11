@@ -72,16 +72,17 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-[#050505]/95 backdrop-blur-md border-b border-white/8 py-3'
+            ? 'border-b border-white/8 py-3'
             : 'bg-transparent border-b border-transparent py-5'
         }`}
+        style={scrolled ? { backgroundColor: 'rgba(10,10,10,0.97)', backdropFilter: 'blur(12px)' } : undefined}
       >
         <div className="container-custom flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="relative block h-10 w-[160px] md:h-12 md:w-[180px]">
             <Image
               src="/images/logo.svg"
-              alt="TrionForge Sports Logo"
+              alt="SIAL Athletics Logo"
               fill
               className="object-contain object-left"
               priority
@@ -97,7 +98,7 @@ export function Navbar() {
                   key={link.name}
                   href={link.href}
                   className={`font-body text-[13px] font-medium tracking-widest uppercase transition-colors duration-200 relative py-1 ${
-                    active ? 'text-white' : 'text-[#9A9A9A] hover:text-white'
+                    active ? 'text-white' : 'text-[#8A8A8A] hover:text-white'
                   }`}
                 >
                   {link.name}
@@ -131,7 +132,7 @@ export function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-[#050505] z-40 flex flex-col justify-center items-center lg:hidden">
+        <div className="fixed inset-0 bg-[#0a0a0a] z-40 flex flex-col justify-center items-center lg:hidden">
           <nav className="flex flex-col items-center gap-8 mb-12">
             {navLinks.map((link) => {
               const active = isActive(link.href);
@@ -141,7 +142,7 @@ export function Navbar() {
                   href={link.href}
                   onClick={handleLinkClick}
                   className={`font-body text-xl font-bold tracking-widest uppercase transition-colors duration-200 ${
-                    active ? 'text-brand-red' : 'text-[#9A9A9A] hover:text-white'
+                    active ? 'text-brand-red' : 'text-[#8A8A8A] hover:text-white'
                   }`}
                 >
                   {link.name}

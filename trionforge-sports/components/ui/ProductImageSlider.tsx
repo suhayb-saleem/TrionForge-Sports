@@ -100,7 +100,7 @@ export function ProductImageSlider({
       ref={containerRef}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative ${aspectRatioClass} bg-[#0b0b0b] overflow-hidden ${className}`}
+      className={`relative ${aspectRatioClass} bg-[#0f0f0f] overflow-hidden ${className}`}
     >
       {/* Progress bars — shown when hovered & multiple images */}
       {hasMultiple && isHovered && (

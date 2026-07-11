@@ -1,6 +1,6 @@
-# TrionForge Sports LLC — B2C/B2B Sports Brand Platform
+# SIAL Athletics — B2C/B2B Sports Brand Platform
 
-This is a premium, high-performance Next.js 15 web application built for **TrionForge Sports LLC**, a sports equipment manufacturer based in Sialkot, Pakistan that imports pro-grade pickleball paddles and padel rackets to the US market.
+This is a premium, high-performance Next.js 15 web application built for **SIAL Athletics**, a sports equipment manufacturer based in Sialkot, Pakistan that imports pro-grade pickleball paddles and padel rackets to the US market.
 
 The styling is aggressive, clean, and modern, targeting US brands, wholesalers, and consumers.
 
@@ -41,13 +41,13 @@ Please follow these steps before deploying to production:
    - The logo placeholder is currently generated. Replace it with your official vector logo files at `/public/images/logo.png`.
 2. **Product Photography**:
    - Once your team has professional product shoots, drop the files into `/public/images/products/` matching the exact names defined in `data/products.ts`:
-     - `tf-alpha-16mm.jpg`
-     - `tf-pro-14mm.jpg`
-     - `tf-strike-13mm.jpg`
-     - `tf-apex-elongated.jpg`
-     - `tf-forge-padel-round.jpg`
-     - `tf-forge-padel-diamond.jpg`
-     - `tf-forge-padel-teardrop.jpg`
+     - `sa-alpha-16mm.jpg`
+     - `sa-pro-14mm.jpg`
+     - `sa-strike-13mm.jpg`
+     - `sa-apex-elongated.jpg`
+     - `sa-forge-padel-round.jpg`
+     - `sa-forge-padel-diamond.jpg`
+     - `sa-forge-padel-teardrop.jpg`
 3. **Contact Information**:
    - Modify the placeholder contacts (phone number and emails) inside `components/layout/Footer.tsx` and `components/landing/Contact.tsx` to match your actual sales team contacts.
 4. **Deploy to Vercel**:

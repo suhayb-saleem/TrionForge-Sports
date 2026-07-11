@@ -19,15 +19,15 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://trionforgesports.com'),
-  title: 'TrionForge Sports — Premium Pickleball Paddles & Padel Rackets',
-  description: 'Factory-direct premium pickleball paddles and padel rackets manufactured in Sialkot. OEM, ODM, and private label programs for US brands and retailers.',
-  keywords: ['pickleball paddles wholesale', 'padel rackets manufacturer', 'OEM pickleball', 'Sialkot sports manufacturer', 'private label pickleball'],
+  metadataBase: new URL('https://sialathletics.com'),
+  title: 'SIAL Athletics — Premium Pickleball Paddles & Padel Rackets',
+  description: 'Factory-direct premium pickleball paddles and padel rackets. OEM, ODM, and private label programs for US brands and retailers. Manufactured in Sialkot.',
+  keywords: ['pickleball paddles', 'padel rackets manufacturer', 'OEM pickleball', 'private label padel', 'sports equipment wholesale'],
   openGraph: {
-    title: 'TrionForge Sports',
-    description: 'Premium factory-direct pickleball and padel equipment for US brands.',
-    images: ['/images/logo.svg'],
-  }
+    title: 'SIAL Athletics',
+    description: 'Premium factory-direct pickleball and padel equipment. Precision. Performance. Durability.',
+    siteName: 'SIAL Athletics',
+  },
 };
 
 export default function RootLayout({
