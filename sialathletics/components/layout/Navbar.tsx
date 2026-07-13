@@ -17,16 +17,49 @@ const links = [
 
 // Animated padel racket & bouncing ball vector logo mark
 const RacketAnimation = () => {
+  const [isSpinning, setIsSpinning] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleInteract = () => {
+    if (isSpinning) return;
+    setIsSpinning(true);
+    setTimeout(() => setIsSpinning(false), 800);
+  };
+
   return (
-    <div style={{ position: 'relative', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: '0.25rem' }}>
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ overflow: 'visible' }}>
+    <div
+      onClick={handleInteract}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        position: 'relative',
+        width: '56px',
+        height: '56px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: '0.4rem',
+        cursor: 'pointer',
+      }}
+    >
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" style={{ overflow: 'visible' }}>
         {/* Ambient background glow behind the racket */}
-        <circle cx="12" cy="8" r="8" fill="rgba(232, 0, 28, 0.05)" style={{ filter: 'blur(4px)' }} />
+        <circle cx="12" cy="8" r="8" fill="rgba(232, 0, 28, 0.08)" style={{ filter: 'blur(6px)' }} />
 
         {/* Animated Racket */}
         <motion.g
-          animate={{ rotate: [-6, 6, -6], y: [0, -0.5, 0] }}
-          transition={{ repeat: Infinity, duration: 2.8, ease: "easeInOut" }}
+          animate={
+            isSpinning
+              ? { rotate: [0, 360], scale: [1, 1.2, 1] }
+              : isHovered
+              ? { rotate: [-14, 14, -14], y: [-1, -3, -1] }
+              : { rotate: [-7, 7, -7], y: [0, -1, 0] }
+          }
+          transition={
+            isSpinning
+              ? { duration: 0.8, ease: "easeInOut" }
+              : { repeat: Infinity, duration: isHovered ? 1.4 : 2.6, ease: "easeInOut" }
+          }
           style={{ transformOrigin: '12px 18px' }}
         >
           {/* Racket Handle */}
@@ -34,7 +67,7 @@ const RacketAnimation = () => {
           <line x1="12" y1="17.5" x2="12" y2="21" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" />
           
           {/* Racket Head (Teardrop shape for Padel Racket) */}
-          <path d="M12 2 C8 2 8 13 12 13 C16 13 16 2 12 2 Z" fill="rgba(255, 255, 255, 0.06)" stroke="var(--white-60)" strokeWidth="1.5" />
+          <path d="M12 2 C8 2 8 13 12 13 C16 13 16 2 12 2 Z" fill="rgba(255, 255, 255, 0.06)" stroke="var(--white-80)" strokeWidth="1.5" />
           
           {/* Padel Holes (glowing micro dots) */}
           <circle cx="12" cy="5" r="0.6" fill="var(--red)" />
@@ -49,9 +82,19 @@ const RacketAnimation = () => {
           cy="0"
           r="1.8"
           fill="var(--red)"
-          style={{ filter: 'drop-shadow(0 0 4px var(--red))' }}
-          animate={{ y: [-7, 2.5, -7] }}
-          transition={{ repeat: Infinity, duration: 1.1, ease: "easeInOut" }}
+          style={{ filter: 'drop-shadow(0 0 5px var(--red))' }}
+          animate={
+            isSpinning
+              ? { y: [-7, -35, 2.5, -7] }
+              : isHovered
+              ? { y: [-15, 2.5, -15] }
+              : { y: [-7, 2.5, -7] }
+          }
+          transition={
+            isSpinning
+              ? { duration: 0.8, ease: "easeInOut" }
+              : { repeat: Infinity, duration: isHovered ? 0.7 : 1.3, ease: "easeInOut" }
+          }
         />
       </svg>
     </div>
