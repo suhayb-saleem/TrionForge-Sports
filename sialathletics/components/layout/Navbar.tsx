@@ -15,22 +15,31 @@ const links = [
   { label: 'CONTACT', href: '/contact' },
 ];
 
-// Animated padel racket & bouncing ball vector logo mark
+// Interactive padel racket & bouncing volley ball logo mark
 const RacketAnimation = () => {
-  const [isSpinning, setIsSpinning] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [speedMode, setSpeedMode] = useState<'normal' | 'hover' | 'turbo'>('normal');
 
-  const handleInteract = () => {
-    if (isSpinning) return;
-    setIsSpinning(true);
-    setTimeout(() => setIsSpinning(false), 800);
+  // Trigger super fast turbo volley on click for 3.5 seconds
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // prevent header navigation
+    setSpeedMode('turbo');
   };
+
+  useEffect(() => {
+    if (speedMode === 'turbo') {
+      const t = setTimeout(() => setSpeedMode('normal'), 3500);
+      return () => clearTimeout(t);
+    }
+  }, [speedMode]);
+
+  // Adjust volley speed based on interaction state
+  const duration = speedMode === 'turbo' ? 0.75 : speedMode === 'hover' ? 1.3 : 2.5;
 
   return (
     <div
-      onClick={handleInteract}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onClick={handleClick}
+      onMouseEnter={() => speedMode !== 'turbo' && setSpeedMode('hover')}
+      onMouseLeave={() => speedMode !== 'turbo' && setSpeedMode('normal')}
       style={{
         position: 'relative',
         width: '56px',
@@ -41,25 +50,23 @@ const RacketAnimation = () => {
         marginLeft: '0.4rem',
         cursor: 'pointer',
       }}
+      title="Click to trigger Turbo Volley!"
     >
       <svg width="44" height="44" viewBox="0 0 24 24" fill="none" style={{ overflow: 'visible' }}>
         {/* Ambient background glow behind the racket */}
         <circle cx="12" cy="8" r="8" fill="rgba(232, 0, 28, 0.08)" style={{ filter: 'blur(6px)' }} />
 
-        {/* Animated Racket */}
+        {/* Animated Racket (Locked in synchronization with the ball's return) */}
         <motion.g
-          animate={
-            isSpinning
-              ? { rotate: [0, 360], scale: [1, 1.1, 1] }
-              : isHovered
-              ? { rotate: [-12, 12, -12], y: [-0.5, -2, -0.5] }
-              : { rotate: [-6, 6, -6], y: [0, -0.5, 0] }
-          }
-          transition={
-            isSpinning
-              ? { duration: 0.8, ease: "easeInOut" }
-              : { repeat: Infinity, duration: isHovered ? 1.4 : 2.6, ease: "easeInOut" }
-          }
+          animate={{
+            rotate: [15, 0, -25, 15],
+            y: [0, 0.5, -0.5, 0]
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: duration,
+            ease: 'linear'
+          }}
           style={{ transformOrigin: '12px 18px' }}
         >
           {/* Racket Handle */}
@@ -76,25 +83,23 @@ const RacketAnimation = () => {
           <circle cx="12" cy="10" r="0.6" fill="var(--red)" />
         </motion.g>
 
-        {/* Animated Bouncing Ball */}
+        {/* Bouncing Energy Ball (Trajectory extends outside SVG boundary to strike logo on far left) */}
         <motion.circle
-          cx="12"
+          cx="0"
           cy="0"
           r="1.8"
           fill="var(--red)"
           style={{ filter: 'drop-shadow(0 0 5px var(--red))' }}
-          animate={
-            isSpinning
-              ? { y: [-6, -15, 2.5, -6] }
-              : isHovered
-              ? { y: [-11, 2.5, -11] }
-              : { y: [-6, 2.5, -6] }
-          }
-          transition={
-            isSpinning
-              ? { duration: 0.8, ease: "easeInOut" }
-              : { repeat: Infinity, duration: isHovered ? 0.7 : 1.3, ease: "easeInOut" }
-          }
+          animate={{
+            x: [12, -125, -60, 12],
+            y: [2.5, -18, 20, 2.5]
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: duration,
+            times: [0, 0.35, 0.7, 1],
+            ease: 'linear'
+          }}
         />
       </svg>
     </div>
