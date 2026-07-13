@@ -14,6 +14,8 @@ interface ButtonProps {
   children: React.ReactNode;
 }
 
+const MotionLink = motion.create(Link);
+
 export default function Button({ href, onClick, variant = 'primary', size = 'md', type = 'button', className = '', disabled = false, children }: ButtonProps) {
   const base: React.CSSProperties = {
     display: 'inline-flex',
