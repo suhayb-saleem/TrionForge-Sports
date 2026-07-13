@@ -81,7 +81,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
     <AnimatePresence>
       {isOpen && (
         <div
-          className="fixed inset-y-0 right-0 overflow-hidden font-body"
+          className="fixed inset-0 overflow-hidden font-body"
           role="dialog"
           aria-modal="true"
           style={{ zIndex: 120, pointerEvents: 'none' }} // passes clicks through to background
