@@ -21,7 +21,7 @@ export default function QualityStandards() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {standards.map(({ title, desc }, i) => (
             <motion.div key={title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.5, delay: i * 0.1 }}
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', borderTop: '3px solid var(--red)', padding: '2.5rem 2rem' }}
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', borderTop: '3px solid var(--red)', padding: '2.5rem 2rem', borderRadius: '16px' }}
               className="group hover:border-x-[var(--red)]/30 hover:border-b-[var(--red)]/30 hover:shadow-[0_20px_45px_rgba(232,0,28,0.15)] transition-all duration-300"
             >
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--white)', marginBottom: '1rem', textTransform: 'uppercase' }} className="group-hover:text-[var(--red)] transition-colors duration-200">{title}</h3>

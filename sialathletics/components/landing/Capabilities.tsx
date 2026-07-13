@@ -60,11 +60,12 @@ export function Capabilities() {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
+                    borderRadius: '16px',
                   }}
                 >
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', height: '100%' }}>
                     {/* Icon container with padding and margin */}
-                    <div style={{ alignSelf: 'flex-start', padding: '0.75rem', background: 'var(--bg-base)', border: '1px solid var(--white-08)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ alignSelf: 'flex-start', padding: '0.75rem', background: 'var(--bg-base)', border: '1px solid var(--white-08)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: '10px' }}>
                       <Icon size={24} color="var(--red)" />
                     </div>
                     

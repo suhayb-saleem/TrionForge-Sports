@@ -28,7 +28,7 @@ export default function ProductTeaser() {
         <div className="product-teaser-grid" style={{ display: 'grid', gap: '1.5rem' }}>
           {featured.map((p, i) => (
             <motion.div key={p.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', position: 'relative', overflow: 'hidden' }}
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', position: 'relative', overflow: 'hidden', borderRadius: '16px' }}
               className="group hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.15)] transition-all duration-300"
             >
               {/* Red top border that slides in on hover */}

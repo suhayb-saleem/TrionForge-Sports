@@ -35,7 +35,8 @@ export default function AboutValues() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '1.25rem',
-                justifyContent: 'flex-start'
+                justifyContent: 'flex-start',
+                borderRadius: '16px',
               }}
               className="group hover:border-[var(--red)]/40 hover:shadow-[0_20px_45px_rgba(232,0,28,0.15)] transition-all duration-300"
             >

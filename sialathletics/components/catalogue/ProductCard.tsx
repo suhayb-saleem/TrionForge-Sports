@@ -22,8 +22,8 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
   return (
     <div
       onClick={() => onViewDetails(product)}
-      className="bg-[var(--bg-card)] border border-[var(--white-08)] rounded-none group hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.15)] transition-all duration-300 flex flex-col justify-between overflow-hidden font-body h-full cursor-pointer"
-      style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
+      className="bg-[var(--bg-card)] border border-[var(--white-08)] group hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.2)] transition-all duration-300 flex flex-col justify-between overflow-hidden font-body h-full cursor-pointer"
+      style={{ display: 'flex', flexDirection: 'column', height: '100%', borderRadius: '16px' }}
     >
       {/* Image Area */}
       <div className="relative aspect-[16/10] overflow-hidden border-b border-[var(--white-08)]" style={{ padding: '0.75rem', background: 'var(--bg-raised)' }}>
@@ -80,7 +80,7 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
           {/* MOQ Label */}
           {product.moq && (
             <div style={{ marginTop: '0.25rem' }}>
-              <div className="text-[10px] text-[var(--white-60)] font-bold bg-[var(--bg-base)] border border-[var(--white-08)] inline-block px-3 py-1 uppercase tracking-wider">
+              <div style={{ borderRadius: '6px' }} className="text-[10px] text-[var(--white-60)] font-bold bg-[var(--bg-base)] border border-[var(--white-08)] inline-block px-3 py-1 uppercase tracking-wider">
                 MOQ: <span className="text-[var(--red)] font-extrabold">{product.moq}</span>
               </div>
             </div>

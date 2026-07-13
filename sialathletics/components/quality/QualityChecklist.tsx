@@ -35,7 +35,7 @@ export default function QualityChecklist() {
         
         {/* Right - Quality Assurance graphic block */}
         <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.1 }}
-          style={{ aspectRatio: '4/3', background: 'linear-gradient(135deg, var(--bg-card), var(--bg-base))', border: '1px solid var(--white-08)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1rem', position: 'relative', overflow: 'hidden' }}
+          style={{ aspectRatio: '4/3', background: 'linear-gradient(135deg, var(--bg-card), var(--bg-base))', border: '1px solid var(--white-08)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1rem', position: 'relative', overflow: 'hidden', borderRadius: '20px' }}
           className="shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
         >
           <ShieldCheck size={56} color="var(--red)" />

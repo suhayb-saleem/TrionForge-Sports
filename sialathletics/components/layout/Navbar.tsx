@@ -17,6 +17,7 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -46,28 +47,53 @@ export default function Navbar() {
           <Image src="/images/logo.png" alt="SIAL Athletics" width={185} height={52} style={{ objectFit: 'contain' }} priority />
         </Link>
 
-        {/* Desktop nav */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }} className="hide-mobile">
-          {links.map(({ label, href }) => {
+        {/* Desktop nav with sliding indicators */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', position: 'relative' }} className="hide-mobile">
+          {links.map(({ label, href }, idx) => {
             const active = pathname === href;
             return (
               <Link key={href} href={href} style={{
                 fontFamily: 'var(--font-body)', fontSize: '0.7rem', fontWeight: 600,
                 letterSpacing: '0.14em', textTransform: 'uppercase',
-                color: active ? 'var(--white)' : 'var(--white-60)',
-                textDecoration: 'none', position: 'relative', paddingBottom: '2px',
+                color: active || hoveredIdx === idx ? 'var(--white)' : 'var(--white-60)',
+                textDecoration: 'none', position: 'relative',
+                padding: '8px 16px',
+                borderRadius: '30px',
                 transition: 'color 0.2s ease',
+                display: 'inline-block'
               }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'var(--white)')}
-                onMouseLeave={e => { if (!active) e.currentTarget.style.color = 'var(--white-60)'; }}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
               >
-                {label}
-                {active && (
-                  <motion.span layoutId="nav-underline" style={{
-                    position: 'absolute', bottom: -2, left: 0, right: 0,
-                    height: '1.5px', background: 'var(--red)',
-                  }} />
+                {hoveredIdx === idx && (
+                  <motion.span
+                    layoutId="nav-hover-pill"
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      borderRadius: '30px',
+                      zIndex: -1,
+                    }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
                 )}
+                {active && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '16px',
+                      right: '16px',
+                      height: '2.5px',
+                      background: 'var(--red)',
+                      borderRadius: '4px',
+                    }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {label}
               </Link>
             );
           })}
@@ -76,9 +102,11 @@ export default function Navbar() {
             letterSpacing: '0.14em', textTransform: 'uppercase',
             background: 'var(--red)', color: 'var(--white)',
             padding: '10px 22px', textDecoration: 'none',
-            transition: 'background 0.2s ease',
-            borderRadius: 0,
+            transition: 'background 0.2s ease, transform 0.2s ease',
+            borderRadius: '8px',
+            marginLeft: '0.5rem'
           }}
+            className="hover:scale-[1.03]"
             onMouseEnter={e => (e.currentTarget.style.background = 'var(--red-dark)')}
             onMouseLeave={e => (e.currentTarget.style.background = 'var(--red)')}
           >
@@ -113,7 +141,7 @@ export default function Navbar() {
               </motion.div>
             ))}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }}>
-              <Link href="/contact" style={{ background: 'var(--red)', color: 'var(--white)', padding: '14px 36px', fontFamily: 'var(--font-body)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none' }}>
+              <Link href="/contact" style={{ background: 'var(--red)', color: 'var(--white)', padding: '14px 36px', fontFamily: 'var(--font-body)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none', borderRadius: '8px' }}>
                 GET A QUOTE
               </Link>
             </motion.div>

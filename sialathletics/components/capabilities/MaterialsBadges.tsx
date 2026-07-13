@@ -25,7 +25,7 @@ export default function MaterialsBadges() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.05 }}
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', borderLeft: '2px solid var(--red)', padding: '0.6rem 1.25rem', fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--white)', fontWeight: 700, letterSpacing: '0.03em' }}
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', borderLeft: '2px solid var(--red)', padding: '0.6rem 1.25rem', fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--white)', fontWeight: 700, letterSpacing: '0.03em', borderRadius: '12px' }}
             >
               {m}
             </motion.div>
