@@ -9,11 +9,9 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
-    country: '',
-    productLine: 'Pickleball Paddles',
-    orderVolume: 'Sample Only (1-5 units)',
+    phone: '',
     message: '',
+    website: '', // honeypot
   });
 
   const [submitting, setSubmitting] = useState(false);
@@ -22,8 +20,29 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitting(true);
     setError(null);
+
+    // Client-side validation: Required fields
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setError('Please fill in all required fields.');
+      return;
+    }
+
+    // Client-side validation: Email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    // Honeypot spam protection check
+    if (formData.website) {
+      // Quietly intercept and mock success for bots
+      setSubmitted(true);
+      return;
+    }
+
+    setSubmitting(true);
 
     try {
       const response = await fetch('/api/contact', {
@@ -31,7 +50,12 @@ export default function ContactForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          message: formData.message.trim(),
+        }),
       });
 
       const result = await response.json();
@@ -41,11 +65,9 @@ export default function ContactForm() {
         setFormData({
           name: '',
           email: '',
-          company: '',
-          country: '',
-          productLine: 'Pickleball Paddles',
-          orderVolume: 'Sample Only (1-5 units)',
+          phone: '',
           message: '',
+          website: '',
         });
       } else {
         setError(result.error || 'Failed to submit inquiry. Please check the fields and try again.');
@@ -119,7 +141,7 @@ export default function ContactForm() {
               </div>
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', color: 'var(--white)', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Inquiry Received</h3>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--white-60)', lineHeight: 1.6, maxWidth: '385px', margin: '0 0 2rem 0' }}>
-                Thank you. Your inquiry report has been compiled and emailed to you as a PDF. Our factory team will reach out with pricing and sample options within 24 hours.
+                Thank you. We have successfully received your inquiry. A confirmation email has been sent to your address, and our team will get back to you soon.
               </p>
               <Button onClick={() => setSubmitted(false)} variant="outline" size="sm">
                 Send Another Inquiry
@@ -132,6 +154,20 @@ export default function ContactForm() {
                   {error}
                 </div>
               )}
+
+              {/* Honeypot field (hidden from users, targeted by bots) */}
+              <div style={{ display: 'none' }}>
+                <label htmlFor="form-website">Website</label>
+                <input 
+                  id="form-website"
+                  type="text" 
+                  name="website"
+                  value={formData.website}
+                  onChange={e => setFormData({ ...formData, website: e.target.value })}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
 
               <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
@@ -158,59 +194,15 @@ export default function ContactForm() {
                 </div>
               </div>
 
-              <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem', marginTop: '1.25rem' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label htmlFor="form-company" style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', color: 'var(--white-60)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Company Name *</label>
-                  <input 
-                    id="form-company"
-                    type="text" 
-                    required
-                    value={formData.company}
-                    onChange={e => setFormData({ ...formData, company: e.target.value })}
-                    style={{ background: 'var(--bg-raised)', border: '1px solid var(--white-08)', padding: '0.75rem 1rem', color: 'var(--white)', fontFamily: 'var(--font-body)', fontSize: '0.875rem', outline: 'none', width: '100%', borderRadius: '8px' }} 
-                  />
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label htmlFor="form-country" style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', color: 'var(--white-60)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Country / Region</label>
-                  <input 
-                    id="form-country"
-                    type="text" 
-                    value={formData.country}
-                    onChange={e => setFormData({ ...formData, country: e.target.value })}
-                    style={{ background: 'var(--bg-raised)', border: '1px solid var(--white-08)', padding: '0.75rem 1rem', color: 'var(--white)', fontFamily: 'var(--font-body)', fontSize: '0.875rem', outline: 'none', width: '100%', borderRadius: '8px' }} 
-                  />
-                </div>
-              </div>
-
-              <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem', marginTop: '1.25rem' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label htmlFor="form-interest" style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', color: 'var(--white-60)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Product Line</label>
-                  <select 
-                    id="form-interest"
-                    value={formData.productLine}
-                    onChange={e => setFormData({ ...formData, productLine: e.target.value })}
-                    style={{ background: 'var(--bg-raised)', border: '1px solid var(--white-08)', padding: '0.75rem 1rem', color: 'var(--white)', fontFamily: 'var(--font-body)', fontSize: '0.875rem', outline: 'none', borderRadius: '8px', height: '43px' }}
-                  >
-                    <option value="Pickleball Paddles">Pickleball Paddles</option>
-                    <option value="Padel Rackets">Padel Rackets</option>
-                    <option value="Both Lines">Both Lines</option>
-                    <option value="Other Accessories">Other Accessories</option>
-                  </select>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label htmlFor="form-volume" style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', color: 'var(--white-60)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Order Volume</label>
-                  <select 
-                    id="form-volume"
-                    value={formData.orderVolume}
-                    onChange={e => setFormData({ ...formData, orderVolume: e.target.value })}
-                    style={{ background: 'var(--bg-raised)', border: '1px solid var(--white-08)', padding: '0.75rem 1rem', color: 'var(--white)', fontFamily: 'var(--font-body)', fontSize: '0.875rem', outline: 'none', borderRadius: '8px', height: '43px' }}
-                  >
-                    <option value="Sample Only (1-5 units)">Sample Only (1-5 units)</option>
-                    <option value="50-100 Units (Starter)">50-100 Units (Starter)</option>
-                    <option value="100-500 Units (Growth)">100-500 Units (Growth)</option>
-                    <option value="500+ Units (Enterprise)">500+ Units (Enterprise)</option>
-                  </select>
-                </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '1.25rem' }}>
+                <label htmlFor="form-phone" style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', color: 'var(--white-60)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Phone Number (Optional)</label>
+                <input 
+                  id="form-phone"
+                  type="tel" 
+                  value={formData.phone}
+                  onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                  style={{ background: 'var(--bg-raised)', border: '1px solid var(--white-08)', padding: '0.75rem 1rem', color: 'var(--white)', fontFamily: 'var(--font-body)', fontSize: '0.875rem', outline: 'none', width: '100%', borderRadius: '8px' }} 
+                />
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '1.25rem' }}>
