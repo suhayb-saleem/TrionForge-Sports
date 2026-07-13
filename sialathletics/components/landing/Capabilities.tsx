@@ -53,18 +53,30 @@ export function Capabilities() {
                   key={idx}
                   direction="up"
                   delay={idx * 0.1}
-                  className="flex flex-col justify-between h-full group transition-all duration-300 bg-[var(--bg-light)] border border-[var(--border-light)] p-8 hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.06)]"
+                  className="flex flex-col justify-between group transition-all duration-300 bg-[var(--bg-light)] border border-[var(--border-light)] hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.06)]"
+                  style={{
+                    padding: '2.5rem',
+                    minHeight: '280px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
                 >
-                  <div className="space-y-4">
-                    <div className="inline-block transition-colors duration-300" style={{ padding: '0.75rem', background: 'var(--bg-light-alt)', border: '1px solid var(--border-light)' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', height: '100%' }}>
+                    {/* Icon container with padding and margin */}
+                    <div style={{ alignSelf: 'flex-start', padding: '0.75rem', background: 'var(--bg-light-alt)', border: '1px solid var(--border-light)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Icon size={24} color="var(--red)" />
                     </div>
-                    <h3 className="font-display text-2xl text-[var(--text-dark)] uppercase group-hover:text-[var(--red)] transition-colors duration-200">
-                      {item.title}
-                    </h3>
-                    <p className="font-body text-sm leading-relaxed text-[var(--text-muted)]">
-                      {item.desc}
-                    </p>
+                    
+                    {/* Info */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                      <h3 className="font-display text-2xl text-[var(--text-dark)] uppercase group-hover:text-[var(--red)] transition-colors duration-200" style={{ margin: 0 }}>
+                        {item.title}
+                      </h3>
+                      <p className="font-body text-[13px] sm:text-sm leading-relaxed text-[var(--text-muted)]" style={{ margin: 0 }}>
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
                 </AnimatedSection>
               );

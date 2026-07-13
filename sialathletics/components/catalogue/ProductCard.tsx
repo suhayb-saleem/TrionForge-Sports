@@ -23,9 +23,10 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
     <div
       onClick={() => onViewDetails(product)}
       className="bg-[var(--bg-light)] border border-[var(--border-light)] rounded-none group hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.08)] transition-all duration-300 flex flex-col justify-between overflow-hidden font-body h-full cursor-pointer"
+      style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
     >
       {/* Image Area */}
-      <div className="relative aspect-[16/10] bg-[var(--bg-light-alt)] overflow-hidden border-b border-[var(--border-light)] p-2">
+      <div className="relative aspect-[16/10] bg-[var(--bg-light-alt)] overflow-hidden border-b border-[var(--border-light)]" style={{ padding: '0.75rem' }}>
         {/* Badge */}
         {product.badge && (
           <div className={`absolute top-3.5 right-3.5 z-10 px-3 py-1 text-[9px] font-bold uppercase tracking-widest rounded-none ${getBadgeStyle(product.badge)}`}>
@@ -43,24 +44,26 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
       </div>
 
       {/* Info & Spec Content */}
-      <div className="p-6 flex-grow flex flex-col justify-between">
-        <div>
+      <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flexGrow: 1, gap: '1.5rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           {/* Category */}
-          <div className="text-[var(--red)] text-[10px] font-bold uppercase tracking-[0.16em] mb-1.5">
+          <div className="text-[var(--red)] text-[10px] font-bold uppercase tracking-[0.16em]" style={{ margin: 0 }}>
             {product.category === 'pickleball' ? 'Pickleball Paddle' : 'Padel Racket'}
           </div>
 
           {/* Name & Tagline */}
-          <h3 className="font-display text-[26px] sm:text-[28px] text-[var(--text-dark)] leading-[1.1] uppercase mb-1.5 tracking-tight group-hover:text-[var(--red)] transition-colors duration-200">
-            {product.name}
-          </h3>
-          <p className="text-[var(--text-muted)] text-[13px] leading-relaxed mb-4 font-normal">
-            {product.tagline}
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+            <h3 className="font-display text-[26px] sm:text-[28px] text-[var(--text-dark)] leading-[1.1] uppercase tracking-tight group-hover:text-[var(--red)] transition-colors duration-200" style={{ margin: 0 }}>
+              {product.name}
+            </h3>
+            <p className="text-[var(--text-muted)] text-[13px] leading-relaxed font-normal" style={{ margin: 0 }}>
+              {product.tagline}
+            </p>
+          </div>
 
           {/* Key Specs */}
           {product.specs && product.specs.length > 0 && (
-            <div className="border-t border-[var(--border-light)] pt-4 mb-4">
+            <div className="border-t border-[var(--border-light)]" style={{ paddingTop: '1rem', marginTop: '0.25rem' }}>
               <div className="grid grid-cols-2 gap-x-6 gap-y-2">
                 {product.specs.slice(0, 4).map((spec, sIdx) => (
                   <div key={sIdx} className="flex justify-between items-center text-[12px] py-0.5 border-b border-dashed border-black/5 last:border-b-0">
@@ -76,14 +79,16 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
 
           {/* MOQ Label */}
           {product.moq && (
-            <div className="text-[10px] text-[var(--text-dark)] font-bold bg-[var(--bg-light-alt)] border border-[var(--border-light)] inline-block px-3 py-1 uppercase tracking-wider mb-6">
-              MOQ: <span className="text-[var(--red)] font-extrabold">{product.moq}</span>
+            <div style={{ marginTop: '0.25rem' }}>
+              <div className="text-[10px] text-[var(--text-dark)] font-bold bg-[var(--bg-light-alt)] border border-[var(--border-light)] inline-block px-3 py-1 uppercase tracking-wider">
+                MOQ: <span className="text-[var(--red)] font-extrabold">{product.moq}</span>
+              </div>
             </div>
           )}
         </div>
 
         {/* Buttons / Actions */}
-        <div className="flex items-center justify-between gap-4 mt-auto pt-4 border-t border-[var(--border-light)]">
+        <div className="flex items-center justify-between gap-4 border-t border-[var(--border-light)]" style={{ paddingTop: '1.25rem', marginTop: 'auto' }}>
           {/* VIEW DETAILS — stops propagation */}
           <button
             onClick={(e: React.MouseEvent) => { e.stopPropagation(); onViewDetails(product); }}

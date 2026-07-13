@@ -8,13 +8,15 @@ interface AnimatedSectionProps {
   delay?: number;
   direction?: 'up' | 'left' | 'none';
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export function AnimatedSection({
   children,
   delay = 0,
   direction = 'up',
-  className = ''
+  className = '',
+  style = {},
 }: AnimatedSectionProps) {
   const shouldReduceMotion = useReducedMotion();
 
@@ -53,6 +55,7 @@ export function AnimatedSection({
       viewport={{ once: true, margin: "-100px" }}
       variants={getVariants()}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>

@@ -30,12 +30,23 @@ export default function CapabilityCards() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.07 }}
-              style={{ background: 'var(--bg-light)', border: '1px solid var(--border-light)', borderLeft: '3px solid var(--red)', padding: '2.5rem 2rem' }}
+              style={{
+                background: 'var(--bg-light)',
+                border: '1px solid var(--border-light)',
+                borderLeft: '3px solid var(--red)',
+                padding: '2.5rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.25rem',
+                justifyContent: 'flex-start'
+              }}
               className="group hover:border-r-[var(--red)]/40 hover:border-y-[var(--red)]/40 hover:shadow-[0_20px_45px_rgba(232,0,28,0.06)] transition-all duration-300"
             >
-              <Icon size={24} color="var(--red)" style={{ marginBottom: '1.25rem' }} />
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--text-dark)', marginBottom: '0.75rem', textTransform: 'uppercase' }} className="group-hover:text-[var(--red)] transition-colors duration-200">{title}</h3>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.75 }}>{desc}</p>
+              <Icon size={24} color="var(--red)" />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--text-dark)', margin: 0, textTransform: 'uppercase' }} className="group-hover:text-[var(--red)] transition-colors duration-200">{title}</h3>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.75 }}>{desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
