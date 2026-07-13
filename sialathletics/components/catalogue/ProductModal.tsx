@@ -100,7 +100,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
             className="absolute inset-0 bg-black/90 backdrop-blur-md cursor-pointer"
           />
 
-          {/* Drawer */}
+          {/* Drawer Container */}
           <div className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
             <motion.div
               initial={{ x: '100%', opacity: 0 }}
@@ -110,34 +110,58 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
               className="w-screen max-w-5xl relative flex flex-col"
               style={{ background: 'var(--bg-base)', borderLeft: '1px solid var(--white-08)' }}
             >
-              {/* Sleek Circular Close Button */}
-              <button
-                onClick={onClose}
-                className="absolute top-6 right-6 z-30 hover:text-white hover:bg-brand-red transition-all duration-200 cursor-pointer p-2.5 flex items-center justify-center"
+              {/* 1. FIXED TOP HEADER BAR (Isolates title collisions & close actions) */}
+              <div
+                className="flex items-center justify-between px-6 py-4 shrink-0"
                 style={{
-                  color: 'var(--white-60)',
-                  background: 'var(--bg-card)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '50%',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.6), 0 0 10px rgba(232,0,28,0.1)',
+                  background: 'rgba(10, 10, 10, 0.4)',
+                  backdropFilter: 'blur(10px)',
+                  borderBottom: '1px solid var(--white-08)',
                 }}
-                aria-label="Close details"
               >
-                <X size={16} />
-              </button>
+                <div className="flex items-center gap-2">
+                  <span
+                    className="text-[9px] font-bold uppercase tracking-[0.25em]"
+                    style={{ fontFamily: 'var(--font-display)', color: 'var(--white-40)' }}
+                  >
+                    Product Profile
+                  </span>
+                  <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'var(--white-20)' }} />
+                  <span
+                    className="text-[9px] font-bold uppercase tracking-[0.25em] text-brand-red animate-pulse"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    {product.category === 'pickleball' ? 'Pickleball' : 'Padel'}
+                  </span>
+                </div>
+                <button
+                  onClick={onClose}
+                  className="hover:text-white hover:bg-brand-red transition-all duration-200 cursor-pointer p-2 flex items-center justify-center"
+                  style={{
+                    color: 'var(--white-60)',
+                    background: 'var(--bg-card)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: '50%',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
+                  }}
+                  aria-label="Close details"
+                >
+                  <X size={14} />
+                </button>
+              </div>
 
               {/* Scrollable Content */}
               <div className="flex-1 overflow-y-auto overflow-x-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] min-h-full">
+                <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] min-h-full">
 
                   {/* ═══ LEFT: IMAGE GALLERY ═══ */}
-                  <div className="relative flex flex-col min-h-[300px] lg:min-h-0 lg:sticky lg:top-0 lg:h-screen" style={{ background: 'var(--bg-base)', borderRight: '1px solid var(--white-04)' }}>
+                  <div className="relative flex flex-col min-h-[320px] lg:min-h-0 lg:sticky lg:top-0 lg:h-[calc(100vh-65px)]" style={{ background: 'var(--bg-base)', borderRight: '1px solid var(--white-04)' }}>
 
                     {/* Main image area */}
                     <div className="relative flex-1 overflow-hidden flex items-center justify-center p-6 pb-2 min-h-[280px] sm:min-h-[360px]">
                       {/* Ambient glow */}
                       <div className="absolute inset-0 pointer-events-none"
-                        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(232,0,28,0.06) 0%, transparent 70%)' }}
+                        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(232,0,28,0.05) 0%, transparent 70%)' }}
                       />
 
                       {/* Animated image */}
@@ -157,8 +181,8 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                               src={slideImages[activeImg]}
                               alt={`${product.name} - Image ${activeImg + 1}`}
                               fill
-                              sizes="(max-width: 1024px) 100vw, 50vw"
-                              className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
+                              sizes="(max-width: 1024px) 100vw, 55vw"
+                              className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.85)]"
                               priority
                             />
                           </div>
@@ -248,106 +272,121 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                   </div>
 
                   {/* ═══ RIGHT: INFO ═══ */}
-                  <div className="flex flex-col">
-                    <div className="flex-1 p-6 md:p-10 space-y-8 overflow-y-auto">
+                  <div className="flex flex-col justify-between">
+                    <div className="p-6 md:p-8 space-y-8">
 
-                      {/* Category + Name */}
-                      <div className="pt-12 lg:pt-16">
-                        <motion.div
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.15, duration: 0.4 }}
-                          className="text-brand-red text-[10px] font-bold uppercase tracking-[0.2em] mb-3"
+                      {/* Name & Tagline */}
+                      <div>
+                        <span
+                          className="text-brand-red text-[9px] font-bold uppercase tracking-[0.25em] mb-2 block"
                           style={{ fontFamily: 'var(--font-display)' }}
                         >
                           {product.category === 'pickleball' ? 'Pickleball Paddle' : 'Padel Racket'}
-                        </motion.div>
-                        <motion.h2
-                          initial={{ opacity: 0, y: 14 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.2, duration: 0.4 }}
-                          className="font-display text-[32px] sm:text-[40px] text-white uppercase leading-none mb-3 tracking-wide"
+                        </span>
+                        <h2
+                          className="font-display text-[26px] sm:text-[32px] text-white uppercase leading-tight mb-2 tracking-wide"
                         >
                           {product.name}
-                        </motion.h2>
-                        <motion.p
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.25, duration: 0.4 }}
+                        </h2>
+                        <p
                           className="text-xs italic font-semibold tracking-wider"
                           style={{ color: 'var(--white-50)' }}
                         >
                           &ldquo;{product.tagline}&rdquo;
-                        </motion.p>
+                        </p>
                       </div>
 
-                      {/* Description */}
-                      <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.4 }}
-                        className="text-xs leading-relaxed text-[var(--white-80)] border-l-2 border-brand-red/40 pl-4"
-                      >
+                      {/* Description Card */}
+                      <div className="text-xs leading-relaxed text-[var(--white-80)] border-l-2 border-brand-red/40 pl-4 py-1.5">
                         {product.description}
-                      </motion.p>
+                      </div>
 
-                      {/* Structured Dashed Connector Specifications */}
+                      {/* 2. SPECIFICATIONS HUD PANEL (Consolidates stats and MOQ cleanly) */}
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.35, duration: 0.4 }}
-                        className="space-y-4"
+                        transition={{ delay: 0.25, duration: 0.4 }}
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.015)',
+                          border: '1px solid rgba(255, 255, 255, 0.05)',
+                          borderRadius: '16px',
+                          padding: '1.25rem 1.5rem',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '1rem',
+                        }}
                       >
-                        <h4
-                          className="text-[10px] text-white uppercase tracking-[0.15em] font-bold border-b border-white/8 pb-2"
-                          style={{ fontFamily: 'var(--font-display)' }}
+                        {/* Panel Header */}
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            borderBottom: '1px solid rgba(255,255,255,0.06)',
+                            paddingBottom: '0.75rem',
+                            marginBottom: '0.25rem',
+                          }}
                         >
-                          Specifications
-                        </h4>
-                        <div className="space-y-3 pt-1">
+                          <span style={{ width: '3px', height: '12px', background: 'var(--red)', borderRadius: '2px' }} />
+                          <h4
+                            className="text-[9px] text-white uppercase tracking-[0.2em] font-bold"
+                            style={{ fontFamily: 'var(--font-display)' }}
+                          >
+                            Technical Specifications
+                          </h4>
+                        </div>
+
+                        {/* Specifications List */}
+                        <div className="space-y-3.5">
                           {product.specs.map((spec, sIdx) => (
                             <div
                               key={sIdx}
                               className="flex items-center justify-between text-xs py-0.5 hover:text-white transition-colors duration-150"
                             >
-                              <span className="font-semibold text-white-50 uppercase tracking-wider">{spec.label}</span>
-                              <div style={{ flexGrow: 1, borderBottom: '1px dashed rgba(255, 255, 255, 0.12)', margin: '0 12px' }} />
+                              <span className="font-semibold text-white-45 uppercase tracking-wider">{spec.label}</span>
+                              <div style={{ flexGrow: 1, borderBottom: '1px dashed rgba(255, 255, 255, 0.08)', margin: '0 12px' }} />
                               <span className="font-bold text-white uppercase tracking-wide">{spec.value}</span>
                             </div>
                           ))}
                         </div>
-                      </motion.div>
 
-                      {/* Clean Backgroundless MOQ Badge */}
-                      {product.moq && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.4, duration: 0.4 }}
-                          className="pt-2 flex items-center gap-2"
-                        >
-                          <span
+                        {/* Integrated MOQ Highlight Row */}
+                        {product.moq && (
+                          <div
                             style={{
-                              display: 'inline-block',
-                              width: '5px',
-                              height: '5px',
-                              borderRadius: '50%',
-                              background: 'var(--red)',
-                              boxShadow: '0 0 8px var(--red), 0 0 15px var(--red)',
+                              marginTop: '0.25rem',
+                              paddingTop: '0.85rem',
+                              borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
                             }}
-                            className="animate-pulse"
-                          />
-                          <span className="text-[10px] uppercase tracking-[0.15em] font-semibold" style={{ color: 'var(--white-50)' }}>
-                            Minimum Order Quantity:
-                          </span>
-                          <span className="text-xs text-white font-bold uppercase tracking-wider">
-                            {product.moq}
-                          </span>
-                        </motion.div>
-                      )}
+                          >
+                            <div className="flex items-center gap-2">
+                              <span
+                                style={{
+                                  display: 'inline-block',
+                                  width: '5px',
+                                  height: '5px',
+                                  borderRadius: '50%',
+                                  background: 'var(--red)',
+                                  boxShadow: '0 0 8px var(--red), 0 0 15px var(--red)',
+                                }}
+                                className="animate-pulse"
+                              />
+                              <span className="text-[9px] uppercase tracking-[0.15em] font-bold text-white-45">
+                                Minimum Order Quantity
+                              </span>
+                            </div>
+                            <span className="text-xs text-brand-red font-bold uppercase tracking-wider">
+                              {product.moq}
+                            </span>
+                          </div>
+                        )}
+                      </motion.div>
                     </div>
 
-                    {/* Sticky Bottom Action Bar with rounded aesthetic margins */}
+                    {/* 3. STICKY BOTTOM ACTION BAR (Styled as an isolated bottom shelf) */}
                     <div
                       className="p-5 sm:p-6 flex flex-col sm:flex-row gap-4 items-center justify-between shrink-0"
                       style={{
