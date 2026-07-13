@@ -86,30 +86,50 @@ Best regards,`;
     window.location.href = `mailto:info@sialathletics.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
+  const handlePageClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (modalOpen && !target.closest('.product-drawer') && !target.closest('.product-card')) {
+      setModalOpen(false);
+    }
+  };
+
   return (
-    <div className="bg-[var(--bg-base)] min-h-screen pb-24 relative overflow-hidden">
+    <div
+      onClick={handlePageClick}
+      className="bg-[var(--bg-base)] min-h-screen pb-24 relative overflow-hidden"
+    >
       {/* Background texture overlays */}
       <div className="absolute inset-0 texture-steel pointer-events-none opacity-40" />
       <div className="absolute inset-0 texture-noise pointer-events-none opacity-40" />
 
-      {/* Catalogue Hero header */}
-      <CatalogueHero />
+      {/* Dynamic slide transitions for background cards list when drawer is active */}
+      <div
+        style={{
+          transition: 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), padding-right 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease',
+          transform: modalOpen ? 'translateX(-12vw)' : 'none',
+          paddingRight: modalOpen ? '20vw' : '0',
+          opacity: modalOpen ? 0.75 : 1,
+        }}
+      >
+        {/* Catalogue Hero header */}
+        <CatalogueHero />
 
-      {/* Filter and Sort bar */}
-      <FilterBar
-        activeCategory={category}
-        setActiveCategory={setCategory}
-        activeSort={sort}
-        setActiveSort={setSort}
-      />
-
-      {/* Product list */}
-      <div className="container-custom mt-12 md:mt-16">
-        <ProductGrid
-          products={sortedProducts}
-          onViewDetails={handleViewDetails}
-          onInquire={handleInquire}
+        {/* Filter and Sort bar */}
+        <FilterBar
+          activeCategory={category}
+          setActiveCategory={setCategory}
+          activeSort={sort}
+          setActiveSort={setSort}
         />
+
+        {/* Product list */}
+        <div className="container-custom mt-12 md:mt-16">
+          <ProductGrid
+            products={sortedProducts}
+            onViewDetails={handleViewDetails}
+            onInquire={handleInquire}
+          />
+        </div>
       </div>
 
       {/* Right Drawer detailed product quickview */}

@@ -90,48 +90,52 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
           aria-modal="true"
           style={{ zIndex: 120 }}
         >
-          {/* Backdrop */}
+          {/* Transparent backdrop for background pass-through clicks */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-black/90 backdrop-blur-md cursor-pointer"
+            className="absolute inset-0 bg-black/35"
+            style={{ pointerEvents: 'none' }}
           />
 
-          {/* Drawer Container */}
-          <div className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
+          {/* Drawer Container (Floating margin and padding on desktop) */}
+          <div className="absolute inset-y-0 right-0 flex p-0 sm:p-4 sm:pl-10 lg:w-[60vw] max-w-5xl w-full">
             <motion.div
               initial={{ x: '100%', opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: '100%', opacity: 0 }}
               transition={{ type: 'spring', damping: 28, stiffness: 240, mass: 0.8 }}
-              className="w-screen max-w-5xl relative flex flex-col"
-              style={{ background: 'var(--bg-base)', borderLeft: '1px solid var(--white-08)' }}
+              className="w-full relative flex flex-col product-drawer sm:rounded-[20px] rounded-none overflow-hidden"
+              style={{
+                background: 'var(--bg-base)',
+                border: '1px solid var(--white-08)',
+                boxShadow: '-20px 20px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(232, 0, 28, 0.04)',
+              }}
             >
               {/* 1. FIXED TOP HEADER BAR (Isolates title collisions & close actions) */}
               <div
-                className="flex items-center justify-between px-6 py-4 shrink-0"
+                className="flex items-center justify-between px-6 py-5 shrink-0"
                 style={{
-                  background: 'rgba(10, 10, 10, 0.4)',
-                  backdropFilter: 'blur(10px)',
+                  background: 'rgba(10, 10, 10, 0.55)',
+                  backdropFilter: 'blur(12px)',
                   borderBottom: '1px solid var(--white-08)',
                 }}
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <span
-                    className="text-[9px] font-bold uppercase tracking-[0.25em]"
-                    style={{ fontFamily: 'var(--font-display)', color: 'var(--white-40)' }}
+                    className="text-[12px] font-bold uppercase tracking-[0.2em] text-white"
+                    style={{ fontFamily: 'var(--font-display)' }}
                   >
                     Product Profile
                   </span>
-                  <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'var(--white-20)' }} />
+                  <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--white-20)' }} />
                   <span
-                    className="text-[9px] font-bold uppercase tracking-[0.25em] text-brand-red animate-pulse"
-                    style={{ fontFamily: 'var(--font-display)' }}
+                    className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-red bg-brand-red/10 border border-brand-red/20 px-3 py-1 rounded-full animate-pulse"
+                    style={{ fontFamily: 'var(--font-display)', boxShadow: '0 0 10px rgba(232,0,28,0.1)' }}
                   >
-                    {product.category === 'pickleball' ? 'Pickleball' : 'Padel'}
+                    {product.category === 'pickleball' ? 'Pickleball Paddle' : 'Padel Racket'}
                   </span>
                 </div>
                 <button
@@ -386,28 +390,42 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                       </motion.div>
                     </div>
 
-                    {/* 3. STICKY BOTTOM ACTION BAR (Styled as an isolated bottom shelf) */}
+                    {/* 3. STICKY BOTTOM ACTION BAR (Styled as an isolated bottom shelf with two buttons) */}
                     <div
-                      className="p-5 sm:p-6 flex flex-col sm:flex-row gap-4 items-center justify-between shrink-0"
+                      className="p-5 sm:p-6 flex flex-col md:flex-row gap-4 items-center justify-between shrink-0"
                       style={{
                         background: 'rgba(15, 15, 15, 0.85)',
                         backdropFilter: 'blur(10px)',
                         borderTop: '1px solid var(--white-08)',
                       }}
                     >
-                      <div className="text-center sm:text-left">
-                        <div className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: 'var(--white-50)' }}>Interested in private label?</div>
-                        <div className="text-xs text-white mt-0.5">OEM / Custom mold options available for this model.</div>
+                      <div className="text-center md:text-left flex-1 max-w-sm">
+                        <div className="text-[10px] uppercase tracking-[0.18em] font-bold text-brand-red mb-1">
+                          Private Label / OEM Customization
+                        </div>
+                        <div className="text-[11px] text-white-60 leading-relaxed">
+                          Custom mold shapes, logo integration, and tailored specifications available.
+                        </div>
                       </div>
-                      <Button
-                        variant="primary"
-                        size="md"
-                        onClick={() => { onInquire(product); onClose(); }}
-                        className="w-full sm:w-auto flex items-center justify-center gap-2 !px-6"
-                      >
-                        <Mail size={15} />
-                        <span>Request Factory Quote</span>
-                      </Button>
+                      <div className="flex items-center gap-3 w-full sm:w-auto shrink-0 justify-center md:justify-end">
+                        <Button
+                          variant="outline"
+                          size="md"
+                          onClick={onClose}
+                          className="flex-1 sm:flex-none flex items-center justify-center !px-5"
+                        >
+                          Close
+                        </Button>
+                        <Button
+                          variant="primary"
+                          size="md"
+                          onClick={() => { onInquire(product); onClose(); }}
+                          className="flex-1 sm:flex-none flex items-center justify-center gap-2 !px-6"
+                        >
+                          <Mail size={14} />
+                          <span>Request Quote</span>
+                        </Button>
+                      </div>
                     </div>
                   </div>
 

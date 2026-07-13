@@ -41,7 +41,7 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
         fontFamily: 'var(--font-body)',
         cursor: 'pointer',
       }}
-      className="group"
+      className="group product-card"
     >
       {/* Image Area */}
       <div className="relative aspect-[16/10] overflow-hidden border-b border-[var(--white-08)]" style={{ padding: '0.75rem', background: 'var(--bg-raised)' }}>
