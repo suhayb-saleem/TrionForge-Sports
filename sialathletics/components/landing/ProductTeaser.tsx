@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'motion/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { products } from '@/data/products';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -10,7 +11,7 @@ export default function ProductTeaser() {
     <section style={{ background: 'var(--bg-base)', padding: '8rem 1.5rem', borderTop: '1px solid var(--white-08)' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '4rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '4rem', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <SectionLabel>WHAT WE MAKE</SectionLabel>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 4.5vw, 3.5rem)', color: 'var(--white)', lineHeight: 0.9, marginTop: '0.75rem' }}>
@@ -23,10 +24,10 @@ export default function ProductTeaser() {
         </div>
 
         {/* Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--white-08)' }}>
+        <div className="product-teaser-grid" style={{ display: 'grid', gap: '1px', background: 'var(--white-08)' }}>
           {featured.map((p, i) => (
             <motion.div key={p.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              style={{ background: 'var(--bg-base)', position: 'relative', overflow: 'hidden', cursor: 'pointer' }}
+              style={{ background: 'var(--bg-base)', position: 'relative', overflow: 'hidden' }}
               whileHover="hover"
             >
               {/* Red top border that slides in on hover */}
@@ -36,13 +37,18 @@ export default function ProductTeaser() {
               {/* Image area */}
               <div style={{ aspectRatio: '4/3', background: 'var(--bg-card)', overflow: 'hidden', position: 'relative' }}>
                 <motion.div variants={{ hover: { scale: 1.05 }, initial: { scale: 1 } }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  {/* Swap for next/image when photos ready */}
-                  <span style={{ color: 'var(--white-30)', fontSize: '0.7rem', fontFamily: 'var(--font-body)', letterSpacing: '0.1em' }}>PRODUCT IMAGE</span>
+                  style={{ width: '100%', height: '100%', position: 'relative' }}>
+                  <Image
+                    src={p.imagePath}
+                    alt={p.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    style={{ objectFit: 'contain', padding: '1rem' }}
+                  />
                 </motion.div>
                 {/* Badge */}
                 {p.badge && (
-                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'var(--red)', color: 'var(--white)', padding: '4px 10px', fontSize: '0.6rem', fontFamily: 'var(--font-body)', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'var(--red)', color: 'var(--white)', padding: '4px 10px', fontSize: '0.6rem', fontFamily: 'var(--font-body)', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', zIndex: 3 }}>
                     {p.badge}
                   </div>
                 )}
@@ -55,9 +61,9 @@ export default function ProductTeaser() {
                 </div>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--white)', marginBottom: '0.4rem', letterSpacing: '0.03em' }}>{p.name}</h3>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--white-60)', lineHeight: 1.6, marginBottom: '1.25rem' }}>{p.tagline}</p>
-                <motion.div variants={{ hover: { x: 4 }, initial: { x: 0 } }} transition={{ duration: 0.2 }}>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: 'var(--white)', fontWeight: 600, letterSpacing: '0.1em' }}>VIEW DETAILS →</span>
-                </motion.div>
+                <Link href="/catalogue" style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: 'var(--white)', fontWeight: 600, letterSpacing: '0.1em', textDecoration: 'none' }}>
+                  VIEW DETAILS →
+                </Link>
               </div>
             </motion.div>
           ))}
@@ -70,6 +76,13 @@ export default function ProductTeaser() {
           </Link>
         </div>
       </div>
+
+      <style>{`
+        .product-teaser-grid { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: 768px) {
+          .product-teaser-grid { grid-template-columns: 1fr; }
+        }
+      `}</style>
     </section>
   );
 }

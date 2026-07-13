@@ -11,7 +11,8 @@ export default function Hero() {
   // Parallax transforms
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  // Fade out more quickly (by 40% scroll) so it doesn't cross the section edge while visible
+  const opacity = useTransform(scrollYProgress, [0, 0.40], [1, 0]);
 
   // Word stagger for headline
   const words = ['PRECISION', 'BUILT.', 'PERFORMANCE', 'DRIVEN.'];
@@ -33,7 +34,7 @@ export default function Hero() {
       <div style={{ position: 'absolute', top: '20%', left: 0, right: 0, height: '1px', background: 'var(--white-04)', zIndex: 0 }} />
       <div style={{ position: 'absolute', bottom: '20%', left: 0, right: 0, height: '1px', background: 'var(--white-04)', zIndex: 0 }} />
 
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', width: '100%', position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center', paddingTop: '72px' }}>
+      <div className="hero-inner" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', width: '100%', position: 'relative', zIndex: 1, display: 'grid', gap: '4rem', alignItems: 'center', paddingTop: '72px' }}>
 
         {/* LEFT — Text */}
         <motion.div style={{ y: textY, opacity }}>
@@ -47,7 +48,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Headline — word by word */}
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(4rem, 7.5vw, 7rem)', lineHeight: 0.88, letterSpacing: '0.02em', marginBottom: '2rem', overflow: 'hidden' }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3.2rem, 7.5vw, 7rem)', lineHeight: 0.88, letterSpacing: '0.02em', marginBottom: '2rem', overflow: 'hidden' }}>
             {words.map((word, i) => (
               <span key={i} style={{ display: 'block', overflow: 'hidden' }}>
                 <motion.span
@@ -95,7 +96,8 @@ export default function Hero() {
 
           {/* Trust row */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.1 }}
-            style={{ display: 'flex', gap: '2rem', marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--white-08)' }}>
+            className="hero-trust-row"
+            style={{ display: 'flex', gap: '2rem', marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--white-08)', flexWrap: 'wrap' }}>
             {['USAPA Compliant', 'Carbon Fiber Build', 'Factory Direct', 'US Ready'].map(t => (
               <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--red)', flexShrink: 0 }} />
@@ -106,25 +108,41 @@ export default function Hero() {
         </motion.div>
 
         {/* RIGHT — Product image with parallax */}
-        <motion.div style={{ y: imageY, opacity }} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}>
+        <motion.div style={{ y: imageY, opacity }} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="hero-image-col">
           <div style={{ position: 'relative', aspectRatio: '4/5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {/* Glow behind product */}
             <div style={{ position: 'absolute', inset: '10%', background: 'radial-gradient(ellipse at center, rgba(232,0,28,0.12) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 0 }} />
-            {/* Product image — replace with real photo */}
-            <div style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-raised)', border: '1px solid var(--white-08)' }}>
-              <span style={{ color: 'var(--white-30)', fontSize: '0.7rem', letterSpacing: '0.1em', fontFamily: 'var(--font-body)' }}>PRODUCT HERO IMAGE</span>
+            {/* Product image with radial fade mask so edges and corners blend perfectly */}
+            <div style={{
+              position: 'relative',
+              zIndex: 1,
+              width: '100%',
+              height: '100%',
+              maskImage: 'radial-gradient(circle, black 65%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(circle, black 65%, transparent 100%)',
+            }}>
+              <Image
+                src="/images/products/sa-apex-elongated.png"
+                alt="SIAL Athletics Premium Pickleball Paddle"
+                fill
+                sizes="(max-width: 768px) 80vw, 40vw"
+                style={{ objectFit: 'contain' }}
+                priority
+              />
             </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
-        style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-        <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.6rem', letterSpacing: '0.2em', color: 'var(--white-30)', textTransform: 'uppercase' }}>SCROLL</span>
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ width: '1px', height: '32px', background: 'linear-gradient(to bottom, var(--white-30), transparent)' }} />
-      </motion.div>
+      {/* Responsive grid for hero */}
+      <style>{`
+        .hero-inner { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 768px) {
+          .hero-inner { grid-template-columns: 1fr; gap: 2rem; padding-top: 100px; }
+          .hero-image-col { order: -1; max-width: 300px; margin: 0 auto; }
+        }
+      `}</style>
     </section>
   );
 }

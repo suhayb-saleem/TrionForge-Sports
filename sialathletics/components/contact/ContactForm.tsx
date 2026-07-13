@@ -5,7 +5,7 @@ import { MapPin, Mail, Phone } from 'lucide-react';
 export default function ContactForm() {
   return (
     <section style={{ background: 'var(--bg-base)', padding: '6rem 1.5rem' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '5rem', alignItems: 'start' }}>
+      <div className="contact-form-grid" style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gap: '4rem', alignItems: 'start' }}>
 
         {/* Left — Contact Info */}
         <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
@@ -30,7 +30,7 @@ export default function ContactForm() {
 
         {/* Right — Form */}
         <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', padding: '2.5rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
+          <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem' }}>
             {['Your Name *', 'Work Email *', 'Company Name', 'Country / Region'].map((field) => (
               <div key={field} style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                 <label style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', color: 'var(--white-60)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>{field}</label>
@@ -38,7 +38,7 @@ export default function ContactForm() {
               </div>
             ))}
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginTop: '1.25rem' }}>
+          <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem', marginTop: '1.25rem' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
               <label style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', color: 'var(--white-60)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Product Line</label>
               <select style={{ background: 'var(--bg-raised)', border: '1px solid var(--white-08)', padding: '0.75rem 1rem', color: 'var(--white)', fontFamily: 'var(--font-body)', fontSize: '0.875rem', outline: 'none' }}>
@@ -70,6 +70,15 @@ export default function ContactForm() {
           </p>
         </motion.div>
       </div>
+
+      <style>{`
+        .contact-form-grid { grid-template-columns: 1fr 1.5fr; }
+        .contact-fields-grid { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 768px) {
+          .contact-form-grid { grid-template-columns: 1fr; }
+          .contact-fields-grid { grid-template-columns: 1fr; }
+        }
+      `}</style>
     </section>
   );
 }

@@ -35,7 +35,7 @@ const stats = [
 export default function AboutSection() {
   return (
     <section style={{ background: 'var(--bg-raised)', padding: '8rem 1.5rem', borderTop: '1px solid var(--white-08)' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6rem', alignItems: 'center' }}>
+      <div className="about-section-grid" style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gap: '4rem', alignItems: 'center' }}>
 
         {/* LEFT */}
         <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
@@ -56,7 +56,7 @@ export default function AboutSection() {
           style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'var(--white-08)' }}>
           {stats.map(({ to, label, duration, isM }) => (
             <div key={label} style={{ background: 'var(--bg-base)', padding: '2.5rem 2rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: '3.5rem', color: 'var(--white)', lineHeight: 1, letterSpacing: '0.02em' }}>
+              <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', color: 'var(--white)', lineHeight: 1, letterSpacing: '0.02em' }}>
                 <Counter to={to} duration={duration} isM={isM} />
               </div>
               <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', color: 'var(--red)', textTransform: 'uppercase', letterSpacing: '0.16em', fontWeight: 600 }}>
@@ -66,6 +66,13 @@ export default function AboutSection() {
           ))}
         </motion.div>
       </div>
+
+      <style>{`
+        .about-section-grid { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 768px) {
+          .about-section-grid { grid-template-columns: 1fr; gap: 3rem; }
+        }
+      `}</style>
     </section>
   );
 }

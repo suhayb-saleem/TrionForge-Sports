@@ -122,10 +122,6 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      <style>{`
-        @media (max-width: 1024px) { .hide-mobile { display: none !important; } }
-        @media (min-width: 1025px) { .show-mobile { display: none !important; } }
-      `}</style>
     </>
   );
 }

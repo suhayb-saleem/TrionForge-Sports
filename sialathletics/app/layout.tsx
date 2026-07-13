@@ -3,7 +3,6 @@ import { Inter, Bebas_Neue } from 'next/font/google';
 import { SmoothScrollProvider } from '@/lib/lenis';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import Cursor from '@/components/ui/Cursor';
 import './globals.css';
 
 const inter = Inter({
@@ -39,15 +38,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${bebasNeue.variable} h-full antialiased scroll-smooth`}
+      className={`${inter.variable} ${bebasNeue.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-brand-dark text-white select-none">
+      <body className="min-h-screen flex flex-col bg-[var(--bg-base)] text-white">
         <SmoothScrollProvider>
-          <Cursor />
           <Navbar />
-          <div className="flex-1 flex flex-col">
+          <main className="flex-1">
             {children}
-          </div>
+          </main>
           <Footer />
         </SmoothScrollProvider>
       </body>

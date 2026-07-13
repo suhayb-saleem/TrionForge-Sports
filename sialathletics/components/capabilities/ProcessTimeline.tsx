@@ -20,9 +20,9 @@ export default function ProcessTimeline() {
             FROM CONCEPT TO CHAMPION.
           </h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0', position: 'relative' }}>
-          {/* Connecting line */}
-          <div style={{ position: 'absolute', top: '24px', left: '10%', right: '10%', height: '1px', background: 'var(--red-border)', zIndex: 0 }} />
+        <div className="process-grid" style={{ display: 'grid', position: 'relative' }}>
+          {/* Connecting line — desktop only */}
+          <div className="process-line" style={{ position: 'absolute', top: '24px', left: '10%', right: '10%', height: '1px', background: 'var(--red-border)', zIndex: 0 }} />
           {steps.map(({ num, title, desc }, i) => (
             <motion.div
               key={num}
@@ -41,6 +41,17 @@ export default function ProcessTimeline() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        .process-grid { grid-template-columns: repeat(5, 1fr); gap: 0; }
+        @media (max-width: 768px) {
+          .process-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+          .process-line { display: none; }
+        }
+        @media (max-width: 480px) {
+          .process-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+      `}</style>
     </section>
   );
 }

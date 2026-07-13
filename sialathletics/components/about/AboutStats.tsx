@@ -28,7 +28,7 @@ function StatCounter({ target, suffix, label, duration = 2000, isMillions = fals
 
   return (
     <div ref={ref} style={{ textAlign: 'center', padding: '2rem 1.5rem' }}>
-      <div style={{ fontFamily: 'var(--font-display)', fontSize: '3.5rem', color: 'var(--red)', lineHeight: 1 }}>
+      <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', color: 'var(--red)', lineHeight: 1 }}>
         {display}{suffix}
       </div>
       <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: 'var(--white-60)', textTransform: 'uppercase', letterSpacing: '0.15em', marginTop: '0.5rem' }}>
@@ -41,18 +41,33 @@ function StatCounter({ target, suffix, label, duration = 2000, isMillions = fals
 export default function AboutStats() {
   return (
     <section style={{ background: 'var(--bg-raised)', borderTop: '1px solid var(--white-08)', borderBottom: '1px solid var(--white-08)' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+      <div className="about-stats-grid" style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid' }}>
         {[
           { target: 10, suffix: '+', label: 'Years Manufacturing', duration: 1800 },
           { target: 300, suffix: '+', label: 'Global Clients', duration: 2000 },
           { target: 50, suffix: '+', label: 'Countries Reached', duration: 1600 },
           { target: 1_000_000, suffix: '+', label: 'Products Built', duration: 2200, isMillions: true },
         ].map((s, i) => (
-          <div key={i} style={{ borderRight: i < 3 ? '1px solid var(--white-08)' : 'none' }}>
+          <div key={i} className="about-stats-item">
             <StatCounter {...s} />
           </div>
         ))}
       </div>
+      <style>{`
+        .about-stats-grid { grid-template-columns: repeat(4, 1fr); }
+        .about-stats-item { border-right: 1px solid var(--white-08); }
+        .about-stats-item:last-child { border-right: none; }
+        @media (max-width: 768px) {
+          .about-stats-grid { grid-template-columns: repeat(2, 1fr); }
+          .about-stats-item:nth-child(2) { border-right: none; }
+          .about-stats-item:nth-child(1), .about-stats-item:nth-child(2) { border-bottom: 1px solid var(--white-08); }
+        }
+        @media (max-width: 480px) {
+          .about-stats-grid { grid-template-columns: 1fr; }
+          .about-stats-item { border-right: none; border-bottom: 1px solid var(--white-08); }
+          .about-stats-item:last-child { border-bottom: none; }
+        }
+      `}</style>
     </section>
   );
 }

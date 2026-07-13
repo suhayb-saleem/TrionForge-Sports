@@ -1,12 +1,13 @@
 'use client';
 import { motion } from 'motion/react';
+import Image from 'next/image';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 
 export default function AboutStory() {
   return (
     <section style={{ background: 'var(--bg-base)', padding: '6rem 1.5rem' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+      <div className="about-story-grid" style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gap: '4rem', alignItems: 'center' }}>
         {/* Left - Image */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -15,10 +16,13 @@ export default function AboutStory() {
           transition={{ duration: 0.7 }}
           style={{ aspectRatio: '4/3', background: 'var(--bg-card)', border: '1px solid var(--white-08)', position: 'relative', overflow: 'hidden' }}
         >
-          {/* Replace with next/image when photo available */}
-          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ color: 'var(--white-60)', fontSize: '0.75rem', fontFamily: 'var(--font-body)', letterSpacing: '0.1em' }}>FACTORY PHOTO</span>
-          </div>
+          <Image
+            src="/images/about_lifestyle.jpg"
+            alt="SIAL Athletics Factory in Sialkot"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            style={{ objectFit: 'cover' }}
+          />
         </motion.div>
 
         {/* Right - Text */}
@@ -44,6 +48,13 @@ export default function AboutStory() {
           <Button href="/catalogue" variant="primary">EXPLORE OUR PRODUCTS →</Button>
         </motion.div>
       </div>
+
+      <style>{`
+        .about-story-grid { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 768px) {
+          .about-story-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+      `}</style>
     </section>
   );
 }

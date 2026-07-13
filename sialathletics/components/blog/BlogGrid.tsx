@@ -1,12 +1,13 @@
 'use client';
 import { motion } from 'motion/react';
+import { FileText } from 'lucide-react';
 import { blogPosts } from '@/data/blogPosts';
 
 export default function BlogGrid() {
   return (
     <section style={{ background: 'var(--bg-base)', padding: '6rem 1.5rem' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           {blogPosts.map((post, i) => (
             <motion.article
               key={post.id}
@@ -17,12 +18,12 @@ export default function BlogGrid() {
               style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', overflow: 'hidden', cursor: 'pointer' }}
               whileHover={{ borderColor: 'var(--red-border)', y: -4 }}
             >
-              {/* Image placeholder */}
-              <div style={{ aspectRatio: '16/9', background: 'var(--bg-raised)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-                <div style={{ position: 'absolute', top: '0.75rem', left: '0.75rem', background: 'var(--red)', padding: '4px 10px', fontFamily: 'var(--font-body)', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--white)' }}>
+              {/* Image placeholder with icon */}
+              <div style={{ aspectRatio: '16/9', background: 'linear-gradient(135deg, var(--bg-raised), var(--bg-card))', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                <div style={{ position: 'absolute', top: '0.75rem', left: '0.75rem', background: 'var(--red)', padding: '4px 10px', fontFamily: 'var(--font-body)', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--white)', zIndex: 1 }}>
                   {post.category}
                 </div>
-                <span style={{ color: 'var(--white-60)', fontSize: '0.7rem', fontFamily: 'var(--font-body)' }}>BLOG IMAGE</span>
+                <FileText size={40} color="var(--white-08)" />
               </div>
               <div style={{ padding: '1.5rem' }}>
                 <div style={{ display: 'flex', gap: '1rem', marginBottom: '0.75rem' }}>
