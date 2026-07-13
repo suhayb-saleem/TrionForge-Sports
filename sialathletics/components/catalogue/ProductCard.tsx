@@ -66,7 +66,7 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
             <div className="border-t border-[var(--border-light)]" style={{ paddingTop: '1rem', marginTop: '0.25rem' }}>
               <div className="grid grid-cols-2 gap-x-6 gap-y-2">
                 {product.specs.slice(0, 4).map((spec, sIdx) => (
-                  <div key={sIdx} className="flex justify-between items-center text-[12px] py-0.5 border-b border-dashed border-black/5 last:border-b-0">
+                  <div key={sIdx} className="flex justify-between items-center text-[12px] py-0.5 border-b border-dashed border-white/10 last:border-b-0">
                     <span className="text-[var(--text-muted)] font-medium">{spec.label}</span>
                     <span className="text-[var(--text-dark)] font-bold truncate max-w-[90px]" title={spec.value}>
                       {spec.value}

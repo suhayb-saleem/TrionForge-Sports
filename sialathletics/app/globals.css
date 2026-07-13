@@ -37,13 +37,13 @@
   --container-max: 1280px;
   --container-pad: 1.5rem;
 
-  /* LIGHT THEME FOR HIGH CONTRAST SECTIONS */
-  --bg-light:      #FFFFFF;
-  --bg-light-alt:  #F7F7F7;
-  --text-dark:     #0A0A0A;
-  --text-muted:    #555555;
-  --border-light:  rgba(0, 0, 0, 0.08);
-  --border-light-strong: rgba(0, 0, 0, 0.16);
+  /* LIGHT THEME FOR HIGH CONTRAST SECTIONS — MAPS TO MODERN BLACK */
+  --bg-light:      #080808;
+  --bg-light-alt:  #0f0f0f;
+  --text-dark:     #FFFFFF;
+  --text-muted:    rgba(255,255,255,0.6);
+  --border-light:  rgba(255,255,255,0.08);
+  --border-light-strong: rgba(255,255,255,0.16);
 }
 
 @theme {
