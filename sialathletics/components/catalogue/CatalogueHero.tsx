@@ -8,25 +8,28 @@ export function CatalogueHero() {
       <div className="absolute inset-0 texture-steel pointer-events-none opacity-30" />
       <div className="absolute inset-0 texture-noise pointer-events-none opacity-30" />
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-10" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+        
         {/* Breadcrumb */}
-        <div className="text-xs uppercase tracking-wider mb-8 text-[var(--white-60)]">
-          <Link href="/" className="hover:text-white transition-colors duration-200">
+        <div style={{ display: 'inline-flex', gap: '0.75rem', alignItems: 'center', fontFamily: 'var(--font-body)', fontSize: '0.72rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--white-60)', marginBottom: '2.5rem' }}>
+          <Link href="/" style={{ color: 'var(--white-60)', textDecoration: 'none', transition: 'color 0.2s' }}
+             onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+             onMouseLeave={e => (e.currentTarget.style.color = 'var(--white-60)')}>
             Home
           </Link>
-          <span className="mx-2 text-white/20">/</span>
-          <span className="text-white font-bold">Products</span>
+          <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>/</span>
+          <span style={{ color: 'var(--white)', fontWeight: 700 }}>Products</span>
         </div>
 
         {/* Content */}
-        <div className="text-center space-y-4">
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
           <SectionLabel showSlash={true} className="justify-center mb-1">
             OUR PRODUCTS
           </SectionLabel>
-          <h1 className="font-display text-[56px] sm:text-[72px] text-white leading-none uppercase select-none">
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', color: 'var(--white)', lineHeight: 0.95, textTransform: 'uppercase', margin: '0.5rem 0 1rem' }} className="select-none">
             THE FULL LINEUP
           </h1>
-          <p className="text-sm sm:text-base max-w-xl mx-auto leading-relaxed text-[var(--white-60)]">
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--white-60)', maxWidth: '580px', margin: '0 auto', lineHeight: 1.65, textAlign: 'center' }}>
             Premium pickleball paddles and padel rackets. Factory-direct. Pro-grade. US-ready.
           </p>
         </div>

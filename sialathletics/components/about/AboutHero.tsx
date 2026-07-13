@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'motion/react';
+import Link from 'next/link';
 import SectionLabel from '@/components/ui/SectionLabel';
 
 export default function AboutHero() {
@@ -9,17 +10,28 @@ export default function AboutHero() {
   return (
     <section
       style={{
-        background: 'var(--bg-light)',
-        borderBottom: '1px solid var(--border-light)',
+        background: 'var(--bg-raised)',
+        borderBottom: '1px solid var(--white-08)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        paddingTop: '140px',
+        paddingTop: '160px',
         paddingBottom: '5rem',
       }}
     >
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {/* Breadcrumb */}
+        <div style={{ display: 'inline-flex', gap: '0.75rem', alignItems: 'center', fontFamily: 'var(--font-body)', fontSize: '0.72rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--white-60)', marginBottom: '2rem' }}>
+          <Link href="/" style={{ color: 'var(--white-60)', textDecoration: 'none', transition: 'color 0.2s' }}
+             onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+             onMouseLeave={e => (e.currentTarget.style.color = 'var(--white-60)')}>
+            Home
+          </Link>
+          <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>/</span>
+          <span style={{ color: 'var(--white)', fontWeight: 700 }}>About</span>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -29,7 +41,7 @@ export default function AboutHero() {
           <SectionLabel showSlash={true}>OUR STORY</SectionLabel>
         </motion.div>
         
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 0.95, color: 'var(--text-dark)', margin: '1rem 0', overflow: 'hidden' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 0.95, color: 'var(--white)', margin: '1rem 0', overflow: 'hidden' }}>
           {words.map((word, i) => (
             <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.35em' }}>
               <motion.span
@@ -48,7 +60,7 @@ export default function AboutHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--text-muted)' }}
+          style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--white-60)', marginTop: '0.5rem' }}
         >
           Built in Sialkot. Trusted worldwide.
         </motion.p>

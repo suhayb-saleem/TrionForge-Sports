@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'motion/react';
+import Link from 'next/link';
 import SectionLabel from '@/components/ui/SectionLabel';
 
 export default function ContactHero() {
@@ -15,18 +16,29 @@ export default function ContactHero() {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        paddingTop: '140px',
+        paddingTop: '160px',
         paddingBottom: '5rem',
       }}
     >
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {/* Breadcrumb */}
+        <div style={{ display: 'inline-flex', gap: '0.75rem', alignItems: 'center', fontFamily: 'var(--font-body)', fontSize: '0.72rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--white-60)', marginBottom: '2rem' }}>
+          <Link href="/" style={{ color: 'var(--white-60)', textDecoration: 'none', transition: 'color 0.2s' }}
+             onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+             onMouseLeave={e => (e.currentTarget.style.color = 'var(--white-60)')}>
+            Home
+          </Link>
+          <span style={{ color: 'var(--red)', fontWeight: 'bold' }}>/</span>
+          <span style={{ color: 'var(--white)', fontWeight: 700 }}>Contact</span>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           style={{ marginBottom: '1rem' }}
         >
-          <SectionLabel>{"LET'S TALK"}</SectionLabel>
+          <SectionLabel showSlash={true}>{"LET'S TALK"}</SectionLabel>
         </motion.div>
         
         <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 0.95, color: 'var(--white)', margin: '1rem 0', overflow: 'hidden' }}>
@@ -48,7 +60,7 @@ export default function ContactHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--white-60)' }}
+          style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--white-60)', marginTop: '0.5rem' }}
         >
           Factory-direct quotes. Samples. Private label programs.
         </motion.p>
