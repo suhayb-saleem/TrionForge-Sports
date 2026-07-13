@@ -14,21 +14,21 @@ interface ProductCardProps {
 export function ProductCard({ product, onViewDetails, onInquire }: ProductCardProps) {
   const getBadgeStyle = (badge: string) => {
     if (badge === 'NEW') {
-      return 'bg-[var(--bg-card)] border border-[var(--white-30)] text-white';
+      return 'bg-black border border-black text-white';
     }
-    return 'bg-brand-red text-white';
+    return 'bg-[var(--red)] text-white';
   };
 
   return (
     <div
       onClick={() => onViewDetails(product)}
-      className="bg-[var(--bg-card)] border border-[var(--white-08)] rounded-none group hover:-translate-y-1 hover:border-brand-red/40 hover:shadow-[0_20px_50px_rgba(0,0,0,0.6)] transition-all duration-300 flex flex-col justify-between overflow-hidden font-body h-full cursor-pointer"
+      className="bg-[var(--bg-light)] border border-[var(--border-light)] rounded-none group hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.08)] transition-all duration-300 flex flex-col justify-between overflow-hidden font-body h-full cursor-pointer"
     >
       {/* Image Area */}
-      <div className="relative aspect-[16/10] bg-[var(--bg-raised)] overflow-hidden border-b border-[var(--white-08)]">
+      <div className="relative aspect-[16/10] bg-[var(--bg-light-alt)] overflow-hidden border-b border-[var(--border-light)] p-2">
         {/* Badge */}
         {product.badge && (
-          <div className={`absolute top-3 right-3 z-10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest rounded-none ${getBadgeStyle(product.badge)}`}>
+          <div className={`absolute top-3.5 right-3.5 z-10 px-3 py-1 text-[9px] font-bold uppercase tracking-widest rounded-none ${getBadgeStyle(product.badge)}`}>
             {product.badge}
           </div>
         )}
@@ -46,26 +46,26 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
       <div className="p-6 flex-grow flex flex-col justify-between">
         <div>
           {/* Category */}
-          <div className="text-brand-red text-[11px] font-semibold uppercase tracking-[0.15em] mb-1">
+          <div className="text-[var(--red)] text-[10px] font-bold uppercase tracking-[0.16em] mb-1.5">
             {product.category === 'pickleball' ? 'Pickleball Paddle' : 'Padel Racket'}
           </div>
 
           {/* Name & Tagline */}
-          <h3 className="font-display text-[24px] sm:text-[26px] text-white leading-tight uppercase mb-1">
+          <h3 className="font-display text-[26px] sm:text-[28px] text-[var(--text-dark)] leading-[1.1] uppercase mb-1.5 tracking-tight group-hover:text-[var(--red)] transition-colors duration-200">
             {product.name}
           </h3>
-          <p className="text-[var(--white-60)] text-xs sm:text-[13px] leading-relaxed mb-4">
+          <p className="text-[var(--text-muted)] text-[13px] leading-relaxed mb-4 font-normal">
             {product.tagline}
           </p>
 
           {/* Key Specs */}
           {product.specs && product.specs.length > 0 && (
-            <div className="border-t border-[var(--white-08)] pt-4 mb-4">
-              <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+            <div className="border-t border-[var(--border-light)] pt-4 mb-4">
+              <div className="grid grid-cols-2 gap-x-6 gap-y-2">
                 {product.specs.slice(0, 4).map((spec, sIdx) => (
-                  <div key={sIdx} className="flex justify-between items-center text-[12px] py-0.5">
-                    <span className="text-[var(--white-60)] font-medium">{spec.label}</span>
-                    <span className="text-white font-semibold truncate max-w-[80px]" title={spec.value}>
+                  <div key={sIdx} className="flex justify-between items-center text-[12px] py-0.5 border-b border-dashed border-black/5 last:border-b-0">
+                    <span className="text-[var(--text-muted)] font-medium">{spec.label}</span>
+                    <span className="text-[var(--text-dark)] font-bold truncate max-w-[90px]" title={spec.value}>
                       {spec.value}
                     </span>
                   </div>
@@ -76,28 +76,28 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
 
           {/* MOQ Label */}
           {product.moq && (
-            <div className="text-[11px] text-white font-medium bg-[var(--bg-raised)] border border-white/5 inline-block px-3 py-1 uppercase tracking-wider mb-6">
-              MOQ: <span className="text-brand-red font-semibold">{product.moq}</span>
+            <div className="text-[10px] text-[var(--text-dark)] font-bold bg-[var(--bg-light-alt)] border border-[var(--border-light)] inline-block px-3 py-1 uppercase tracking-wider mb-6">
+              MOQ: <span className="text-[var(--red)] font-extrabold">{product.moq}</span>
             </div>
           )}
         </div>
 
         {/* Buttons / Actions */}
-        <div className="flex items-center justify-between gap-4 mt-auto">
-          {/* VIEW DETAILS — stops propagation so it doesn't double-fire */}
+        <div className="flex items-center justify-between gap-4 mt-auto pt-4 border-t border-[var(--border-light)]">
+          {/* VIEW DETAILS — stops propagation */}
           <button
             onClick={(e: React.MouseEvent) => { e.stopPropagation(); onViewDetails(product); }}
-            className="text-xs text-[var(--white-60)] group-hover:text-white transition-colors duration-200 uppercase font-semibold tracking-wider flex items-center gap-1.5 cursor-pointer"
+            className="text-xs text-[var(--text-muted)] hover:text-[var(--text-dark)] transition-colors duration-200 uppercase font-bold tracking-wider flex items-center gap-1 cursor-pointer"
           >
             View Details →
           </button>
 
-          {/* INQUIRE — stops propagation so clicking it doesn't also open details */}
+          {/* INQUIRE — stops propagation */}
           <Button
             variant="primary"
             size="sm"
             onClick={(e: React.MouseEvent) => { e.stopPropagation(); onInquire(product); }}
-            className="!px-4 !py-2 sm:!px-5 sm:!py-2.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 hover:scale-[1.02] duration-200"
+            className="!px-4 !py-2 sm:!px-5 sm:!py-2.5 opacity-100 duration-200 !font-bold"
           >
             Inquire
           </Button>

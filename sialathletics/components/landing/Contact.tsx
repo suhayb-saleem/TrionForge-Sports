@@ -19,70 +19,69 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate API request
     setTimeout(() => {
       setSubmitted(true);
     }, 800);
   };
 
   return (
-    <section id="contact" className="py-24 relative border-t border-white-08" style={{ background: 'var(--bg-base)' }}>
-      <div className="absolute inset-0 texture-steel pointer-events-none" />
-      <div className="absolute inset-0 texture-noise pointer-events-none" />
+    <section id="contact" className="py-24 relative border-t border-[var(--border-light)]" style={{ background: 'var(--bg-light)' }}>
+      <div className="absolute inset-0 texture-steel pointer-events-none opacity-30" />
+      <div className="absolute inset-0 texture-noise pointer-events-none opacity-30" />
 
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-[4fr_6fr] gap-16 items-start">
           {/* Left Panel: Contact info */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <SectionLabel showDash={true}>
+              <SectionLabel showSlash={true}>
                 START THE PROGRAM
               </SectionLabel>
-              <h2 className="font-display text-[40px] sm:text-[56px] text-white leading-[1.05] uppercase">
+              <h2 className="font-display text-[40px] sm:text-[56px] text-[var(--text-dark)] leading-[1.05] uppercase">
                 GET A FACTORY<br />QUOTE DIRECT
               </h2>
-              <p className="font-body text-[var(--white-90)] text-base leading-relaxed max-w-sm">
+              <p className="font-body text-[var(--text-muted)] text-base leading-relaxed max-w-sm">
                 Connect with our product development team in Sialkot and US sales representatives to arrange sample delivery, pricing sheets, and custom mold quotes.
               </p>
             </div>
 
             <div className="space-y-6 pt-4 font-body">
-              <div className="flex items-center gap-4 text-white">
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)' }} className="text-brand-red">
-                  <MapPin size={20} />
+              <div className="flex items-center gap-4">
+                <div style={{ padding: '0.75rem', background: 'var(--bg-light-alt)', border: '1px solid var(--border-light)' }}>
+                  <MapPin size={20} color="var(--red)" />
                 </div>
                 <div>
-                  <div style={{ color: 'var(--white-60)' }} className="text-xs uppercase tracking-wider">Factory HQ</div>
-                  <div className="font-semibold text-sm">Sialkot, Pakistan</div>
+                  <div style={{ color: 'var(--text-muted)' }} className="text-[10px] font-bold uppercase tracking-wider">Factory HQ</div>
+                  <div className="font-bold text-sm text-[var(--text-dark)]">Sialkot, Pakistan</div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 text-white">
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)' }} className="text-brand-red">
-                  <Mail size={20} />
+              <div className="flex items-center gap-4">
+                <div style={{ padding: '0.75rem', background: 'var(--bg-light-alt)', border: '1px solid var(--border-light)' }}>
+                  <Mail size={20} color="var(--red)" />
                 </div>
                 <div>
-                  <div style={{ color: 'var(--white-60)' }} className="text-xs uppercase tracking-wider">Email Inquiry</div>
-                  <a href="mailto:info@sialathletics.com" className="font-semibold text-sm hover:underline">
+                  <div style={{ color: 'var(--text-muted)' }} className="text-[10px] font-bold uppercase tracking-wider">Email Inquiry</div>
+                  <a href="mailto:info@sialathletics.com" className="font-bold text-sm text-[var(--text-dark)] hover:text-[var(--red)] transition-colors duration-200">
                     info@sialathletics.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 text-white">
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)' }} className="text-brand-red">
-                  <Phone size={20} />
+              <div className="flex items-center gap-4">
+                <div style={{ padding: '0.75rem', background: 'var(--bg-light-alt)', border: '1px solid var(--border-light)' }}>
+                  <Phone size={20} color="var(--red)" />
                 </div>
                 <div>
-                  <div style={{ color: 'var(--white-60)' }} className="text-xs uppercase tracking-wider">Direct Phone</div>
-                  <div className="font-semibold text-sm">+1 (xxx) xxx-xxxx</div>
+                  <div style={{ color: 'var(--text-muted)' }} className="text-[10px] font-bold uppercase tracking-wider">Direct Phone</div>
+                  <div className="font-bold text-sm text-[var(--text-dark)]">+1 (xxx) xxx-xxxx</div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Panel: Form */}
-          <AnimatedSection direction="up" className="p-8 md:p-12 bg-[var(--bg-raised)] border border-[var(--white-08)]">
+          {/* Right Panel: Form in Premium Dark Container */}
+          <AnimatedSection direction="up" className="p-8 md:p-12 bg-[var(--bg-card)] border border-[var(--white-08)] shadow-[0_24px_50px_rgba(0,0,0,0.55)]">
             {submitted ? (
               <div className="py-16 text-center space-y-4">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-none mb-4" style={{ background: 'var(--red-glow)', border: '1px solid var(--red)', color: 'var(--red)' }}>
