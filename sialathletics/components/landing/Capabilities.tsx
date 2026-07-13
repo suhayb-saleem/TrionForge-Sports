@@ -25,7 +25,7 @@ export function Capabilities() {
   ];
 
   return (
-    <section id="capabilities" className="relative" style={{ background: 'var(--bg-light-alt)', borderTop: '1px solid var(--border-light)', padding: '8rem 0' }}>
+    <section id="capabilities" className="relative" style={{ background: 'var(--bg-raised)', borderTop: '1px solid var(--white-08)', padding: '8rem 0' }}>
       <div className="absolute inset-0 texture-steel pointer-events-none opacity-40" />
       <div className="absolute inset-0 texture-noise pointer-events-none opacity-40" />
 
@@ -36,11 +36,11 @@ export function Capabilities() {
             <SectionLabel showSlash={true}>
               MANUFACTURING POWER
             </SectionLabel>
-            <h2 className="font-display text-[40px] sm:text-[56px] text-[var(--text-dark)] leading-[1.05] uppercase">
+            <h2 className="font-display text-[40px] sm:text-[56px] text-white leading-[1.05] uppercase">
               CAPABILITIES & SERVICES
             </h2>
-            <p className="font-body text-base leading-relaxed text-[var(--text-muted)]">
-              We offer full-service OEM manufacturing, private label ODM solutions, and white-label supply chain fulfillment. From initial raw material selection to final US customs landing, we handle it all.
+            <p className="font-body text-base leading-relaxed text-[var(--white-60)]">
+              We offer B2B OEM manufacturing, private label ODM solutions, and white-label supply chain fulfillment. From initial raw material selection to final US customs landing, we handle it all.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export function Capabilities() {
                   key={idx}
                   direction="up"
                   delay={idx * 0.1}
-                  className="flex flex-col justify-between group transition-all duration-300 bg-[var(--bg-light)] border border-[var(--border-light)] hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.06)]"
+                  className="flex flex-col justify-between group transition-all duration-300 bg-[var(--bg-card)] border border-[var(--white-08)] hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.15)]"
                   style={{
                     padding: '2.5rem',
                     minHeight: '280px',
@@ -64,16 +64,16 @@ export function Capabilities() {
                 >
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', height: '100%' }}>
                     {/* Icon container with padding and margin */}
-                    <div style={{ alignSelf: 'flex-start', padding: '0.75rem', background: 'var(--bg-light-alt)', border: '1px solid var(--border-light)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ alignSelf: 'flex-start', padding: '0.75rem', background: 'var(--bg-base)', border: '1px solid var(--white-08)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Icon size={24} color="var(--red)" />
                     </div>
                     
                     {/* Info */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                      <h3 className="font-display text-2xl text-[var(--text-dark)] uppercase group-hover:text-[var(--red)] transition-colors duration-200" style={{ margin: 0 }}>
+                      <h3 className="font-display text-2xl text-white uppercase group-hover:text-[var(--red)] transition-colors duration-200" style={{ margin: 0 }}>
                         {item.title}
                       </h3>
-                      <p className="font-body text-[13px] sm:text-sm leading-relaxed text-[var(--text-muted)]" style={{ margin: 0 }}>
+                      <p className="font-body text-[13px] sm:text-sm leading-relaxed text-[var(--white-60)]" style={{ margin: 0 }}>
                         {item.desc}
                       </p>
                     </div>

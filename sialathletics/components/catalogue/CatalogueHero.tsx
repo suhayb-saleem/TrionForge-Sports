@@ -4,18 +4,18 @@ import SectionLabel from '@/components/ui/SectionLabel';
 
 export function CatalogueHero() {
   return (
-    <section className="pt-32 pb-16 relative overflow-hidden font-body" style={{ background: 'var(--bg-light)', borderBottom: '1px solid var(--border-light)' }}>
+    <section className="pt-32 pb-16 relative overflow-hidden font-body" style={{ background: 'var(--bg-raised)', borderBottom: '1px solid var(--white-08)' }}>
       <div className="absolute inset-0 texture-steel pointer-events-none opacity-30" />
       <div className="absolute inset-0 texture-noise pointer-events-none opacity-30" />
 
       <div className="container-custom relative z-10">
         {/* Breadcrumb */}
-        <div className="text-xs uppercase tracking-wider mb-8 text-[var(--text-muted)]">
-          <Link href="/" className="hover:text-[var(--text-dark)] transition-colors duration-200">
+        <div className="text-xs uppercase tracking-wider mb-8 text-[var(--white-60)]">
+          <Link href="/" className="hover:text-white transition-colors duration-200">
             Home
           </Link>
-          <span className="mx-2 text-black/20">/</span>
-          <span className="text-[var(--text-dark)] font-bold">Products</span>
+          <span className="mx-2 text-white/20">/</span>
+          <span className="text-white font-bold">Products</span>
         </div>
 
         {/* Content */}
@@ -23,10 +23,10 @@ export function CatalogueHero() {
           <SectionLabel showSlash={true} className="justify-center mb-1">
             OUR PRODUCTS
           </SectionLabel>
-          <h1 className="font-display text-[56px] sm:text-[72px] text-[var(--text-dark)] leading-none uppercase select-none">
+          <h1 className="font-display text-[56px] sm:text-[72px] text-white leading-none uppercase select-none">
             THE FULL LINEUP
           </h1>
-          <p className="text-sm sm:text-base max-w-xl mx-auto leading-relaxed text-[var(--text-muted)]">
+          <p className="text-sm sm:text-base max-w-xl mx-auto leading-relaxed text-[var(--white-60)]">
             Premium pickleball paddles and padel rackets. Factory-direct. Pro-grade. US-ready.
           </p>
         </div>

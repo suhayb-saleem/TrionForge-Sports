@@ -87,10 +87,10 @@ Best regards,`;
   };
 
   return (
-    <div className="bg-[var(--bg-light-alt)] min-h-screen pb-24 relative overflow-hidden">
+    <div className="bg-[var(--bg-base)] min-h-screen pb-24 relative overflow-hidden">
       {/* Background texture overlays */}
-      <div className="absolute inset-0 texture-steel pointer-events-none opacity-30" />
-      <div className="absolute inset-0 texture-noise pointer-events-none opacity-30" />
+      <div className="absolute inset-0 texture-steel pointer-events-none opacity-40" />
+      <div className="absolute inset-0 texture-noise pointer-events-none opacity-40" />
 
       {/* Catalogue Hero header */}
       <CatalogueHero />
@@ -126,7 +126,7 @@ Best regards,`;
 export default function CataloguePage() {
   return (
     <Suspense fallback={
-      <div className="bg-[var(--bg-light-alt)] min-h-screen text-[var(--text-dark)] flex items-center justify-center font-body uppercase tracking-widest text-sm">
+      <div className="bg-[var(--bg-base)] min-h-screen text-white flex items-center justify-center font-body uppercase tracking-widest text-sm">
         Loading Catalogue...
       </div>
     }>

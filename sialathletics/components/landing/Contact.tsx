@@ -25,7 +25,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative border-t border-[var(--border-light)]" style={{ background: 'var(--bg-light)' }}>
+    <section id="contact" className="py-24 relative border-t border-[var(--white-08)]" style={{ background: 'var(--bg-base)' }}>
       <div className="absolute inset-0 texture-steel pointer-events-none opacity-30" />
       <div className="absolute inset-0 texture-noise pointer-events-none opacity-30" />
 
@@ -37,58 +37,67 @@ export function Contact() {
               <SectionLabel showSlash={true}>
                 START THE PROGRAM
               </SectionLabel>
-              <h2 className="font-display text-[40px] sm:text-[56px] text-[var(--text-dark)] leading-[1.05] uppercase">
+              <h2 className="font-display text-[40px] sm:text-[56px] text-white leading-[1.05] uppercase" style={{ marginTop: '1rem' }}>
                 GET A FACTORY<br />QUOTE DIRECT
               </h2>
-              <p className="font-body text-[var(--text-muted)] text-base leading-relaxed max-w-sm">
+              <p className="font-body text-[var(--white-60)] text-base leading-relaxed max-w-sm" style={{ marginTop: '1.25rem' }}>
                 Connect with our product development team in Sialkot and US sales representatives to arrange sample delivery, pricing sheets, and custom mold quotes.
               </p>
             </div>
 
-            <div className="space-y-6 pt-4 font-body">
-              <div className="flex items-center gap-4">
-                <div style={{ padding: '0.75rem', background: 'var(--bg-light-alt)', border: '1px solid var(--border-light)' }}>
+            <div className="space-y-6 pt-4 font-body" style={{ marginTop: '2rem' }}>
+              <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.5rem' }}>
+                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <MapPin size={20} color="var(--red)" />
                 </div>
                 <div>
-                  <div style={{ color: 'var(--text-muted)' }} className="text-[10px] font-bold uppercase tracking-wider">Factory HQ</div>
-                  <div className="font-bold text-sm text-[var(--text-dark)]">Sialkot, Pakistan</div>
+                  <div style={{ color: 'var(--white-60)' }} className="text-[10px] font-bold uppercase tracking-wider">Factory HQ</div>
+                  <div className="font-bold text-sm text-white">Sialkot, Pakistan</div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div style={{ padding: '0.75rem', background: 'var(--bg-light-alt)', border: '1px solid var(--border-light)' }}>
+              <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.5rem' }}>
+                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Mail size={20} color="var(--red)" />
                 </div>
                 <div>
-                  <div style={{ color: 'var(--text-muted)' }} className="text-[10px] font-bold uppercase tracking-wider">Email Inquiry</div>
-                  <a href="mailto:info@sialathletics.com" className="font-bold text-sm text-[var(--text-dark)] hover:text-[var(--red)] transition-colors duration-200">
+                  <div style={{ color: 'var(--white-60)' }} className="text-[10px] font-bold uppercase tracking-wider">Email Inquiry</div>
+                  <a href="mailto:info@sialathletics.com" className="font-bold text-sm text-white hover:text-[var(--red)] transition-colors duration-200">
                     info@sialathletics.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div style={{ padding: '0.75rem', background: 'var(--bg-light-alt)', border: '1px solid var(--border-light)' }}>
+              <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Phone size={20} color="var(--red)" />
                 </div>
                 <div>
-                  <div style={{ color: 'var(--text-muted)' }} className="text-[10px] font-bold uppercase tracking-wider">Direct Phone</div>
-                  <div className="font-bold text-sm text-[var(--text-dark)]">+1 (xxx) xxx-xxxx</div>
+                  <div style={{ color: 'var(--white-60)' }} className="text-[10px] font-bold uppercase tracking-wider">Direct Phone</div>
+                  <div className="font-bold text-sm text-white">+1 (xxx) xxx-xxxx</div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Panel: Form in Premium Dark Container */}
-          <AnimatedSection direction="up" className="p-8 md:p-12 bg-[var(--bg-card)] border border-[var(--white-08)] shadow-[0_24px_50px_rgba(0,0,0,0.55)]">
+          {/* Right Panel: Form Container with explicit padding & gaps */}
+          <AnimatedSection
+            direction="up"
+            className="bg-[var(--bg-card)] border border-[var(--white-08)] shadow-[0_24px_50px_rgba(0,0,0,0.55)]"
+            style={{
+              padding: '2.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
             {submitted ? (
-              <div className="py-16 text-center space-y-4">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-none mb-4" style={{ background: 'var(--red-glow)', border: '1px solid var(--red)', color: 'var(--red)' }}>
+              <div className="text-center" style={{ padding: '4rem 1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-none mb-4" style={{ background: 'var(--red-glow)', border: '1px solid var(--red)', color: 'var(--red)', display: 'flex' }}>
                   <Check size={32} />
                 </div>
-                <h3 className="font-display text-3xl text-white uppercase">Inquiry Received</h3>
-                <p className="font-body text-[var(--white-60)] text-sm max-w-sm mx-auto">
+                <h3 className="font-display text-3xl text-white uppercase" style={{ margin: 0 }}>Inquiry Received</h3>
+                <p className="font-body text-[var(--white-60)] text-sm max-w-sm mx-auto" style={{ margin: 0, lineHeight: 1.6 }}>
                   Thank you. A product specialist will contact you within 24 hours with details, custom options, and digital PDF catalogs.
                 </p>
                 <Button variant="outline" size="sm" onClick={() => setSubmitted(false)} className="mt-6">
@@ -96,10 +105,12 @@ export function Contact() {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6 font-body text-white">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }} className="font-body text-white">
+                
+                {/* Name & Email Group */}
+                <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem' }}>
                   {/* Name */}
-                  <div className="space-y-2">
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     <label htmlFor="name" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
                       Your Name
                     </label>
@@ -109,14 +120,14 @@ export function Contact() {
                       required
                       placeholder="e.g. John Doe"
                       className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
-                      style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)' }}
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
                   </div>
 
                   {/* Email */}
-                  <div className="space-y-2">
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     <label htmlFor="email" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
                       Work Email
                     </label>
@@ -126,16 +137,17 @@ export function Contact() {
                       required
                       placeholder="john@company.com"
                       className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
-                      style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)' }}
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {/* Company & Interest Group */}
+                <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem' }}>
                   {/* Company */}
-                  <div className="space-y-2">
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     <label htmlFor="company" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
                       Company Name
                     </label>
@@ -145,21 +157,21 @@ export function Contact() {
                       required
                       placeholder="e.g. Pro Pickleball Inc"
                       className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
-                      style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)' }}
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     />
                   </div>
 
                   {/* Product Interest */}
-                  <div className="space-y-2 flex flex-col">
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     <label htmlFor="interest" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
                       Product Line
                     </label>
                     <select
                       id="interest"
                       className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
-                      style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)' }}
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                       value={formData.interest}
                       onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                     >
@@ -171,15 +183,15 @@ export function Contact() {
                   </div>
                 </div>
 
-                {/* Estimate MOQ */}
-                <div className="space-y-2">
+                {/* MOQ Selection */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label htmlFor="moq" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
                     Target Order Volume (MOQ)
                   </label>
                   <select
                     id="moq"
                     className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
-                    style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)' }}
+                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                     value={formData.moq}
                     onChange={(e) => setFormData({ ...formData, moq: e.target.value })}
                   >
@@ -190,8 +202,8 @@ export function Contact() {
                   </select>
                 </div>
 
-                {/* Message */}
-                <div className="space-y-2">
+                {/* Message Textarea */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label htmlFor="message" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
                     Tell us about your project
                   </label>
@@ -201,14 +213,14 @@ export function Contact() {
                     required
                     placeholder="Specify target specifications, material preferences, logo engraving, or custom request details here..."
                     className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 resize-none"
-                    style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)' }}
+                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
                 </div>
 
-                {/* Submit button */}
-                <div>
+                {/* Submit button with top margin */}
+                <div style={{ marginTop: '0.75rem' }}>
                   <Button type="submit" variant="primary" size="md" className="w-full flex items-center justify-center gap-2">
                     <Send size={16} />
                     <span>Submit B2B Inquiry</span>
@@ -219,6 +231,13 @@ export function Contact() {
           </AnimatedSection>
         </div>
       </div>
+      
+      <style>{`
+        .contact-fields-grid { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 640px) {
+          .contact-fields-grid { grid-template-columns: 1fr; }
+        }
+      `}</style>
     </section>
   );
 }
