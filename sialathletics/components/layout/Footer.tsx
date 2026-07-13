@@ -12,7 +12,7 @@ export default function Footer() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '3rem', marginBottom: '4rem' }}>
           {/* Column 1: Logo + Desc + Socials */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <Link href="/" style={{ display: 'block', position: 'relative', width: '140px', height: '40px' }}>
+            <Link href="/" style={{ display: 'block', position: 'relative', width: '185px', height: '52px' }}>
               <Image
                 src="/images/logo.png"
                 alt="SIAL Athletics Logo"

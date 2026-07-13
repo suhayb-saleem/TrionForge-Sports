@@ -44,7 +44,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href="/" style={{ flexShrink: 0, marginRight: 'auto' }}>
-          <Image src="/images/logo.png" alt="SIAL Athletics" width={140} height={40} style={{ objectFit: 'contain' }} priority />
+          <Image src="/images/logo.png" alt="SIAL Athletics" width={185} height={52} style={{ objectFit: 'contain' }} priority />
         </Link>
 
         {/* Desktop nav */}
