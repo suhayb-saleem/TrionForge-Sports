@@ -26,7 +26,7 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
       style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
     >
       {/* Image Area */}
-      <div className="relative aspect-[16/10] bg-[var(--bg-raised)] overflow-hidden border-b border-[var(--white-08)]" style={{ padding: '0.75rem' }}>
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-[var(--white-08)]" style={{ padding: '0.75rem', background: 'var(--bg-raised)' }}>
         {/* Badge */}
         {product.badge && (
           <div className={`absolute top-3.5 right-3.5 z-10 px-3 py-1 text-[9px] font-bold uppercase tracking-widest rounded-none ${getBadgeStyle(product.badge)}`}>

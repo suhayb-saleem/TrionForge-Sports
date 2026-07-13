@@ -9,13 +9,13 @@ export default function QualityHero() {
   return (
     <section
       style={{
-        background: 'var(--bg-light)',
-        borderBottom: '1px solid var(--border-light)',
+        background: 'var(--bg-raised)',
+        borderBottom: '1px solid var(--white-08)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        paddingTop: '140px',
+        paddingTop: '160px',
         paddingBottom: '5rem',
       }}
     >
@@ -29,7 +29,7 @@ export default function QualityHero() {
           <SectionLabel showSlash={true}>OUR PROMISE</SectionLabel>
         </motion.div>
         
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 0.95, color: 'var(--text-dark)', margin: '1rem 0', overflow: 'hidden' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 0.95, color: 'var(--white)', margin: '1rem 0', overflow: 'hidden' }}>
           {words.map((word, i) => (
             <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.35em' }}>
               <motion.span
@@ -48,7 +48,7 @@ export default function QualityHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--text-muted)' }}
+          style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--white-60)' }}
         >
           Every paddle we ship meets USAPA standards. No exceptions.
         </motion.p>

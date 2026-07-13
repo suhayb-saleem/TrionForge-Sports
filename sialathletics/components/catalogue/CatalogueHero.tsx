@@ -4,7 +4,7 @@ import SectionLabel from '@/components/ui/SectionLabel';
 
 export function CatalogueHero() {
   return (
-    <section className="pt-32 pb-16 relative overflow-hidden font-body" style={{ background: 'var(--bg-raised)', borderBottom: '1px solid var(--white-08)' }}>
+    <section className="relative overflow-hidden font-body" style={{ background: 'var(--bg-raised)', borderBottom: '1px solid var(--white-08)', paddingTop: '160px', paddingBottom: '4rem' }}>
       <div className="absolute inset-0 texture-steel pointer-events-none opacity-30" />
       <div className="absolute inset-0 texture-noise pointer-events-none opacity-30" />
 

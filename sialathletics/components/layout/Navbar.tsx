@@ -11,7 +11,6 @@ const links = [
   { label: 'PRODUCTS', href: '/catalogue' },
   { label: 'CAPABILITIES', href: '/capabilities' },
   { label: 'QUALITY', href: '/quality' },
-  { label: 'BLOG', href: '/blog' },
   { label: 'CONTACT', href: '/contact' },
 ];
 
