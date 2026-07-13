@@ -113,14 +113,14 @@ export default function Hero() {
           <div style={{ position: 'relative', aspectRatio: '4/5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {/* Glow behind product */}
             <div style={{ position: 'absolute', inset: '10%', background: 'radial-gradient(ellipse at center, rgba(232,0,28,0.12) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 0 }} />
-            {/* Product image with radial fade mask so edges and corners blend perfectly */}
+            {/* Product image with ellipse fade mask so edges and corners blend perfectly */}
             <div style={{
               position: 'relative',
               zIndex: 1,
               width: '100%',
               height: '100%',
-              maskImage: 'radial-gradient(circle, black 65%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(circle, black 65%, transparent 100%)',
+              maskImage: 'radial-gradient(ellipse 60% 80% at center, black 30%, transparent 85%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 60% 80% at center, black 30%, transparent 85%)',
             }}>
               <Image
                 src="/images/products/sa-apex-elongated.png"
