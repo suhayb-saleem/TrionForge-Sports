@@ -50,10 +50,10 @@ const RacketAnimation = () => {
         <motion.g
           animate={
             isSpinning
-              ? { rotate: [0, 360], scale: [1, 1.2, 1] }
+              ? { rotate: [0, 360], scale: [1, 1.1, 1] }
               : isHovered
-              ? { rotate: [-14, 14, -14], y: [-1, -3, -1] }
-              : { rotate: [-7, 7, -7], y: [0, -1, 0] }
+              ? { rotate: [-12, 12, -12], y: [-0.5, -2, -0.5] }
+              : { rotate: [-6, 6, -6], y: [0, -0.5, 0] }
           }
           transition={
             isSpinning
@@ -85,10 +85,10 @@ const RacketAnimation = () => {
           style={{ filter: 'drop-shadow(0 0 5px var(--red))' }}
           animate={
             isSpinning
-              ? { y: [-7, -35, 2.5, -7] }
+              ? { y: [-6, -15, 2.5, -6] }
               : isHovered
-              ? { y: [-15, 2.5, -15] }
-              : { y: [-7, 2.5, -7] }
+              ? { y: [-11, 2.5, -11] }
+              : { y: [-6, 2.5, -6] }
           }
           transition={
             isSpinning
