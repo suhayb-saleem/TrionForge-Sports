@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
-import { Inter, Bebas_Neue } from 'next/font/google';
+import { Space_Grotesk, Syncopate } from 'next/font/google';
 import { SmoothScrollProvider } from '@/lib/lenis';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import './globals.css';
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
 });
 
-const bebasNeue = Bebas_Neue({
-  weight: '400',
+const syncopate = Syncopate({
+  weight: '700',
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${bebasNeue.variable} antialiased`}
+      className={`${spaceGrotesk.variable} ${syncopate.variable} antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-[var(--bg-base)] text-white">
         <SmoothScrollProvider>
