@@ -10,7 +10,9 @@ export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
+    company: '',
+    interest: 'pickleball',
+    moq: '50-100',
     message: '',
     website: '', // honeypot
   });
@@ -23,7 +25,7 @@ export function Contact() {
     setError(null);
 
     // Client-side validation: Required fields
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.company.trim() || !formData.message.trim()) {
       setError('Please fill in all required fields.');
       return;
     }
@@ -37,12 +39,37 @@ export function Contact() {
 
     // Honeypot spam protection check
     if (formData.website) {
-      // Quietly intercept and mock success for bots
+      // Quietly mock success for bots
       setSubmitted(true);
       return;
     }
 
     setSubmitting(true);
+
+    // Map fields to match API expectations
+    const productLineMap: Record<string, string> = {
+      pickleball: 'Pickleball Paddles',
+      padel: 'Padel Rackets',
+      both: 'Both Lines',
+      accessories: 'Other Accessories',
+    };
+
+    const orderVolumeMap: Record<string, string> = {
+      '50-100': '50-100 Units (Starter)',
+      '100-500': '100-500 Units (Growth)',
+      '500+': '500+ Units (Enterprise)',
+      samples: 'Sample Only (1-5 units)',
+    };
+
+    const payload = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      company: formData.company.trim(),
+      country: 'N/A', // Not collected on landing page form
+      productLine: productLineMap[formData.interest] || formData.interest,
+      orderVolume: orderVolumeMap[formData.moq] || formData.moq,
+      message: formData.message.trim(),
+    };
 
     try {
       const response = await fetch('/api/contact', {
@@ -50,12 +77,7 @@ export function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          phone: formData.phone.trim(),
-          message: formData.message.trim(),
-        }),
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();
@@ -65,7 +87,9 @@ export function Contact() {
         setFormData({
           name: '',
           email: '',
-          phone: '',
+          company: '',
+          interest: 'pickleball',
+          moq: '50-100',
           message: '',
           website: '',
         });
@@ -102,7 +126,7 @@ export function Contact() {
 
             <div className="space-y-6 pt-4 font-body" style={{ marginTop: '2rem' }}>
               <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.5rem' }}>
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '10px' }}>
+                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <MapPin size={20} color="var(--red)" />
                 </div>
                 <div>
@@ -112,7 +136,7 @@ export function Contact() {
               </div>
 
               <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.5rem' }}>
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '10px' }}>
+                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Mail size={20} color="var(--red)" />
                 </div>
                 <div>
@@ -124,7 +148,7 @@ export function Contact() {
               </div>
 
               <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '10px' }}>
+                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Phone size={20} color="var(--red)" />
                 </div>
                 <div>
@@ -146,7 +170,6 @@ export function Contact() {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
-              borderRadius: '16px'
             }}
           >
             {submitted ? (
@@ -156,16 +179,16 @@ export function Contact() {
                 </div>
                 <h3 className="font-display text-3xl text-white uppercase" style={{ margin: 0 }}>Inquiry Received</h3>
                 <p className="font-body text-[var(--white-60)] text-sm max-w-sm mx-auto" style={{ margin: 0, lineHeight: 1.6 }}>
-                  Thank you. We have successfully received your inquiry. A confirmation email has been sent to your address, and our team will get back to you soon.
+                  Thank you. A product specialist will contact you within 24 hours with details, custom options, and digital PDF catalogs.
                 </p>
                 <Button variant="outline" size="sm" onClick={() => setSubmitted(false)} className="mt-6">
                   Send Another Message
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6 font-body">
-                {error && (
-                  <div className="p-3 text-sm text-red border border-red/30 bg-red/10" style={{ color: 'var(--red)', background: 'rgba(227, 27, 35, 0.1)', border: '1px solid rgba(227, 27, 35, 0.25)', borderRadius: '8px' }}>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }} className="font-body text-white">
+                 {error && (
+                  <div style={{ background: 'rgba(227, 27, 35, 0.1)', border: '1px solid var(--red)', padding: '0.8rem 1rem', color: 'var(--red)', fontSize: '0.85rem' }}>
                     {error}
                   </div>
                 )}
@@ -183,21 +206,21 @@ export function Contact() {
                     autoComplete="off"
                   />
                 </div>
-
+                
                 {/* Name & Email Group */}
                 <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem' }}>
                   {/* Name */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     <label htmlFor="name" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
-                      Your Name *
+                      Your Name
                     </label>
                     <input
                       type="text"
                       id="name"
                       required
                       placeholder="e.g. John Doe"
-                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
-                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none', borderRadius: '8px' }}
+                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
@@ -206,49 +229,91 @@ export function Contact() {
                   {/* Email */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     <label htmlFor="email" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
-                      Work Email *
+                      Work Email
                     </label>
                     <input
                       type="email"
                       id="email"
                       required
                       placeholder="john@company.com"
-                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
-                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none', borderRadius: '8px' }}
+                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                   </div>
                 </div>
 
-                {/* Phone field */}
+                {/* Company & Interest Group */}
+                <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem' }}>
+                  {/* Company */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                    <label htmlFor="company" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
+                      Company Name
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      required
+                      placeholder="e.g. Pro Pickleball Inc"
+                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    />
+                  </div>
+
+                  {/* Product Interest */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                    <label htmlFor="interest" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
+                      Product Line
+                    </label>
+                    <select
+                      id="interest"
+                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
+                      value={formData.interest}
+                      onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
+                    >
+                      <option value="pickleball">Pickleball Paddles</option>
+                      <option value="padel">Padel Rackets</option>
+                      <option value="both">Both Lines</option>
+                      <option value="accessories">Other Accessories</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* MOQ Selection */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label htmlFor="phone" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
-                    Phone Number (Optional)
+                  <label htmlFor="moq" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
+                    Target Order Volume (MOQ)
                   </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    placeholder="e.g. +1 (555) 000-0000"
-                    className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
-                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none', borderRadius: '8px' }}
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  />
+                  <select
+                    id="moq"
+                    className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
+                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
+                    value={formData.moq}
+                    onChange={(e) => setFormData({ ...formData, moq: e.target.value })}
+                  >
+                    <option value="50-100">50 - 100 Units (Starter)</option>
+                    <option value="100-500">100 - 500 Units (Growth)</option>
+                    <option value="500+">500+ Units (Enterprise)</option>
+                    <option value="samples">Sample order only</option>
+                  </select>
                 </div>
 
                 {/* Message Textarea */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label htmlFor="message" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
-                    Tell us about your project *
+                    Tell us about your project
                   </label>
                   <textarea
                     id="message"
                     rows={4}
                     required
                     placeholder="Specify target specifications, material preferences, logo engraving, or custom request details here..."
-                    className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200 resize-none"
-                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none', borderRadius: '8px' }}
+                    className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 resize-none"
+                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
@@ -258,7 +323,7 @@ export function Contact() {
                 <div style={{ marginTop: '0.75rem' }}>
                   <Button type="submit" variant="primary" size="md" disabled={submitting} className="w-full flex items-center justify-center gap-2">
                     <Send size={16} />
-                    <span>{submitting ? 'Submitting...' : 'Submit Inquiry'}</span>
+                    <span>{submitting ? 'Submitting...' : 'Submit B2B Inquiry'}</span>
                   </Button>
                 </div>
               </form>
