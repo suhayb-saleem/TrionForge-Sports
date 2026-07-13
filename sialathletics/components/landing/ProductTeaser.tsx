@@ -1,87 +1,72 @@
 'use client';
-
-import React from 'react';
+import { motion } from 'motion/react';
 import Link from 'next/link';
 import { products } from '@/data/products';
-import { Button } from '@/components/ui/Button';
-import { SectionLabel } from '@/components/ui/SectionLabel';
-import { AnimatedSection } from '@/components/ui/AnimatedSection';
-import { ProductImageSlider } from '@/components/ui/ProductImageSlider';
+import SectionLabel from '@/components/ui/SectionLabel';
 
-export function ProductTeaser() {
-  // Select 3 signature products for teaser (e.g. Bestsellers and Pro models)
-  const teaserProducts = products.filter(p => 
-    p.id === 'sa-alpha-16mm' || p.id === 'sa-forge-padel-round' || p.id === 'sa-forge-padel-diamond'
-  );
-
+export default function ProductTeaser() {
+  const featured = products.slice(0, 3);
   return (
-    <section className="py-24 bg-[#0a0a0a] relative overflow-hidden">
-      <div className="absolute inset-0 texture-steel pointer-events-none" />
-      
-      <div className="container-custom">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <SectionLabel showDash={false} className="justify-center mb-3">
-            WHAT WE MAKE
-          </SectionLabel>
-          <h2 className="font-display text-[44px] sm:text-[52px] text-white leading-none uppercase mb-4">
-            OUR SIGNATURE LINE
-          </h2>
-          <p className="font-body text-[#C8C8C8] text-base">
-            Precision-built paddles and rackets for every level of play.
-          </p>
+    <section style={{ background: 'var(--bg-base)', padding: '8rem 1.5rem', borderTop: '1px solid var(--white-08)' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+        {/* Header */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '4rem' }}>
+          <div>
+            <SectionLabel>WHAT WE MAKE</SectionLabel>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 4.5vw, 3.5rem)', color: 'var(--white)', lineHeight: 0.9, marginTop: '0.75rem' }}>
+              OUR SIGNATURE LINE
+            </h2>
+          </div>
+          <Link href="/catalogue" style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--white-60)', textDecoration: 'none', borderBottom: '1px solid var(--white-30)', paddingBottom: '3px' }} className="hide-mobile">
+            VIEW ALL →
+          </Link>
         </div>
 
-        {/* 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {teaserProducts.map((product, idx) => (
-            <AnimatedSection
-              key={product.id}
-              direction="up"
-              delay={idx * 0.1}
-              className="bg-[#1a1a1a] border border-white/8 rounded-none group hover:-translate-y-1 hover:border-brand-red/50 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-300 flex flex-col justify-between"
+        {/* Grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--white-08)' }}>
+          {featured.map((p, i) => (
+            <motion.div key={p.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              style={{ background: 'var(--bg-base)', position: 'relative', overflow: 'hidden', cursor: 'pointer' }}
+              whileHover="hover"
             >
-              {/* Product Image Slider */}
-              <ProductImageSlider
-                images={product.images}
-                defaultImage={product.imagePath}
-                name={product.name}
-                className="w-full h-full border-b border-white/8"
-              />
+              {/* Red top border that slides in on hover */}
+              <motion.div variants={{ hover: { scaleX: 1 }, initial: { scaleX: 0 } }} initial="initial"
+                style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'var(--red)', transformOrigin: 'left', zIndex: 2 }} />
 
-              {/* Bottom Content Area */}
-              <div className="p-6 flex-grow flex flex-col justify-between">
-                <div>
-                  <div className="text-brand-red text-[11px] font-semibold uppercase tracking-widest mb-2 font-body">
-                    {product.category === 'pickleball' ? 'Pickleball Paddle' : 'Padel Racket'}
+              {/* Image area */}
+              <div style={{ aspectRatio: '4/3', background: 'var(--bg-card)', overflow: 'hidden', position: 'relative' }}>
+                <motion.div variants={{ hover: { scale: 1.05 }, initial: { scale: 1 } }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {/* Swap for next/image when photos ready */}
+                  <span style={{ color: 'var(--white-30)', fontSize: '0.7rem', fontFamily: 'var(--font-body)', letterSpacing: '0.1em' }}>PRODUCT IMAGE</span>
+                </motion.div>
+                {/* Badge */}
+                {p.badge && (
+                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'var(--red)', color: 'var(--white)', padding: '4px 10px', fontSize: '0.6rem', fontFamily: 'var(--font-body)', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                    {p.badge}
                   </div>
-                  <h3 className="font-display text-[26px] sm:text-[28px] text-white uppercase leading-tight mb-2">
-                    {product.name}
-                  </h3>
-                  <p className="font-body text-[#8A8A8A] text-[13px] leading-relaxed mb-6">
-                    {product.tagline}
-                  </p>
-                </div>
-
-                <div>
-                  <Link
-                    href={`/catalogue?product=${product.id}`}
-                    className="font-body text-xs text-white hover:text-brand-red transition-colors duration-200 uppercase font-semibold tracking-wider inline-flex items-center gap-1.5"
-                  >
-                    View Details &rarr;
-                  </Link>
-                </div>
+                )}
               </div>
-            </AnimatedSection>
+
+              {/* Content */}
+              <div style={{ padding: '1.75rem' }}>
+                <div style={{ fontSize: '0.6rem', color: 'var(--red)', fontFamily: 'var(--font-body)', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                  {p.category === 'pickleball' ? 'PICKLEBALL' : 'PADEL'}
+                </div>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--white)', marginBottom: '0.4rem', letterSpacing: '0.03em' }}>{p.name}</h3>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--white-60)', lineHeight: 1.6, marginBottom: '1.25rem' }}>{p.tagline}</p>
+                <motion.div variants={{ hover: { x: 4 }, initial: { x: 0 } }} transition={{ duration: 0.2 }}>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: 'var(--white)', fontWeight: 600, letterSpacing: '0.1em' }}>VIEW DETAILS →</span>
+                </motion.div>
+              </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* View All Button */}
-        <div className="text-center">
-          <Link href="/catalogue">
-            <Button variant="outline" size="md" className="!border-brand-red hover:!bg-brand-red hover:!text-white">
-              View All Products
-            </Button>
+        {/* Mobile view all */}
+        <div style={{ textAlign: 'center', marginTop: '2.5rem' }} className="show-mobile">
+          <Link href="/catalogue" style={{ display: 'inline-block', border: '1px solid var(--white-30)', color: 'var(--white)', padding: '12px 28px', fontFamily: 'var(--font-body)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none' }}>
+            VIEW ALL PRODUCTS
           </Link>
         </div>
       </div>

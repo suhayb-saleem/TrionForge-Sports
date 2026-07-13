@@ -5,7 +5,7 @@ import { X, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import { Product } from '@/data/products';
-import { Button } from '@/components/ui/Button';
+import Button from '@/components/ui/Button';
 
 interface ProductModalProps {
   product: Product | null;
@@ -102,12 +102,14 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: '100%', opacity: 0 }}
               transition={{ type: 'spring', damping: 28, stiffness: 240, mass: 0.8 }}
-              className="w-screen max-w-5xl bg-[#0a0a0a] border-l border-white/8 relative flex flex-col"
+              className="w-screen max-w-5xl relative flex flex-col"
+              style={{ background: 'var(--bg-base)', borderLeft: '1px solid var(--white-08)' }}
             >
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 z-30 text-[#8A8A8A] hover:text-white hover:bg-brand-red transition-all duration-200 cursor-pointer p-2 bg-[#1a1a1a] border border-white/10"
+                className="absolute top-4 right-4 z-30 hover:text-white hover:bg-brand-red transition-all duration-200 cursor-pointer p-2"
+                style={{ color: 'var(--white-60)', background: 'var(--bg-card)', border: '1px solid var(--white-08)' }}
                 aria-label="Close details"
               >
                 <X size={18} />
@@ -118,7 +120,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] min-h-full">
 
                   {/* ═══ LEFT: IMAGE GALLERY ═══ */}
-                  <div className="relative bg-[#0a0a0a] flex flex-col border-r border-white/6 min-h-[300px] lg:min-h-0 lg:sticky lg:top-0 lg:h-screen">
+                  <div className="relative flex flex-col min-h-[300px] lg:min-h-0 lg:sticky lg:top-0 lg:h-screen" style={{ background: 'var(--bg-base)', borderRight: '1px solid var(--white-04)' }}>
 
                     {/* Main image area */}
                     <div className="relative flex-1 overflow-hidden flex items-center justify-center p-6 pb-2 min-h-[280px] sm:min-h-[360px]">
@@ -157,14 +159,16 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                         <>
                           <button
                             onClick={goPrev}
-                            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 bg-[#1a1a1a]/90 border border-white/10 hover:bg-brand-red hover:border-brand-red text-white hover:text-white transition-all duration-200 flex items-center justify-center cursor-pointer"
+                            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 hover:bg-brand-red hover:border-brand-red text-white hover:text-white transition-all duration-200 flex items-center justify-center cursor-pointer"
+                            style={{ background: 'rgba(22,22,22,0.9)', border: '1px solid var(--white-08)' }}
                             aria-label="Previous image"
                           >
                             <ChevronLeft size={18} />
                           </button>
                           <button
                             onClick={goNext}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 bg-[#1a1a1a]/90 border border-white/10 hover:bg-brand-red hover:border-brand-red text-white hover:text-white transition-all duration-200 flex items-center justify-center cursor-pointer"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 hover:bg-brand-red hover:border-brand-red text-white hover:text-white transition-all duration-200 flex items-center justify-center cursor-pointer"
+                            style={{ background: 'rgba(22,22,22,0.9)', border: '1px solid var(--white-08)' }}
                             aria-label="Next image"
                           >
                             <ChevronRight size={18} />
@@ -173,7 +177,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                       )}
 
                       {/* Image counter */}
-                      <div className="absolute bottom-3 right-4 z-20 text-[10px] text-[#8A8A8A] tracking-widest">
+                      <div className="absolute bottom-3 right-4 z-20 text-[10px] tracking-widest" style={{ color: 'var(--white-60)' }}>
                         {activeImg + 1} / {slideImages.length}
                       </div>
                     </div>
@@ -191,7 +195,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                             <motion.div
                               animate={{
                                 width: idx === activeImg ? 20 : 6,
-                                backgroundColor: idx === activeImg ? '#E8001C' : 'rgba(255,255,255,0.25)',
+                                backgroundColor: idx === activeImg ? 'var(--red)' : 'var(--white-30)',
                               }}
                               transition={{ duration: 0.25 }}
                               className="h-[3px] rounded-full"
@@ -257,7 +261,8 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.25, duration: 0.4 }}
-                          className="text-[#8A8A8A] text-sm italic font-medium"
+                          className="text-sm italic font-medium"
+                          style={{ color: 'var(--white-60)' }}
                         >
                           &ldquo;{product.tagline}&rdquo;
                         </motion.p>
@@ -268,7 +273,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.4 }}
-                        className="text-sm leading-relaxed text-[#C8C8C8] border-l-2 border-brand-red/40 pl-4"
+                        className="text-sm leading-relaxed text-[var(--white-90)] border-l-2 border-brand-red/40 pl-4"
                       >
                         {product.description}
                       </motion.p>
@@ -290,7 +295,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                                 key={sIdx}
                                 className="border-b border-white/5 last:border-b-0 hover:bg-white/2 transition-colors duration-150"
                               >
-                                <td className="py-3 pr-4 text-[#8A8A8A] font-medium w-1/2">{spec.label}</td>
+                                <td className="py-3 pr-4 font-medium w-1/2" style={{ color: 'var(--white-60)' }}>{spec.label}</td>
                                 <td className="py-3 text-white font-semibold w-1/2">{spec.value}</td>
                               </tr>
                             ))}
@@ -304,9 +309,10 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.4, duration: 0.4 }}
-                          className="bg-[#1a1a1a] border border-white/8 p-4 flex justify-between items-center"
+                          className="p-4 flex justify-between items-center"
+                          style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)' }}
                         >
-                          <span className="text-xs text-[#8A8A8A] uppercase tracking-wider font-semibold">
+                          <span className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
                             Minimum Order Quantity
                           </span>
                           <span className="text-sm text-brand-red font-bold uppercase tracking-wider">
@@ -317,9 +323,9 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                     </div>
 
                     {/* Sticky Bottom Action Bar */}
-                    <div className="bg-[#0f0f0f] border-t border-white/8 p-5 sm:p-6 flex flex-col sm:flex-row gap-4 items-center justify-between shrink-0">
+                    <div className="p-5 sm:p-6 flex flex-col sm:flex-row gap-4 items-center justify-between shrink-0" style={{ background: 'var(--bg-raised)', borderTop: '1px solid var(--white-08)' }}>
                       <div className="text-center sm:text-left">
-                        <div className="text-[11px] text-[#8A8A8A] uppercase tracking-wider">Interested in private label?</div>
+                        <div className="text-[11px] uppercase tracking-wider" style={{ color: 'var(--white-60)' }}>Interested in private label?</div>
                         <div className="text-xs text-white mt-0.5">OEM / Custom mold options available for this model.</div>
                       </div>
                       <Button

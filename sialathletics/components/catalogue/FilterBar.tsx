@@ -26,7 +26,7 @@ export function FilterBar({
   ];
 
   return (
-    <div className="sticky top-[64px] md:top-[72px] z-30 bg-[#0f0f0f] border-b border-white/8 font-body select-none">
+    <div className="sticky top-[64px] md:top-[72px] z-30 bg-[var(--bg-raised)] border-b border-[var(--white-08)] font-body select-none">
       <div className="container-custom flex items-center justify-between h-14">
         {/* Filter Tabs Container */}
         {/* Supports horizontal scroll on mobile */}
@@ -40,7 +40,7 @@ export function FilterBar({
                 className={`h-full text-[12px] md:text-[13px] font-semibold uppercase tracking-widest transition-all duration-200 border-b-2 cursor-pointer flex items-center justify-center relative ${
                   active
                     ? 'border-brand-red text-white'
-                    : 'border-transparent text-[#8A8A8A] hover:text-white'
+                    : 'border-transparent text-[var(--white-60)] hover:text-white'
                 }`}
               >
                 {tab.label}
@@ -51,22 +51,22 @@ export function FilterBar({
 
         {/* Sort Dropdown */}
         <div className="flex items-center gap-2 pl-4 shrink-0">
-          <label htmlFor="sort" className="text-xs text-[#8A8A8A]">
+          <label htmlFor="sort" className="text-xs text-[var(--white-60)]">
             Sort:
           </label>
           <select
             id="sort"
-            className="bg-transparent border-none text-[#8A8A8A] hover:text-white text-xs font-semibold uppercase tracking-wider focus:outline-none cursor-pointer h-8"
+            className="bg-transparent border-none text-[var(--white-60)] hover:text-white text-xs font-semibold uppercase tracking-wider focus:outline-none cursor-pointer h-8"
             value={activeSort}
             onChange={(e) => setActiveSort(e.target.value as SortOption)}
           >
-            <option value="featured" className="bg-[#0f0f0f] text-white">
+            <option value="featured" className="bg-[var(--bg-raised)] text-white">
               Featured
             </option>
-            <option value="name-asc" className="bg-[#0f0f0f] text-white">
+            <option value="name-asc" className="bg-[var(--bg-raised)] text-white">
               Name A-Z
             </option>
-            <option value="moq-asc" className="bg-[#0f0f0f] text-white">
+            <option value="moq-asc" className="bg-[var(--bg-raised)] text-white">
               Lowest MOQ
             </option>
           </select>

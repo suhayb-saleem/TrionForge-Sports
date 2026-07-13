@@ -1,54 +1,26 @@
-import React from 'react';
 import Link from 'next/link';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
+  href?: string;
+  onClick?: (e: React.MouseEvent) => void;
   variant?: 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
+  type?: 'button' | 'submit' | 'reset';
+  className?: string;
   children: React.ReactNode;
-  href?: string;
 }
 
-export function Button({
-  variant = 'primary',
-  size = 'md',
-  className = '',
-  children,
-  href,
-  ...props
-}: ButtonProps) {
-  const baseClasses = 'inline-flex items-center justify-center font-body uppercase font-semibold tracking-widest transition-all duration-200 cursor-pointer rounded-none select-none';
-  
-  const variantClasses = {
-    primary: 'bg-brand-red text-white hover:bg-[#8B0010] hover:scale-[1.02] active:scale-[0.98]',
-    outline: 'bg-transparent border border-white text-white hover:bg-brand-red hover:border-brand-red hover:scale-[1.02] active:scale-[0.98]',
-    ghost: 'bg-transparent text-white hover:text-brand-red hover:translate-x-1 border-none p-0 inline-flex items-center gap-2',
+export default function Button({ href, onClick, variant = 'primary', size = 'md', type = 'button', className = '', children }: ButtonProps) {
+  const base: React.CSSProperties = {
+    display: 'inline-block', fontFamily: 'var(--font-body)', fontSize: size === 'sm' ? '0.65rem' : size === 'lg' ? '0.8rem' : '0.72rem', fontWeight: 700,
+    letterSpacing: '0.14em', textTransform: 'uppercase' as const, textDecoration: 'none',
+    padding: size === 'sm' ? '8px 18px' : size === 'lg' ? '16px 36px' : '13px 28px', borderRadius: 0, cursor: 'pointer', border: 'none', transition: 'all 0.2s ease',
   };
-
-  const sizeClasses = {
-    sm: 'text-[11px] px-4 py-2',
-    md: 'text-[13px] px-6 py-3',
-    lg: 'text-[14px] px-8 py-4',
+  const styles: Record<string, React.CSSProperties> = {
+    primary: { ...base, background: 'var(--red)', color: 'var(--white)' },
+    outline: { ...base, background: 'transparent', color: 'var(--white)', border: '1px solid var(--white-30)' },
+    ghost: { ...base, background: 'transparent', color: 'var(--white)', padding: '0' },
   };
-
-  const paddingClass = variant === 'ghost' ? '' : sizeClasses[size];
-  const combinedClass = `${baseClasses} ${variantClasses[variant]} ${paddingClass} ${className}`;
-
-  if (href) {
-    return (
-      <Link href={href} className={combinedClass}>
-        {children}
-      </Link>
-    );
-  }
-
-  return (
-    <button
-      className={combinedClass}
-      {...props}
-    >
-      {children}
-    </button>
-  );
+  if (href) return <Link href={href} style={styles[variant]} className={className}>{children}</Link>;
+  return <button type={type} onClick={onClick} style={styles[variant]} className={className}>{children}</button>;
 }
-
-export default Button;

@@ -14,11 +14,11 @@ const capabilities = [
 
 export default function CapabilityCards() {
   return (
-    <section style={{ background: '#0a0a0a', padding: '6rem 1.5rem' }}>
+    <section style={{ background: 'var(--bg-base)', padding: '6rem 1.5rem' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         <div style={{ marginBottom: '3rem' }}>
           <SectionLabel>OUR CAPABILITIES</SectionLabel>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#fff', lineHeight: 0.95, marginTop: '0.75rem' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--white)', lineHeight: 0.95, marginTop: '0.75rem' }}>
             BUILT FOR BRANDS WHO DEMAND MORE.
           </h2>
         </div>
@@ -30,11 +30,11 @@ export default function CapabilityCards() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.07 }}
-              style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.08)', padding: '2rem', borderLeft: '3px solid #E8001C' }}
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', padding: '2rem', borderLeft: '3px solid var(--red)' }}
             >
-              <Icon size={22} color="#E8001C" style={{ marginBottom: '1rem' }} />
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: '#fff', marginBottom: '0.75rem' }}>{title}</h3>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: '#8A8A8A', lineHeight: 1.7 }}>{desc}</p>
+              <Icon size={22} color="var(--red)" style={{ marginBottom: '1rem' }} />
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--white)', marginBottom: '0.75rem' }}>{title}</h3>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--white-60)', lineHeight: 1.7 }}>{desc}</p>
             </motion.div>
           ))}
         </div>

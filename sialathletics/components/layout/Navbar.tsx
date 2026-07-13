@@ -1,165 +1,131 @@
 'use client';
-
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'motion/react';
 
-export function Navbar() {
+const links = [
+  { label: 'HOME', href: '/' },
+  { label: 'ABOUT', href: '/about' },
+  { label: 'PRODUCTS', href: '/catalogue' },
+  { label: 'CAPABILITIES', href: '/capabilities' },
+  { label: 'QUALITY', href: '/quality' },
+  { label: 'BLOG', href: '/blog' },
+  { label: 'CONTACT', href: '/contact' },
+];
+
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const [currentHash, setCurrentHash] = useState('');
+  const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    setMounted(true);
-    setCurrentHash(typeof window !== 'undefined' ? window.location.hash : '');
-
-    const handleScroll = () => {
-      if (window.scrollY > 60) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    const handleHashChange = () => {
-      setCurrentHash(window.location.hash);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('hashchange', handleHashChange);
-    
-    // Trigger once on mount to capture direct page loads mid-scroll
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('hashchange', handleHashChange);
-    };
+    const handler = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handler, { passive: true });
+    return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  const navLinks = [
-    { name: 'HOME',         href: '/' },
-    { name: 'ABOUT US',     href: '/about' },
-    { name: 'PRODUCTS',     href: '/catalogue' },
-    { name: 'CAPABILITIES', href: '/capabilities' },
-    { name: 'QUALITY',      href: '/quality' },
-    { name: 'BLOG',         href: '/blog' },
-    { name: 'CONTACT',      href: '/contact' },
-  ];
-
-  const handleLinkClick = () => {
-    setMobileMenuOpen(false);
-  };
-
-  const isActive = (href: string) => {
-    if (href === '/') {
-      return pathname === '/';
-    }
-    if (href.startsWith('/#')) {
-      if (!mounted) return false;
-      return pathname === '/' && currentHash === href.substring(1);
-    }
-    return pathname.startsWith(href);
-  };
+  useEffect(() => { setOpen(false); }, [pathname]);
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrolled
-            ? 'border-b border-white/8 py-3'
-            : 'bg-transparent border-b border-transparent py-5'
-        }`}
-        style={scrolled ? { backgroundColor: 'rgba(10,10,10,0.97)', backdropFilter: 'blur(12px)' } : undefined}
+      <motion.header
+        style={{
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+          height: '72px',
+          display: 'flex', alignItems: 'center',
+          padding: '0 2rem',
+          borderBottom: scrolled ? '1px solid var(--white-08)' : '1px solid transparent',
+          background: scrolled ? 'var(--bg-overlay)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(16px)' : 'none',
+          transition: 'background 0.4s var(--ease), border-color 0.4s var(--ease), backdrop-filter 0.4s var(--ease)',
+        }}
       >
-        <div className="container-custom flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="relative block h-10 w-[160px] md:h-12 md:w-[180px]">
-            <Image
-              src="/images/logo.svg"
-              alt="SIAL Athletics Logo"
-              fill
-              className="object-contain object-left"
-              priority
-            />
-          </Link>
+        {/* Logo */}
+        <Link href="/" style={{ flexShrink: 0, marginRight: 'auto' }}>
+          <Image src="/images/logo.png" alt="SIAL Athletics" width={140} height={40} style={{ objectFit: 'contain' }} priority />
+        </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`font-body text-[13px] font-medium tracking-widest uppercase transition-colors duration-200 relative py-1 ${
-                    active ? 'text-white' : 'text-[#8A8A8A] hover:text-white'
-                  }`}
-                >
-                  {link.name}
-                  {active && (
-                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-red" />
-                  )}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Quote Button (Desktop) */}
-          <div className="hidden lg:block">
-            <Link href="/contact">
-              <Button variant="primary" size="sm" className="!px-6 !py-3">
-                Get A Quote
-              </Button>
-            </Link>
-          </div>
-
-          {/* Hamburger Menu (Mobile) */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-white hover:text-brand-red p-1 cursor-pointer transition-colors duration-200"
-            aria-label="Toggle menu"
+        {/* Desktop nav */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }} className="hide-mobile">
+          {links.map(({ label, href }) => {
+            const active = pathname === href;
+            return (
+              <Link key={href} href={href} style={{
+                fontFamily: 'var(--font-body)', fontSize: '0.7rem', fontWeight: 600,
+                letterSpacing: '0.14em', textTransform: 'uppercase',
+                color: active ? 'var(--white)' : 'var(--white-60)',
+                textDecoration: 'none', position: 'relative', paddingBottom: '2px',
+                transition: 'color 0.2s ease',
+              }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--white)')}
+                onMouseLeave={e => { if (!active) e.currentTarget.style.color = 'var(--white-60)'; }}
+              >
+                {label}
+                {active && (
+                  <motion.span layoutId="nav-underline" style={{
+                    position: 'absolute', bottom: -2, left: 0, right: 0,
+                    height: '1.5px', background: 'var(--red)',
+                  }} />
+                )}
+              </Link>
+            );
+          })}
+          <Link href="/contact" style={{
+            fontFamily: 'var(--font-body)', fontSize: '0.7rem', fontWeight: 700,
+            letterSpacing: '0.14em', textTransform: 'uppercase',
+            background: 'var(--red)', color: 'var(--white)',
+            padding: '10px 22px', textDecoration: 'none',
+            transition: 'background 0.2s ease',
+            borderRadius: 0,
+          }}
+            onMouseEnter={e => (e.currentTarget.style.background = 'var(--red-dark)')}
+            onMouseLeave={e => (e.currentTarget.style.background = 'var(--red)')}
           >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-      </header>
-
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-[#0a0a0a] z-40 flex flex-col justify-center items-center lg:hidden">
-          <nav className="flex flex-col items-center gap-8 mb-12">
-            {navLinks.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={handleLinkClick}
-                  className={`font-body text-xl font-bold tracking-widest uppercase transition-colors duration-200 ${
-                    active ? 'text-brand-red' : 'text-[#8A8A8A] hover:text-white'
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
-          </nav>
-
-          <Link href="/contact" onClick={handleLinkClick}>
-            <Button variant="primary" size="lg">
-              Get A Quote
-            </Button>
+            GET A QUOTE
           </Link>
-        </div>
-      )}
+        </nav>
+
+        {/* Mobile hamburger */}
+        <button onClick={() => setOpen(!open)} className="show-mobile" style={{
+          background: 'none', border: 'none', cursor: 'pointer',
+          display: 'flex', flexDirection: 'column', gap: '5px', padding: '8px',
+        }}>
+          {[0, 1, 2].map(i => (
+            <motion.span key={i} animate={open
+              ? i === 1 ? { opacity: 0 } : i === 0 ? { rotate: 45, y: 7 } : { rotate: -45, y: -7 }
+              : { rotate: 0, y: 0, opacity: 1 }
+            } style={{ display: 'block', width: '22px', height: '1.5px', background: 'var(--white)', transformOrigin: 'center' }} />
+          ))}
+        </button>
+      </motion.header>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3, ease: 'easeOut' }}
+            style={{ position: 'fixed', inset: 0, zIndex: 99, background: 'var(--bg-base)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2.5rem' }}>
+            {links.map(({ label, href }, i) => (
+              <motion.div key={href} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}>
+                <Link href={href} style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', color: pathname === href ? 'var(--red)' : 'var(--white)', textDecoration: 'none', letterSpacing: '0.05em' }}>
+                  {label}
+                </Link>
+              </motion.div>
+            ))}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }}>
+              <Link href="/contact" style={{ background: 'var(--red)', color: 'var(--white)', padding: '14px 36px', fontFamily: 'var(--font-body)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none' }}>
+                GET A QUOTE
+              </Link>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <style>{`
+        @media (max-width: 1024px) { .hide-mobile { display: none !important; } }
+        @media (min-width: 1025px) { .show-mobile { display: none !important; } }
+      `}</style>
     </>
   );
 }
-
-export default Navbar;

@@ -1,18 +1,18 @@
-import React from 'react';
-
-interface SectionLabelProps {
+export default function SectionLabel({
+  children,
+  showDash = true,
+  className = '',
+}: {
   children: React.ReactNode;
   showDash?: boolean;
   className?: string;
-}
-
-export function SectionLabel({ children, showDash = true, className = '' }: SectionLabelProps) {
+}) {
   return (
-    <div className={`font-body text-[11px] text-brand-red font-semibold uppercase tracking-[0.2em] flex items-center gap-2 ${className}`}>
-      {showDash && <span className="h-[2px] w-6 bg-brand-red inline-block" aria-hidden="true" />}
-      <span>{children}</span>
+    <div className={className} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}>
+      {showDash && <span style={{ display: 'block', width: '20px', height: '1.5px', background: 'var(--red)' }} />}
+      <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--red)' }}>
+        {children}
+      </span>
     </div>
   );
 }
-
-export default SectionLabel;

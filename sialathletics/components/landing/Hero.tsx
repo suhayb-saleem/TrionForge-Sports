@@ -1,197 +1,130 @@
 'use client';
-
-import React from 'react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'motion/react';
-import { Button } from '@/components/ui/Button';
-import { SectionLabel } from '@/components/ui/SectionLabel';
 
-export function Hero() {
-  const shouldReduceMotion = useReducedMotion();
+export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
 
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.08,
-      },
-    },
-  };
+  // Parallax transforms
+  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94] as const,
-      },
-    },
-  };
-
-  const leftPanelVariants = {
-    hidden: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94] as const,
-      },
-    },
-  };
-
-  const wordVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: (custom: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        delay: shouldReduceMotion ? 0 : custom * 0.08,
-        ease: [0.25, 0.46, 0.45, 0.94] as const,
-      },
-    }),
-  };
-
-  const imageVariants = {
-    hidden: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        delay: 0.2,
-        ease: [0.25, 0.46, 0.45, 0.94] as const,
-      },
-    },
-  };
-
-  const h1Lines = [
-    ['FORGED', 'FOR'],
-    ['CHAMPIONS.'],
-    ['BUILT', 'IN'],
-    ['SIALKOT.'],
-  ];
-
-  // Flatten to get absolute index for staggered word delays
-  let wordIndexCounter = 0;
+  // Word stagger for headline
+  const words = ['PRECISION', 'BUILT.', 'PERFORMANCE', 'DRIVEN.'];
 
   return (
-    <section className="relative min-h-screen bg-brand-dark flex flex-col justify-between overflow-hidden pt-20 md:pt-0">
-      {/* Background steel texture */}
-      <div className="absolute inset-0 texture-steel pointer-events-none" />
-      <div className="absolute inset-0 texture-noise pointer-events-none" />
+    <section ref={ref} style={{
+      position: 'relative', height: '100vh', minHeight: '680px',
+      display: 'flex', alignItems: 'center',
+      overflow: 'hidden', background: 'var(--bg-base)',
+    }}>
+      {/* Background: subtle red radial glow */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 0,
+        background: 'radial-gradient(ellipse 70% 60% at 65% 50%, rgba(232,0,28,0.06) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
 
-      {/* Main hero grid */}
-      <div className="flex-grow grid grid-cols-1 lg:grid-cols-[45fr_55fr] w-full">
-        {/* Left Content Panel */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={leftPanelVariants}
-          className="flex flex-col justify-center px-6 sm:px-12 lg:px-20 py-12 lg:py-24 z-10"
-        >
-          <SectionLabel showDash={true} className="mb-6">
-            Precision Built. Performance Driven.
-          </SectionLabel>
+      {/* Horizontal rule lines — architectural detail */}
+      <div style={{ position: 'absolute', top: '20%', left: 0, right: 0, height: '1px', background: 'var(--white-04)', zIndex: 0 }} />
+      <div style={{ position: 'absolute', bottom: '20%', left: 0, right: 0, height: '1px', background: 'var(--white-04)', zIndex: 0 }} />
 
-          {/* Staggered Heading */}
-          <h1 className="font-display text-[56px] sm:text-[72px] lg:text-[88px] text-white leading-[0.95] uppercase mb-6 select-none">
-            {h1Lines.map((line, lineIdx) => (
-              <div key={lineIdx} className="block overflow-hidden">
-                {line.map((word, wordIdx) => {
-                  const currentIdx = wordIndexCounter++;
-                  return (
-                    <motion.span
-                      key={wordIdx}
-                      custom={currentIdx}
-                      variants={wordVariants}
-                      className="inline-block mr-3"
-                    >
-                      {word}
-                    </motion.span>
-                  );
-                })}
-              </div>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', width: '100%', position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center', paddingTop: '72px' }}>
+
+        {/* LEFT — Text */}
+        <motion.div style={{ y: textY, opacity }}>
+          {/* Eyebrow */}
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+            <span style={{ display: 'block', width: '32px', height: '1.5px', background: 'var(--red)' }} />
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--red)', fontWeight: 600 }}>
+              SIAL ATHLETICS
+            </span>
+          </motion.div>
+
+          {/* Headline — word by word */}
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(4rem, 7.5vw, 7rem)', lineHeight: 0.88, letterSpacing: '0.02em', marginBottom: '2rem', overflow: 'hidden' }}>
+            {words.map((word, i) => (
+              <span key={i} style={{ display: 'block', overflow: 'hidden' }}>
+                <motion.span
+                  initial={{ y: '100%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.3 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ display: 'block', color: i % 2 === 0 ? 'var(--white)' : 'var(--white-90)' }}
+                >
+                  {word}
+                </motion.span>
+              </span>
             ))}
           </h1>
 
           {/* Subtitle */}
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={itemVariants}
-            className="font-body text-[#C8C8C8] text-base sm:text-lg max-w-[420px] leading-relaxed mb-10"
-            style={{ transitionDelay: '300ms' }}
-          >
+          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.75 }}
+            style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: 1.7, color: 'var(--white-60)', maxWidth: '420px', marginBottom: '2.5rem' }}>
             Premium pickleball paddles and padel rackets. Factory-direct from Sialkot to the US market.
           </motion.p>
 
-          {/* Two buttons side-by-side */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4"
-            style={{ transitionDelay: '500ms' }}
-          >
-            <Link href="/catalogue">
-              <Button variant="primary" size="lg" className="w-full sm:w-auto">
-                Our Products
-              </Button>
+          {/* Buttons */}
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9 }}
+            style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <Link href="/catalogue" style={{
+              background: 'var(--red)', color: 'var(--white)', padding: '14px 32px',
+              fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 700,
+              letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none',
+              transition: 'background 0.2s ease',
+            }}
+              onMouseEnter={e => (e.currentTarget.style.background = 'var(--red-dark)')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'var(--red)')}>
+              VIEW PRODUCTS
             </Link>
-            <Link href="/#contact">
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                Get A Quote
-              </Button>
+            <Link href="/contact" style={{
+              border: '1px solid var(--white-30)', color: 'var(--white)', padding: '14px 32px',
+              fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 700,
+              letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none',
+              transition: 'border-color 0.2s ease, color 0.2s ease',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--white)'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--white-30)'; }}>
+              GET A QUOTE
             </Link>
+          </motion.div>
+
+          {/* Trust row */}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.1 }}
+            style={{ display: 'flex', gap: '2rem', marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--white-08)' }}>
+            {['USAPA Compliant', 'Carbon Fiber Build', 'Factory Direct', 'US Ready'].map(t => (
+              <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--red)', flexShrink: 0 }} />
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: 'var(--white-60)', letterSpacing: '0.06em' }}>{t}</span>
+              </div>
+            ))}
           </motion.div>
         </motion.div>
 
-        {/* Right Visual Panel */}
-        <div className="relative bg-[#0f0f0f] min-h-[380px] lg:min-h-0 flex items-center justify-center overflow-hidden border-t lg:border-t-0 lg:border-l border-white/8">
-          {/* Subtle Ambient Red Glow */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(232,0,28,0.08) 0%, transparent 70%)',
-            }}
-          />
-
-          {/* Hero Product Image */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={imageVariants}
-            className="relative w-[75%] h-[75%] min-h-[300px] flex items-center justify-center z-10 filter drop-shadow-[0_40px_80px_rgba(232,0,28,0.15)]"
-          >
-            <motion.div
-              className="relative w-full h-full"
-              animate={shouldReduceMotion ? {} : {
-                y: [0, -12, 0],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              {/* TODO: Replace with real product image — place file at /public/images/products/sa-alpha-16mm.jpg */}
-              <Image
-                src="/images/products/sa-alpha-16mm.jpg"
-                alt="Featured SA Alpha Carbon Paddle"
-                fill
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-contain"
-                priority
-              />
-            </motion.div>
-          </motion.div>
-        </div>
+        {/* RIGHT — Product image with parallax */}
+        <motion.div style={{ y: imageY, opacity }} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}>
+          <div style={{ position: 'relative', aspectRatio: '4/5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {/* Glow behind product */}
+            <div style={{ position: 'absolute', inset: '10%', background: 'radial-gradient(ellipse at center, rgba(232,0,28,0.12) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 0 }} />
+            {/* Product image — replace with real photo */}
+            <div style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-raised)', border: '1px solid var(--white-08)' }}>
+              <span style={{ color: 'var(--white-30)', fontSize: '0.7rem', letterSpacing: '0.1em', fontFamily: 'var(--font-body)' }}>PRODUCT HERO IMAGE</span>
+            </div>
+          </div>
+        </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
+        style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+        <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.6rem', letterSpacing: '0.2em', color: 'var(--white-30)', textTransform: 'uppercase' }}>SCROLL</span>
+        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ width: '1px', height: '32px', background: 'linear-gradient(to bottom, var(--white-30), transparent)' }} />
+      </motion.div>
     </section>
   );
 }

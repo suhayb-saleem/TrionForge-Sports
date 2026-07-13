@@ -1,31 +1,25 @@
-import React from 'react';
-import { Layers, Shield, CheckCircle, Tag } from 'lucide-react';
+'use client';
+import { motion } from 'motion/react';
+import { Award, Layers, Globe, Zap } from 'lucide-react';
 
-export function TrustStrip() {
-  const items = [
-    { icon: Layers, text: 'OEM & ODM Programs' },
-    { icon: Shield, text: 'Carbon Fiber & Premium Materials' },
-    { icon: CheckCircle, text: 'US Market Ready' },
-    { icon: Tag, text: 'Direct Factory Pricing' },
-  ];
+const items = [
+  { Icon: Layers, label: 'OEM & ODM PROGRAMS' },
+  { Icon: Award, label: 'CARBON FIBER BUILD' },
+  { Icon: Globe, label: 'US MARKET READY' },
+  { Icon: Zap, label: 'DIRECT FACTORY PRICING' },
+];
 
+export default function TrustStrip() {
   return (
-    <div className="bg-[#0f0f0f] border-y border-white/8 font-body z-20 relative">
-      <div className="container-custom py-5 md:py-0 md:h-[72px] flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
-        {items.map((item, idx) => {
-          const Icon = item.icon;
-          return (
-            <React.Fragment key={idx}>
-              <div className="flex items-center gap-3 text-white text-[13px] md:text-sm font-semibold tracking-wider uppercase py-2 md:py-0 w-full md:w-auto justify-center">
-                <Icon size={20} className="text-brand-red shrink-0" />
-                <span>{item.text}</span>
-              </div>
-              {idx < items.length - 1 && (
-                <div className="hidden md:block h-8 w-[1px] bg-white/10" aria-hidden="true" />
-              )}
-            </React.Fragment>
-          );
-        })}
+    <div style={{ background: 'var(--bg-raised)', borderTop: '1px solid var(--white-08)', borderBottom: '1px solid var(--white-08)' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+        {items.map(({ Icon, label }, i) => (
+          <motion.div key={label} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2 + i * 0.08 }}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1.25rem 2rem', borderRight: i < 3 ? '1px solid var(--white-08)' : 'none' }}>
+            <Icon size={16} color="var(--red)" />
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--white-60)' }}>{label}</span>
+          </motion.div>
+        ))}
       </div>
     </div>
   );

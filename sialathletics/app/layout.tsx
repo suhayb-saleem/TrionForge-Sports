@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter, Bebas_Neue } from 'next/font/google';
 import { SmoothScrollProvider } from '@/lib/lenis';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import Cursor from '@/components/ui/Cursor';
 import './globals.css';
 
 const inter = Inter({
@@ -42,6 +43,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-brand-dark text-white select-none">
         <SmoothScrollProvider>
+          <Cursor />
           <Navbar />
           <div className="flex-1 flex flex-col">
             {children}

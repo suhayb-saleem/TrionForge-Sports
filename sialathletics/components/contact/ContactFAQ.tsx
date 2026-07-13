@@ -14,23 +14,23 @@ const faqs = [
 export default function ContactFAQ() {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section style={{ background: '#0f0f0f', padding: '6rem 1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+    <section style={{ background: 'var(--bg-raised)', padding: '6rem 1.5rem', borderTop: '1px solid var(--white-08)' }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
           <SectionLabel>COMMON QUESTIONS</SectionLabel>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 2.75rem)', color: '#fff', lineHeight: 0.95, marginTop: '0.75rem' }}>QUICK ANSWERS.</h2>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 2.75rem)', color: 'var(--white)', lineHeight: 0.95, marginTop: '0.75rem' }}>QUICK ANSWERS.</h2>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
           {faqs.map(({ q, a }, i) => (
-            <div key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+            <div key={i} style={{ borderBottom: '1px solid var(--white-08)' }}>
               <button onClick={() => setOpen(open === i ? null : i)} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 0', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem' }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: '#fff', letterSpacing: '0.03em' }}>{q}</span>
-                {open === i ? <Minus size={18} color="#E8001C" /> : <Plus size={18} color="#E8001C" />}
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--white)', letterSpacing: '0.03em' }}>{q}</span>
+                {open === i ? <Minus size={18} color="var(--red)" /> : <Plus size={18} color="var(--red)" />}
               </button>
               <AnimatePresence>
                 {open === i && (
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: 'easeInOut' }} style={{ overflow: 'hidden' }}>
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: '#8A8A8A', lineHeight: 1.7, paddingBottom: '1.5rem' }}>{a}</p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--white-60)', lineHeight: 1.7, paddingBottom: '1.5rem' }}>{a}</p>
                   </motion.div>
                 )}
               </AnimatePresence>

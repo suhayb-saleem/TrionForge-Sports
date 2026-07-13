@@ -3,16 +3,53 @@ import { motion } from 'motion/react';
 import SectionLabel from '@/components/ui/SectionLabel';
 
 export default function BlogHero() {
+  const headline = 'THE SIAL ATHLETICS JOURNAL';
+  const words = headline.split(' ');
+
   return (
-    <section style={{ background: '#0f0f0f', minHeight: '320px', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', paddingTop: '120px', paddingBottom: '4rem' }}>
+    <section
+      style={{
+        background: 'var(--bg-raised)',
+        borderBottom: '1px solid var(--white-08)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        paddingTop: '140px',
+        paddingBottom: '5rem',
+      }}
+    >
       <div>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          style={{ marginBottom: '1rem' }}
+        >
           <SectionLabel>INSIGHTS</SectionLabel>
         </motion.div>
-        <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 7vw, 4.5rem)', color: '#fff', lineHeight: 0.95, margin: '1rem 0' }}>
-          THE SIAL ATHLETICS JOURNAL
-        </motion.h1>
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} style={{ color: '#C8C8C8', fontSize: '1.125rem', fontFamily: 'var(--font-body)', maxWidth: '500px' }}>
+        
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 0.95, color: 'var(--white)', margin: '1rem 0', overflow: 'hidden' }}>
+          {words.map((word, i) => (
+            <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.35em' }}>
+              <motion.span
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                style={{ display: 'block' }}
+              >
+                {word}
+              </motion.span>
+            </span>
+          ))}
+        </h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--white-60)', maxWidth: '500px', margin: '0 auto' }}
+        >
           Industry insights, manufacturing guides, and brand building resources.
         </motion.p>
       </div>

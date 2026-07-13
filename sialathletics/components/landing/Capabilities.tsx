@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Settings, ShieldAlert, Cpu } from 'lucide-react';
-import { SectionLabel } from '@/components/ui/SectionLabel';
+import SectionLabel from '@/components/ui/SectionLabel';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
 export function Capabilities() {
@@ -25,7 +25,7 @@ export function Capabilities() {
   ];
 
   return (
-    <section id="capabilities" className="py-24 bg-brand-secondary relative border-t border-white/8">
+    <section id="capabilities" className="relative" style={{ background: 'var(--bg-raised)', borderTop: '1px solid var(--white-08)', padding: '6rem 0' }}>
       <div className="absolute inset-0 texture-steel pointer-events-none" />
       <div className="absolute inset-0 texture-noise pointer-events-none" />
 
@@ -39,7 +39,7 @@ export function Capabilities() {
             <h2 className="font-display text-[40px] sm:text-[56px] text-white leading-[1.05] uppercase">
               CAPABILITIES & SERVICES
             </h2>
-            <p className="font-body text-[#C8C8C8] text-base leading-relaxed">
+            <p className="font-body text-base leading-relaxed" style={{ color: 'var(--white-90)' }}>
               We offer full-service OEM manufacturing, private label ODM solutions, and white-label supply chain fulfillment. From initial raw material selection to final US customs landing, we handle it all.
             </p>
           </div>
@@ -53,16 +53,16 @@ export function Capabilities() {
                   key={idx}
                   direction="up"
                   delay={idx * 0.1}
-                  className="bg-[#1a1a1a] border border-white/8 p-8 flex flex-col justify-between h-full group hover:border-brand-red/45 transition-all duration-300"
+                  className="flex flex-col justify-between h-full group transition-all duration-300 bg-[var(--bg-card)] border border-[var(--white-08)] p-8"
                 >
                   <div className="space-y-4">
-                    <div className="inline-block p-3 bg-brand-dark border border-white/8 group-hover:border-brand-red/30 transition-colors duration-300">
+                    <div className="inline-block transition-colors duration-300" style={{ padding: '0.75rem', background: 'var(--bg-base)', border: '1px solid var(--white-08)' }}>
                       <Icon size={24} className="text-brand-red" />
                     </div>
                     <h3 className="font-display text-2xl text-white uppercase">
                       {item.title}
                     </h3>
-                    <p className="font-body text-sm text-[#8A8A8A] leading-relaxed">
+                    <p className="font-body text-sm leading-relaxed" style={{ color: 'var(--white-60)' }}>
                       {item.desc}
                     </p>
                   </div>
