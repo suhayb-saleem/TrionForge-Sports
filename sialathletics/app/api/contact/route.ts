@@ -48,7 +48,8 @@ export async function POST(req: NextRequest) {
     console.log(`[Inquiry API] PDF successfully generated (${pdfBuffer.length} bytes)`);
 
     const resend = new Resend(resendApiKey);
-    const companyEmail = 'sales@sialathletics.com';
+    const companyEmail = 'info@sialathletics.com';
+    const salesNotificationEmail = 'sales@sialathletics.com';
 
     // Prepare Email templates
     const cleanCompanyFilename = company.replace(/[^a-zA-Z0-9]/g, '_');
@@ -133,7 +134,7 @@ export async function POST(req: NextRequest) {
     console.log('[Inquiry API] Dispatching notification to company...');
     const { error: salesError } = await resend.emails.send({
       from: 'Sia Athletics <sales@sialathletics.com>',
-      to: companyEmail,
+      to: salesNotificationEmail,
       replyTo: email,
       subject: `New B2B Lead: ${company} — ${productLine}`,
       html: salesEmailHtml,
