@@ -1,6 +1,5 @@
 import PDFDocument from 'pdfkit';
 import path from 'path';
-import sharp from 'sharp';
 
 export interface InquiryData {
   name: string;
@@ -16,16 +15,6 @@ export interface InquiryData {
  * Generates an A4 B2B Inquiry PDF report in-memory using pdfkit.
  */
 export async function generateInquiryPDF(data: InquiryData): Promise<Buffer> {
-  let logoBlackBuffer: Buffer | null = null;
-  try {
-    const logoPath = path.join(process.cwd(), 'public', 'images', 'logo.png');
-    logoBlackBuffer = await sharp(logoPath)
-      .negate({ alpha: false })
-      .toBuffer();
-  } catch (e: any) {
-    console.warn('[PDF Generator] Could not convert logo with sharp, falling back:', e.message);
-  }
-
   return new Promise((resolve, reject) => {
     const regularFontPath = path.join(process.cwd(), 'public', 'fonts', 'Lato-Regular.ttf');
     const boldFontPath = path.join(process.cwd(), 'public', 'fonts', 'Lato-Bold.ttf');
@@ -55,13 +44,11 @@ export async function generateInquiryPDF(data: InquiryData): Promise<Buffer> {
     const borderGray = '#EEEEEE';
 
     // 1. Header Layout
-    if (logoBlackBuffer) {
-      try {
-        doc.image(logoBlackBuffer, 50, 40, { width: 130 });
-      } catch (e) {
-        doc.font('Lato-Bold').fontSize(20).fillColor(primaryColor).text('SIAL ATHLETICS', 50, 45);
-      }
-    } else {
+    try {
+      const logoPath = path.join(process.cwd(), 'public', 'images', 'logo_pdf.png');
+      doc.image(logoPath, 50, 40, { width: 130 });
+    } catch (e) {
+      // Fallback header styling if logo_pdf.png is missing or fails to load
       doc.font('Lato-Bold').fontSize(20).fillColor(primaryColor).text('SIAL ATHLETICS', 50, 45);
     }
 
