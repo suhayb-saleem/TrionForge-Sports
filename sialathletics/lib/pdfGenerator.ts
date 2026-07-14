@@ -46,7 +46,7 @@ export async function generateInquiryPDF(data: InquiryData): Promise<Buffer> {
     // 1. Header Layout
     try {
       const logoPath = path.join(process.cwd(), 'public', 'images', 'logo_pdf.png');
-      doc.image(logoPath, 50, 40, { width: 130 });
+      doc.image(logoPath, 50, 38, { fit: [130, 42] });
     } catch (e) {
       // Fallback header styling if logo_pdf.png is missing or fails to load
       doc.font('Lato-Bold').fontSize(20).fillColor(primaryColor).text('SIAL ATHLETICS', 50, 45);
