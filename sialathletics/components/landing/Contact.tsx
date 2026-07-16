@@ -187,7 +187,7 @@ export function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }} className="font-body text-white">
-                 {error && (
+                {error && (
                   <div style={{ background: 'rgba(227, 27, 35, 0.1)', border: '1px solid var(--red)', padding: '0.8rem 1rem', color: 'var(--red)', fontSize: '0.85rem' }}>
                     {error}
                   </div>
@@ -196,9 +196,9 @@ export function Contact() {
                 {/* Honeypot field (hidden from users, targeted by bots) */}
                 <div style={{ display: 'none' }}>
                   <label htmlFor="landing-website">Website</label>
-                  <input 
+                  <input
                     id="landing-website"
-                    type="text" 
+                    type="text"
                     name="website"
                     value={formData.website}
                     onChange={e => setFormData({ ...formData, website: e.target.value })}
@@ -206,7 +206,7 @@ export function Contact() {
                     autoComplete="off"
                   />
                 </div>
-                
+
                 {/* Name & Email Group */}
                 <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem' }}>
                   {/* Name */}
@@ -331,7 +331,7 @@ export function Contact() {
           </AnimatedSection>
         </div>
       </div>
-      
+
       <style>{`
         .contact-fields-grid { grid-template-columns: 1fr 1fr; }
         @media (max-width: 640px) {

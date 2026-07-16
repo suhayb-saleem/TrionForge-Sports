@@ -2,33 +2,33 @@
 
 :root {
   /* BACKGROUNDS — deep, rich, not flat black */
-  --bg-base:       #080808;
-  --bg-raised:     #0f0f0f;
-  --bg-card:       #161616;
-  --bg-elevated:   #1e1e1e;
-  --bg-overlay:    rgba(8,8,8,0.92);
+  --bg-base: #080808;
+  --bg-raised: #0f0f0f;
+  --bg-card: #161616;
+  --bg-elevated: #1e1e1e;
+  --bg-overlay: rgba(8, 8, 8, 0.92);
 
   /* RED — the SIAL S mark gradient, used flat in UI */
-  --red:           #E8001C;
-  --red-dark:      #8B0010;
-  --red-glow:      rgba(232,0,28,0.18);
-  --red-border:    rgba(232,0,28,0.4);
+  --red: #E8001C;
+  --red-dark: #8B0010;
+  --red-glow: rgba(232, 0, 28, 0.18);
+  --red-border: rgba(232, 0, 28, 0.4);
 
   /* WHITE SYSTEM — white is the hero, not grey */
-  --white:         #FFFFFF;
-  --white-90:      rgba(255,255,255,0.9);
-  --white-60:      rgba(255,255,255,0.6);
-  --white-30:      rgba(255,255,255,0.3);
-  --white-08:      rgba(255,255,255,0.08);
-  --white-04:      rgba(255,255,255,0.04);
+  --white: #FFFFFF;
+  --white-90: rgba(255, 255, 255, 0.9);
+  --white-60: rgba(255, 255, 255, 0.6);
+  --white-30: rgba(255, 255, 255, 0.3);
+  --white-08: rgba(255, 255, 255, 0.08);
+  --white-04: rgba(255, 255, 255, 0.04);
 
   /* TYPOGRAPHY */
-  --font-display:  'Bebas Neue', sans-serif;
-  --font-body:     'Inter', sans-serif;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
 
   /* MOTION */
-  --ease:          cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in:       cubic-bezier(0.4, 0, 1, 1);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --duration-fast: 0.25s;
   --duration-base: 0.5s;
   --duration-slow: 0.8s;
@@ -38,12 +38,12 @@
   --container-pad: 1.5rem;
 
   /* LIGHT THEME FOR HIGH CONTRAST SECTIONS — MAPS TO MODERN BLACK */
-  --bg-light:      #080808;
-  --bg-light-alt:  #0f0f0f;
-  --text-dark:     #FFFFFF;
-  --text-muted:    rgba(255,255,255,0.6);
-  --border-light:  rgba(255,255,255,0.08);
-  --border-light-strong: rgba(255,255,255,0.16);
+  --bg-light: #080808;
+  --bg-light-alt: #0f0f0f;
+  --text-dark: #FFFFFF;
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-light-strong: rgba(255, 255, 255, 0.16);
 }
 
 @theme {
@@ -62,8 +62,17 @@
 }
 
 /* Base */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: auto; } /* Lenis handles smooth scroll */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+/* Lenis handles smooth scroll */
 body {
   background: var(--bg-base);
   color: var(--white);
@@ -73,17 +82,18 @@ body {
 }
 
 /* Selection */
-::selection { background: var(--red); color: var(--white); }
+::selection {
+  background: var(--red);
+  color: var(--white);
+}
 
 /* Forged steel / carbon fiber texture — subtle */
 .texture-steel {
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 1px,
-    rgba(255,255,255,0.012) 1px,
-    rgba(255,255,255,0.012) 2px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      transparent,
+      transparent 1px,
+      rgba(255, 255, 255, 0.012) 1px,
+      rgba(255, 255, 255, 0.012) 2px);
 }
 
 /* Noise grain overlay — very subtle */
@@ -107,6 +117,7 @@ body {
   0% {
     width: 0%;
   }
+
   100% {
     width: 100%;
   }
@@ -119,5 +130,14 @@ body {
 }
 
 /* Mobile / responsive utilities used by Navbar & ProductTeaser */
-@media (max-width: 1024px) { .hide-mobile { display: none !important; } }
-@media (min-width: 1025px) { .show-mobile { display: none !important; } }
+@media (max-width: 1024px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .show-mobile {
+    display: none !important;
+  }
+}
