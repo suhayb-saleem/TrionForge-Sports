@@ -18,9 +18,9 @@ const capabilities = [
     tags: ['Proven geometries', 'Colorways', 'Grip options'],
   },
   {
-    title: 'Quality & US Compliance',
-    desc: 'Every batch undergoes rigorous quality assurance at our Sialkot facility. All paddles meet USAPA guidelines for surface roughness, deflection, and dimensional limits.',
-    tags: ['Batch QA', 'USAPA', 'Dimensional checks'],
+    title: 'Quality & Compliance',
+    desc: 'Every batch undergoes rigorous quality assurance at our Sialkot facility. All paddles meet global guidelines for surface roughness, deflection, and dimensional limits.',
+    tags: ['Batch QA', 'Compliance', 'Dimensional checks'],
   },
 ];
 
