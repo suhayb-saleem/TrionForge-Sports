@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import CTABanner from '@/components/landing/CTABanner';
 import PageHero from '@/components/ui/PageHero';
 import CapabilityCards from '@/components/capabilities/CapabilityCards';
+import EngineeringDisciplines from '@/components/capabilities/EngineeringDisciplines';
 import ProcessTimeline from '@/components/capabilities/ProcessTimeline';
 import MaterialsBadges from '@/components/capabilities/MaterialsBadges';
 
 export const metadata: Metadata = {
-  title: 'Manufacturing Capabilities — SIAL Athletics',
-  description: 'End-to-end sports equipment manufacturing: OEM, ODM, private label, carbon fiber molding, quality control, and global logistics from Sialkot.',
+  title: 'Padel Racket & Pickleball Paddle Manufacturing — OEM/ODM Capabilities',
+  description: 'How SIAL Athletics builds padel rackets and pickleball paddles: 3K–24K carbon layups, EVA and polypropylene honeycomb cores, precision molding, mold design, QC testing, and export logistics from Sialkot.',
 };
 
 export default function CapabilitiesPage() {
@@ -17,9 +18,10 @@ export default function CapabilitiesPage() {
         crumb="Manufacturing"
         eyebrow="What we do"
         title="End-to-end manufacturing."
-        subtitle="From concept to courier — we handle the full production cycle."
+        subtitle="Padel rackets and pickleball paddles, from concept to courier — we handle the full production cycle."
       />
       <CapabilityCards />
+      <EngineeringDisciplines />
       <ProcessTimeline />
       <MaterialsBadges />
       <CTABanner

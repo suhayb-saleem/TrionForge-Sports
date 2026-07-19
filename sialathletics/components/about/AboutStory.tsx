@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'motion/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 
@@ -37,13 +38,17 @@ export default function AboutStory() {
             From Sialkot<br />to your shelves.
           </h2>
           <p className="body-copy" style={{ color: 'var(--white-90)', marginBottom: '1.25rem' }}>
-            SIAL Athletics was born from a simple belief: premium sports equipment shouldn&apos;t require a premium middleman. We manufacture padel rackets in Sialkot, Pakistan — the city that supplies the world with sporting goods.
+            SIAL Athletics was born from a simple belief: premium sports equipment shouldn&apos;t require a premium middleman. We manufacture padel rackets and pickleball paddles in Sialkot, Pakistan — a city with over a century of sporting-goods manufacturing behind it, from hand-stitched footballs to the composite equipment of today.
           </p>
           <p className="body-copy" style={{ color: 'var(--white-90)', marginBottom: '1.25rem' }}>
-            Our facility combines time-tested Sialkot craftsmanship with modern carbon fiber hot-press molding, advanced surface treatment, and strict quality control protocols. Every racket leaves our factory ready for the US market.
+            Our facility pairs that craftsmanship heritage with modern composite engineering: 3K–24K carbon fiber layups, precision molding, controlled drilling processes, and{' '}
+            <Link href="/quality" style={{ color: 'var(--white)', textDecorationColor: 'var(--red)' }}>stage-by-stage quality control</Link>{' '}
+            that gates every step of the line. Every racket and paddle leaves the factory verified against its build tolerances.
           </p>
           <p className="body-copy" style={{ color: 'var(--white-90)', marginBottom: '2rem' }}>
-            We work with brands, retailers, and distributors who want factory-direct quality without compromise — OEM to your exact spec, or ODM private label built on our proven designs.
+            We work as a manufacturing partner, not just a supplier — brands, retailers, and distributors come to us for{' '}
+            <Link href="/capabilities" style={{ color: 'var(--white)', textDecorationColor: 'var(--red)' }}>OEM builds to their exact spec</Link>{' '}
+            or ODM private-label programs on our proven geometries, factory-direct from the source.
           </p>
           <Button href="/catalogue" variant="primary">Explore our products <span className="hp-btn__arrow" aria-hidden="true">→</span></Button>
         </motion.div>

@@ -58,12 +58,12 @@ export function Range() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: i * 0.1, ease: EASE }}
             >
-              <Link href={`/catalogue?filter=padel&product=${product.id}`} className="hp-shape">
+              <Link href="/catalogue#padel" className="hp-shape">
                 <span className="hp-shape__num">0{i + 1}</span>
                 {product.badge && <span className="hp-shape__badge">{product.badge}</span>}
                 <div className="hp-shape__media">
                   <span className="hp-shape__watermark" aria-hidden="true">{shape}</span>
-                  <Image src={product.imagePath} alt={product.name} fill sizes="(max-width: 900px) 100vw, 33vw" />
+                  <Image src={product.imagePath} alt={`${product.name} carbon fiber ${shape.toLowerCase()} padel racket`} fill sizes="(max-width: 900px) 100vw, 33vw" />
                 </div>
                 <div className="hp-shape__body">
                   <span className="hp-shape__kicker">Padel / {shape}</span>
@@ -86,9 +86,12 @@ export function Range() {
           ))}
         </div>
 
-        <div className="hp-range__foot">
-          <Link href="/catalogue?filter=padel" className="hp-btn hp-btn--ghost">
+        <div className="hp-range__foot" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
+          <Link href="/catalogue#padel" className="hp-btn hp-btn--ghost">
             View all padel rackets <span className="hp-btn__arrow" aria-hidden="true">→</span>
+          </Link>
+          <Link href="/catalogue#pickleball" className="hp-btn hp-btn--ghost">
+            View pickleball paddles <span className="hp-btn__arrow" aria-hidden="true">→</span>
           </Link>
         </div>
       </div>

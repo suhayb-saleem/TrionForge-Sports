@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import CTABanner from '@/components/landing/CTABanner';
 import PageHero from '@/components/ui/PageHero';
 import QualityChecklist from '@/components/quality/QualityChecklist';
+import QualityProcess from '@/components/quality/QualityProcess';
 import QualityStandards from '@/components/quality/QualityStandards';
 
 export const metadata: Metadata = {
-  title: 'Quality Standards — SIAL Athletics',
-  description: 'USAPA-compliant manufacturing. Every SIAL Athletics paddle meets strict surface roughness, deflection, and dimensional standards.',
+  title: 'Quality Control & Testing Standards — Padel & Pickleball Manufacturing',
+  description: 'Stage-by-stage quality control for padel rackets and pickleball paddles: incoming material inspection, layup control, surface finish testing, weight consistency to ±0.1oz, and batch-level QC reports.',
 };
 
 export default function QualityPage() {
@@ -16,9 +17,10 @@ export default function QualityPage() {
         crumb="Quality"
         eyebrow="Our promise"
         title="Quality without compromise."
-        subtitle="Every racket we ship meets its build tolerances — dimension, weight, and balance verified batch by batch."
+        subtitle="Every padel racket and pickleball paddle we ship meets its build tolerances — dimension, weight, and balance verified batch by batch."
       />
       <QualityChecklist />
+      <QualityProcess />
       <QualityStandards />
       <CTABanner
         headline="Quality you can put your brand on."

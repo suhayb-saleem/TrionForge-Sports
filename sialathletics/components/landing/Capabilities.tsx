@@ -9,12 +9,12 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const capabilities = [
   {
     title: 'OEM Manufacturing',
-    desc: 'Send us your CAD designs and specifications. We build to your exact measurements, tolerances, and stiffness profiles using 3K–24K carbon fiber monoblock hot-press molding.',
+    desc: 'Send us your CAD designs and specifications. We build to your exact measurements, tolerances, and stiffness profiles using 3K–24K carbon fiber precision molding.',
     tags: ['CAD to mold', 'Hot-press', 'Custom stiffness'],
   },
   {
     title: 'ODM Private Label',
-    desc: 'Leverage our proven teardrop, round, and diamond geometries and core configurations. Customize graphics, colorways, surface textures, and grip accessories to own the shelf.',
+    desc: 'Leverage our proven padel geometries — teardrop, round, diamond — and pickleball profiles with carbon fiber faces. Customize graphics, colorways, surface textures, and grip accessories to own the shelf.',
     tags: ['Proven geometries', 'Colorways', 'Grip options'],
   },
   {
@@ -56,8 +56,9 @@ export function Capabilities() {
           <span className="hp-eyebrow hp-eyebrow--ink">Manufacturing power</span>
           <h2 className="hp-display hp-craft__title">Engineered<br />at the source.</h2>
           <p className="hp-craft__intro">
-            B2B OEM manufacturing, private-label ODM, and white-label fulfillment — from raw
-            material selection to final landed delivery, handled under one roof.
+            B2B OEM manufacturing, private-label ODM, and white-label fulfillment for padel rackets
+            and pickleball paddles — from raw material selection to final landed delivery, handled
+            under one roof.
           </p>
 
           <div className="hp-craft__list">

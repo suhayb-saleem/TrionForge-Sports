@@ -4,7 +4,7 @@ import { CheckCircle2, ShieldCheck } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 
 const checks = [
-  'Surface Roughness Testing (USAPA ≤ 30µm limit)',
+  'Surface Roughness & Finish Consistency Testing',
   'Deflection & Compression Testing',
   'Weight Consistency ± 0.1oz per batch',
   'Edge Guard Seal & Adhesion Test',
@@ -49,7 +49,7 @@ export default function QualityChecklist() {
           <span className="hp-infocard__icon" style={{ width: '4rem', height: '4rem' }}>
             <ShieldCheck size={30} />
           </span>
-          <span style={{ color: 'var(--hp-ivory)', fontSize: '0.72rem', fontFamily: 'var(--hp-body)', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Quality certification active</span>
+          <span style={{ color: 'var(--hp-ivory)', fontSize: '0.72rem', fontFamily: 'var(--hp-body)', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Every batch inspected</span>
         </motion.div>
       </div>
 

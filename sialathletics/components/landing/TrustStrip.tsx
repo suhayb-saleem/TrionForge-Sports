@@ -3,11 +3,12 @@
 // Kinetic credential ribbon — replaces the old 4-icon trust strip with an
 // infinite marquee of manufacturing credentials (premium racket-brand idiom).
 const CREDENTIALS = [
-  'OEM & Private Label',
-  'Carbon Monoblock Hot-Press',
-  '24-Unit MOQ',
-  'USAPA-Compliant Batches',
+  'Padel & Pickleball OEM',
+  'Precision Carbon Molding',
+  'MOQ from 24 Units',
+  'Batch-Tested Quality',
   '3K–24K Carbon Layup',
+  'Custom Private Label',
   'Teardrop · Round · Diamond',
   'Built in Sialkot',
   'Export-Ready Programs',

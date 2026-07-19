@@ -2,6 +2,7 @@
 import { useId, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Minus } from 'lucide-react';
+import Link from 'next/link';
 import SectionLabel from '@/components/ui/SectionLabel';
 
 const faqs = [
@@ -55,6 +56,11 @@ export default function ContactFAQ() {
               </div>
             );
           })}
+        </div>
+        <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+          <Link href="/faq" className="hp-link">
+            See the full FAQ — MOQ, customization, QC, and shipping <b aria-hidden="true">↗</b>
+          </Link>
         </div>
       </div>
     </section>

@@ -6,7 +6,7 @@ const steps = [
   { num: '01', title: 'Inquiry & brief', desc: 'Share your specs, target price, and order volume. We respond within 24 hours.' },
   { num: '02', title: 'Sampling', desc: 'Receive physical samples for testing and approval within 3-4 weeks.' },
   { num: '03', title: 'Production', desc: 'Full batch manufacturing with daily progress updates and QC checkpoints.' },
-  { num: '04', title: 'Quality check', desc: 'Final inspection against agreed specs. USAPA compliance verified per batch.' },
+  { num: '04', title: 'Quality check', desc: 'Final inspection against agreed specs, verified batch by batch.' },
   { num: '05', title: 'Delivery', desc: 'Export cleared, freight arranged, tracking provided door to warehouse.' },
 ];
 

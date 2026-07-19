@@ -10,7 +10,7 @@ import Button from '@/components/ui/Button';
 
 const links = [
   { label: 'Home', href: '/' },
-  { label: 'Products', href: '/catalogue?filter=padel' },
+  { label: 'Products', href: '/catalogue' },
 ];
 
 const aboutGroup = {
@@ -19,6 +19,7 @@ const aboutGroup = {
     { label: 'Manufacturing', href: '/capabilities' },
     { label: 'Quality', href: '/quality' },
     { label: 'About SIAL Athletics', href: '/about' },
+    { label: 'FAQ', href: '/faq' },
   ],
 };
 

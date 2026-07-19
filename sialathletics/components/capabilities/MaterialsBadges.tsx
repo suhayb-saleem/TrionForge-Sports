@@ -9,8 +9,7 @@ const groups = [
     items: [
       { name: '3K Carbon Fiber', desc: 'Our standard weave — the most widely used grade across the range, balancing stiffness and cost for everyday builds.' },
       { name: '12K Carbon Fiber', desc: 'Heavier tow count than 3K, adding stiffness for a firmer, more powerful ball response.' },
-      { name: '18K Carbon Fiber', desc: 'Higher fiber density for advanced, performance-tier builds that need more rigidity without added bulk.' },
-      { name: '24K Carbon Fiber', desc: 'Our premium grade — maximum stiffness-to-weight ratio, reserved for competition-level rackets.' },
+      { name: '24K Carbon Fiber', desc: 'Our premium grade — higher fiber density for advanced, performance-tier builds that need more rigidity without added bulk.' },
       { name: 'Fiberglass/Carbon Hybrid', desc: 'Blends fiberglass flex with carbon rigidity for a softer feel, favored in control-oriented builds.' },
       { name: 'Kevlar-Carbon Blend', desc: "Silver/red premium line — Kevlar's impact resistance layered with carbon stiffness for our professional-tier rackets." },
     ],
@@ -64,7 +63,7 @@ export default function MaterialsBadges() {
               'Carbon fiber face in 3K, 12K, 18K, and 24K grades',
               'EVA foam core options across hardness ratings',
               'Multiple surface textures for spin and control tuning',
-              'Monoblock and hybrid frame constructions',
+              'Precision-molded and hybrid frame constructions',
             ].map((point) => (
               <div key={point} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
                 <span style={{ color: 'var(--hp-red)', fontFamily: 'var(--hp-body)', fontWeight: 800, fontSize: '0.9rem', lineHeight: 1.5, flexShrink: 0 }}>—</span>
@@ -139,7 +138,7 @@ export default function MaterialsBadges() {
           </h3>
           <div className="materials-spec-grid" style={{ display: 'grid', gap: '1.5rem', marginBottom: '2rem' }}>
             {[
-              { label: 'Construction', value: 'Monoblock frame with integrated protector standard; composite bonding for multi-material hybrids' },
+              { label: 'Construction', value: 'Integrated frame and protector construction as standard; composite bonding available for multi-material hybrids' },
               { label: 'Thickness', value: '38mm standard' },
               { label: 'Weight', value: '350–380g (350–360g lightweight, 370g+ power)' },
               { label: 'Balance', value: 'Low / Mid / High, 260–275mm' },

@@ -5,10 +5,10 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import InfoCard from '@/components/ui/InfoCard';
 
 const capabilities = [
-  { Icon: Settings, title: 'OEM manufacturing', desc: 'Send us your CAD files and tolerances. We build to spec using monoblock carbon fiber hot-press molding — frame and protector formed as one piece — with CNC-precision molds for teardrop, round, and diamond geometries.' },
-  { Icon: Layers, title: 'ODM private label', desc: 'Choose from proven teardrop (all-rounder), round (control), or diamond (power) shapes. Customize graphics, colorways, surface texture, edge guard branding, and packaging.' },
+  { Icon: Settings, title: 'OEM manufacturing', desc: 'Send us your CAD files and tolerances. We build to spec using precision carbon fiber molding — frame and protector formed to your tolerances — with precision-engineered molds for teardrop, round, and diamond geometries.' },
+  { Icon: Layers, title: 'ODM private label', desc: 'Choose from proven teardrop (all-rounder), round (control), or diamond (power) padel shapes — or standard and elongated pickleball profiles. Customize graphics, colorways, surface texture, edge guard branding, and packaging.' },
   { Icon: PenTool, title: 'Mold design & prototyping', desc: 'Need a new shape? Our R&D team handles mold design and produces physical prototypes within 3-4 weeks for your approval.' },
-  { Icon: ShieldCheck, title: 'Quality control & testing', desc: 'Every batch is tested for USAPA surface roughness compliance, deflection tolerance, and edge seal integrity — weight held to 350–380g and balance calibrated to 260–275mm.' },
+  { Icon: ShieldCheck, title: 'Quality control & testing', desc: 'Every batch is tested for surface roughness and finish consistency, deflection tolerance, and edge seal integrity — padel weight held to 350–380g with balance calibrated to 260–275mm, and batch weight consistency to ±0.1oz.' },
   { Icon: Package, title: 'Custom packaging', desc: 'Retail-ready packaging design and production included. Gift boxes, hang tags, QR code labels, and poly bags — all customizable.' },
   { Icon: Globe, title: 'Global logistics', desc: 'We handle export documentation and US customs compliance, with export experience to North America, Europe, and Central America.' },
 ];

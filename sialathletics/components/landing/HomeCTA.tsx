@@ -20,7 +20,7 @@ export default function HomeCTA() {
           transition={{ duration: 0.75, ease: EASE }}
         >
           <span className="hp-eyebrow hp-eyebrow--ink">Start at the source</span>
-          <h2 className="hp-display hp-cta__title">Build a better<br />padel line<em>.</em></h2>
+          <h2 className="hp-display hp-cta__title">Build a better<br />racket line<em>.</em></h2>
           <p className="hp-cta__copy">
             Bring us your target player, price point, and design direction. We&apos;ll shape the
             manufacturing program around it — samples, specs, and mold quotes included.

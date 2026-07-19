@@ -2,7 +2,7 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import InfoCard from '@/components/ui/InfoCard';
 
 const standards = [
-  { title: 'USAPA-approved specs', desc: 'All paddles meet USA Pickleball Association equipment specifications for surface texture, paddle size, and performance limits.' },
+  { title: 'Built to your specification', desc: 'Every order is manufactured to the dimensions, surface texture, and performance targets you specify. Certification and third-party testing requirements can be accommodated on a per-project basis.' },
   { title: 'Padel build tolerances', desc: 'Padel rackets are held to a standard 38mm thickness ceiling, a 350–380g weight range, and 260–275mm balance depending on shape — verified batch by batch before shipment.' },
   { title: 'US import ready', desc: 'SIAL Athletics products are manufactured and documented for smooth US Customs clearance. HTS classification and compliance docs included.' },
   { title: 'Batch-level reporting', desc: 'Every production order comes with a QC report documenting tested samples, pass rates, and any corrective actions taken.' },

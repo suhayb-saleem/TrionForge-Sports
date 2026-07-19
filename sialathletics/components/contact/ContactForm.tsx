@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { MapPin, Mail, Phone, Check } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -22,6 +22,25 @@ export default function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const formSectionRef = useRef<HTMLElement>(null);
+
+  // Pre-fill from the catalogue spec configurator: /contact?line=...&spec=...
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const spec = params.get('spec');
+    const line = params.get('line');
+    if (!spec && !line) return;
+    setFormData((prev) => ({
+      ...prev,
+      message: spec ?? prev.message,
+      productLine:
+        line && ['Padel Rackets', 'Pickleball Paddles', 'Both Lines', 'Other Accessories'].includes(line)
+          ? line
+          : prev.productLine,
+    }));
+    // Bring the pre-filled form into view so the hand-off is obvious.
+    formSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -97,7 +116,7 @@ export default function ContactForm() {
   ];
 
   return (
-    <section className="site-section" style={{ background: 'var(--hp-black)' }}>
+    <section className="site-section" style={{ background: 'var(--hp-black)', scrollMarginTop: '90px' }} ref={formSectionRef}>
       <div className="contact-form-grid container-custom" style={{ display: 'grid', gap: '4rem', alignItems: 'start' }}>
 
         {/* Left — Contact Info */}
@@ -204,7 +223,7 @@ export default function ContactForm() {
 
               <div className="hp-field hp-field--full">
                 <label htmlFor="form-message">Message</label>
-                <textarea id="form-message" required rows={4}
+                <textarea id="form-message" required rows={formData.message.length > 160 ? 10 : 4}
                   placeholder="Specify target specifications, material preferences, logo engraving, or custom request details…"
                   value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} />
               </div>

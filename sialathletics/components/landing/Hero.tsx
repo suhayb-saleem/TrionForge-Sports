@@ -8,7 +8,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const proof = [
   { value: 'OEM+ODM', label: 'Private label' },
-  { value: '24', label: 'Unit MOQ' },
+  { value: '24+', label: 'Unit MOQ' },
   { value: '3K–24K', label: 'Carbon layup' },
 ];
 
@@ -27,7 +27,7 @@ export default function Hero() {
 
       <div className="hp-shell hp-hero__grid">
         <div className="hp-hero__content">
-          <motion.p className="hp-eyebrow" {...rise(0)}>Padel racket manufacturing</motion.p>
+          <motion.p className="hp-eyebrow" {...rise(0)}>Padel & pickleball manufacturing</motion.p>
 
           <motion.h1 className="hp-display hp-hero__title" {...rise(0.08)}>
             <span className="is-solid">The edge</span>
@@ -36,12 +36,13 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className="hp-hero__copy" {...rise(0.18)}>
-            Performance padel rackets engineered for serious brands, clubs, and distributors.
-            From carbon layup to retail-ready delivery, we build your next line at the source.
+            Performance padel rackets and pickleball paddles engineered for serious brands, clubs,
+            and distributors. From carbon layup to retail-ready delivery, we build your next line
+            at the source.
           </motion.p>
 
           <motion.div className="hp-hero__actions" {...rise(0.26)}>
-            <Link href="/catalogue?filter=padel" className="hp-btn hp-btn--primary">
+            <Link href="/catalogue#padel" className="hp-btn hp-btn--primary">
               Explore padel rackets <span className="hp-btn__arrow" aria-hidden="true">→</span>
             </Link>
             <Link href="/capabilities" className="hp-link">
@@ -78,7 +79,7 @@ export default function Hero() {
               style={{ objectFit: 'contain' }}
             />
           </div>
-          <Link href="/catalogue?filter=padel" className="hp-hero__tag hp-hero__tag--br hp-link">
+          <Link href="/catalogue#padel" className="hp-hero__tag hp-hero__tag--br hp-link">
             View the range <b aria-hidden="true">↗</b>
           </Link>
         </motion.div>

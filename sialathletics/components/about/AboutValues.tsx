@@ -11,7 +11,7 @@ const values = [
     title: 'Precision',
     desc: 'Every gram, every millimeter engineered to spec. No shortcuts, no tolerance creep.',
     image: '/images/holemachine.png',
-    alt: 'CNC drilling machine precision-boring the face of a padel racket',
+    alt: 'Precision drilling machine boring the face of a padel racket',
   },
   {
     title: 'Craftsmanship',

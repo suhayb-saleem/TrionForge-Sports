@@ -6,8 +6,8 @@ import AboutStats from '@/components/about/AboutStats';
 import AboutValues from '@/components/about/AboutValues';
 
 export const metadata: Metadata = {
-  title: 'About SIAL Athletics — Our Story & Manufacturing Heritage',
-  description: 'Learn about SIAL Athletics, our manufacturing heritage in Sialkot, and our mission to bring premium pickleball and padel equipment to the US market.',
+  title: 'About Us — Padel & Pickleball Manufacturer in Sialkot, Pakistan',
+  description: 'SIAL Athletics manufactures carbon fiber padel rackets and pickleball paddles in Sialkot, Pakistan — combining the city\'s sporting-goods heritage with modern manufacturing and factory-direct OEM/ODM programs.',
 };
 
 export default function AboutPage() {

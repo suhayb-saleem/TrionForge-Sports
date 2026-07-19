@@ -1,4 +1,4 @@
-export const metadata = { title: 'Terms & Conditions — SIAL Athletics' };
+export const metadata = { title: 'Terms & Conditions' };
 
 export default function TermsPage() {
   return (
