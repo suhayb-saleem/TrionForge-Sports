@@ -1,11 +1,157 @@
+import Link from 'next/link';
+
 export const metadata = { title: 'Privacy Policy' };
+
+const sections = [
+  {
+    h: '1. Introduction',
+    body: [
+      `SIAL Athletics ("we," "us," or "our") operates the website sialathletics.com (the "Site"). This Privacy Policy explains how we collect, use, disclose, and protect information when you visit our Site or interact with us, including visitors from the European Union, United States, and other regions.`,
+      'By using our Site, you agree to the collection and use of information in accordance with this policy.',
+    ],
+  },
+  {
+    h: '2. Who We Are',
+    body: [
+      'SIAL Athletics is a padel racket and pickleball paddle manufacturer based in Sialkot, Pakistan.',
+      'Contact for privacy matters: info@sialathletics.com',
+    ],
+  },
+  {
+    h: '3. Information We Collect',
+    body: [
+      '3.1 Information You Provide Directly — When you use our contact form, we collect: name, email address, phone number (optional), and message content and any other information you choose to include.',
+      '3.2 Information Collected Automatically — When you visit our Site, certain technical information may be collected automatically, including IP address, browser type and version, device information, pages visited and time spent on the Site, and referring website. This information may be collected via cookies and similar technologies (see Section 5).',
+      '3.3 Information from Third-Party Services — We use trusted third-party service providers to help operate our Site and business communications, including services for website hosting, security and performance, email delivery, and business communications. These providers process data solely on our behalf and are contractually or by policy bound to protect your information in accordance with applicable data protection standards.',
+    ],
+  },
+  {
+    h: '4. How We Use Your Information',
+    body: [
+      'We use collected information to: respond to inquiries submitted through our contact form; provide quotes, product information, and communicate about potential business relationships; improve and maintain the security and performance of our Site; and comply with legal obligations.',
+      'We do not sell your personal information to third parties.',
+    ],
+  },
+  {
+    h: '5. Cookies and Tracking Technologies',
+    body: [
+      'Our Site uses cookies, primarily through Cloudflare, for security and performance purposes (e.g., distinguishing legitimate visitors from bots, maintaining site reliability). These are generally considered "strictly necessary" cookies under most privacy regulations.',
+      'You can control or disable cookies through your browser settings, though this may affect Site functionality.',
+      'When you first visit our Site, you will be presented with a cookie consent banner allowing you to accept or manage cookie preferences. Strictly necessary cookies (such as those required for security and basic Site functionality) do not require consent and cannot be disabled. Any non-essential cookies (such as analytics or marketing cookies, if introduced in the future) will only be activated with your explicit consent.',
+    ],
+  },
+  {
+    h: '6. Legal Basis for Processing (EU/EEA Visitors — GDPR)',
+    body: [
+      'If you are located in the European Union or European Economic Area, we process your personal data on the following legal bases: consent (when you voluntarily submit the contact form), legitimate interest (for security/fraud prevention and responding to business inquiries), and contractual necessity (where processing is necessary to take steps toward a potential business relationship at your request).',
+      'Your Rights Under GDPR — If applicable to you, you have the right to: access the personal data we hold about you; request correction of inaccurate data; request deletion of your data ("right to be forgotten"); object to or restrict certain processing; request data portability; and lodge a complaint with your local data protection authority.',
+      'To exercise any of these rights, contact us at info@sialathletics.com.',
+    ],
+  },
+  {
+    h: '7. California Residents (CCPA)',
+    body: [
+      'If you are a California resident, you have the right to request disclosure of the categories of personal information we collect, request deletion of your personal information, and opt out of the sale of personal information (note: we do not sell personal information). To exercise these rights, contact info@sialathletics.com.',
+    ],
+  },
+  {
+    h: '8. Data Retention',
+    body: [
+      'We retain personal information submitted via our contact form for as long as necessary to respond to your inquiry and maintain business records, or as required by applicable law. You may request deletion of your data at any time.',
+    ],
+  },
+  {
+    h: '9. Data Security',
+    body: [
+      'We take reasonable technical and organizational measures to protect your information, including encryption in transit, secure infrastructure, and access controls. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.',
+    ],
+  },
+  {
+    h: '10. International Data Transfers',
+    body: [
+      'As our business is based in Pakistan and we serve clients internationally (including the EU and US), your information may be transferred to, stored, and processed in countries other than your own. We take steps to ensure such transfers comply with applicable data protection laws.',
+    ],
+  },
+  {
+    h: "11. Children's Privacy",
+    body: [
+      'Our Site is intended for business use and is not directed at individuals under 18. We do not knowingly collect personal information from children.',
+    ],
+  },
+  {
+    h: '12. Changes to This Policy',
+    body: [
+      'We may update this Privacy Policy from time to time. The "Last Updated" date at the top of this page will reflect the most recent changes. Continued use of the Site after changes constitutes acceptance of the updated policy.',
+    ],
+  },
+];
 
 export default function PrivacyPage() {
   return (
-    <main style={{ paddingTop: '120px', minHeight: '80vh', background: 'var(--hp-black)' }}>
-      <div className="hp-shell" style={{ maxWidth: '800px', padding: '4rem 1.5rem' }}>
-        <h1 className="hp-display" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', color: 'var(--hp-ivory)', marginBottom: '2rem' }}>Privacy Policy</h1>
-        <p style={{ fontFamily: 'var(--hp-body)', color: 'var(--hp-ivory-60)', lineHeight: 1.7 }}>This Privacy Policy is being updated. Please contact us at info@sialathletics.com with any questions.</p>
+    <main style={{ paddingTop: '120px', minHeight: '80vh', background: 'var(--hp-paper)' }}>
+      <div className="hp-shell" style={{ maxWidth: '760px', padding: '4rem 1.5rem 6rem' }}>
+        <span className="hp-eyebrow hp-eyebrow--ink">Legal</span>
+        <h1 className="hp-display" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', color: 'var(--hp-ink)', margin: '1rem 0 0.5rem' }}>
+          Privacy Policy
+        </h1>
+        <p style={{ fontFamily: 'var(--hp-body)', color: 'var(--hp-ink-45)', fontSize: '0.85rem', marginBottom: '3rem' }}>
+          Last updated: 21 July 2026
+        </p>
+
+        {sections.map((s) => (
+          <section key={s.h} style={{ marginBottom: '2.4rem' }}>
+            <h2
+              className="hp-display"
+              style={{
+                fontSize: '1.1rem',
+                textTransform: 'uppercase',
+                letterSpacing: '-0.01em',
+                color: 'var(--hp-ink)',
+                marginBottom: '0.9rem',
+                paddingBottom: '0.6rem',
+                borderBottom: '1px solid var(--hp-ink-line)',
+              }}
+            >
+              {s.h}
+            </h2>
+            {s.body.map((p, i) => (
+              <p key={i} style={{ fontFamily: 'var(--hp-body)', color: 'var(--hp-ink-70)', lineHeight: 1.75, fontSize: '0.92rem', margin: i === 0 ? 0 : '0.9rem 0 0' }}>
+                {p}
+              </p>
+            ))}
+          </section>
+        ))}
+
+        <section>
+          <h2
+            className="hp-display"
+            style={{
+              fontSize: '1.1rem',
+              textTransform: 'uppercase',
+              letterSpacing: '-0.01em',
+              color: 'var(--hp-ink)',
+              marginBottom: '0.9rem',
+              paddingBottom: '0.6rem',
+              borderBottom: '1px solid var(--hp-ink-line)',
+            }}
+          >
+            13. Contact Us
+          </h2>
+          <p style={{ fontFamily: 'var(--hp-body)', color: 'var(--hp-ink-70)', lineHeight: 1.75, fontSize: '0.92rem', margin: 0 }}>
+            If you have questions about this Privacy Policy or how your data is handled, contact us at:
+          </p>
+          <p style={{ fontFamily: 'var(--hp-body)', color: 'var(--hp-ink-70)', lineHeight: 1.75, fontSize: '0.92rem', margin: '0.9rem 0 0' }}>
+            <strong style={{ color: 'var(--hp-ink)' }}>SIAL Athletics</strong>
+            <br />
+            Email: <a href="mailto:info@sialathletics.com" className="hp-link hp-link--ink">info@sialathletics.com</a>
+            <br />
+            Sialkot, Pakistan
+          </p>
+        </section>
+
+        <p style={{ marginTop: '3.5rem' }}>
+          <Link href="/terms" className="hp-link hp-link--ink">View our Terms &amp; Conditions →</Link>
+        </p>
       </div>
     </main>
   );

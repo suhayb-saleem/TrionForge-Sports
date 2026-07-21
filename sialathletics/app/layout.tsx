@@ -3,6 +3,9 @@ import { Space_Grotesk, Archivo } from 'next/font/google';
 import { SmoothScrollProvider } from '@/lib/lenis';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import CookieConsent from '@/components/layout/CookieConsent';
+import { ContactModalProvider } from '@/lib/contactModal';
+import ContactModal from '@/components/contact/ContactModal';
 import './globals.css';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
@@ -41,5 +44,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${spaceGrotesk.variable} ${archivo.variable} antialiased`}><body className="min-h-screen flex flex-col"><SmoothScrollProvider><Navbar /><div className="flex-1">{children}</div><Footer /></SmoothScrollProvider></body></html>;
+  return <html lang="en" className={`${spaceGrotesk.variable} ${archivo.variable} antialiased`}><body className="min-h-screen flex flex-col"><ContactModalProvider><SmoothScrollProvider><Navbar /><div className="flex-1">{children}</div><Footer /><CookieConsent /></SmoothScrollProvider><ContactModal /></ContactModalProvider></body></html>;
 }

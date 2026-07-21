@@ -49,7 +49,7 @@ const segments = [
 // page's capability tiles: full-bleed photo, scrim, copy on top.
 export default function WhoWeWorkWith() {
   return (
-    <section className="hp-audience" style={{ background: 'var(--hp-panel)', borderTop: '1px solid var(--hp-hair)', padding: 'var(--hp-gap) 0' }}>
+    <section className="hp-audience" style={{ background: 'var(--hp-paper)', borderTop: '1px solid var(--hp-ink-line)', padding: 'var(--hp-gap) 0' }}>
       <div className="hp-shell">
         <motion.div
           initial={{ opacity: 0, y: 26 }}
@@ -58,11 +58,11 @@ export default function WhoWeWorkWith() {
           transition={{ duration: 0.75, ease: EASE }}
           style={{ marginBottom: '3rem', maxWidth: '640px' }}
         >
-          <span className="hp-eyebrow">Who we work with</span>
-          <h2 className="hp-display" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', color: 'var(--hp-ivory)', margin: '0.9rem 0 1.1rem' }}>
+          <span className="hp-eyebrow hp-eyebrow--ink">Who we work with</span>
+          <h2 className="hp-display" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', color: 'var(--hp-ink)', margin: '0.9rem 0 1.1rem' }}>
             One factory.<br />Four kinds of partner.
           </h2>
-          <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ivory-60)', lineHeight: 1.7 }}>
+          <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
             Every program starts from the same production line — what changes is how we structure
             specs, volumes, and branding around your business.
           </p>
@@ -95,7 +95,7 @@ export default function WhoWeWorkWith() {
         </div>
 
         <div style={{ marginTop: '2.5rem' }}>
-          <Link href="/faq" className="hp-link">
+          <Link href="/faq" className="hp-link hp-link--ink">
             Common buyer questions, answered <b aria-hidden="true">↗</b>
           </Link>
         </div>
@@ -112,7 +112,7 @@ export default function WhoWeWorkWith() {
         .who-bento__tile {
           position: relative;
           overflow: hidden;
-          border: 1px solid var(--hp-hair);
+          border: 1px solid var(--hp-ink-line);
           display: flex;
           align-items: flex-end;
         }

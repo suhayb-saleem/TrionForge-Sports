@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useContactModal } from '@/lib/contactModal';
 
 type Group = { title: string; items: string[] };
 
@@ -17,7 +17,7 @@ export default function SpecConfigurator({
   productLine: string;   // must match a ContactForm "Product line" option value
   groups: Group[];
 }) {
-  const router = useRouter();
+  const { open: openContactModal } = useContactModal();
   const [selected, setSelected] = useState<Record<string, string[]>>({});
 
   // Single-select per block: picking an option replaces any previous pick in
@@ -42,7 +42,7 @@ export default function SpecConfigurator({
       if (picks.length > 0) lines.push(`${group.title}: ${picks.join(', ')}`);
     }
     const message = lines.join('\n');
-    router.push(`/contact?line=${encodeURIComponent(productLine)}&spec=${encodeURIComponent(message)}`);
+    openContactModal({ productLine, message });
   };
 
   return (

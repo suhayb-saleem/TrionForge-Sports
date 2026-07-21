@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import Link from 'next/link';
+import { useContactModal } from '@/lib/contactModal';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -49,6 +49,7 @@ const regions = [
 ];
 
 export default function GlobalReach() {
+  const { open: openContactModal } = useContactModal();
   const dots: { cx: number; cy: number; kind: string }[] = [];
   GRID.forEach((row, r) => {
     row.split('').forEach((ch, c) => {
@@ -148,9 +149,9 @@ export default function GlobalReach() {
         </div>
 
         <div style={{ marginTop: '2.25rem' }}>
-          <Link href="/contact" className="hp-link">
+          <button type="button" onClick={() => openContactModal()} className="hp-link" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
             Don&apos;t see your region? Ask us <b aria-hidden="true">↗</b>
-          </Link>
+          </button>
         </div>
       </div>
 

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
+import { Download } from 'lucide-react';
 import PageHero from '@/components/ui/PageHero';
 import CTABanner from '@/components/landing/CTABanner';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -19,6 +21,7 @@ type Platform = {
   tag: string;
   desc: string;
   meter: number | null; // 0-100 control→power position; null = custom/to-spec
+  image?: string;
 };
 
 const padelPlatforms: Platform[] = [
@@ -27,24 +30,28 @@ const padelPlatforms: Platform[] = [
     tag: 'Control',
     desc: 'The control platform — largest sweet spot and lowest balance for precision, defense, and consistency. The natural base for club, academy, and beginner-to-intermediate lines.',
     meter: 14,
+    image: '/images/products/round_padel.png',
   },
   {
     name: 'Teardrop',
     tag: 'Balanced Performance',
     desc: 'The all-round platform — a mid balance that bridges control and power. The most versatile base geometry, and the most common choice for a flagship model.',
     meter: 50,
+    image: '/images/products/teardrop_padel.png',
   },
   {
     name: 'Diamond',
     tag: 'Maximum Power',
     desc: 'The power platform — head-weighted with a higher sweet spot for aggressive, attacking play. Built for advanced and competition-tier lines.',
     meter: 88,
+    image: '/images/products/Diamond_padel.png',
   },
   {
     name: 'Hybrid',
     tag: 'To Your Specification',
     desc: 'A blended geometry developed around your target play profile — sitting anywhere between round and diamond. Custom molds can be developed on demand for fully exclusive shapes.',
     meter: null,
+    image: '/images/products/hybrid_padel.png',
   },
 ];
 
@@ -54,18 +61,21 @@ const pickleballPlatforms: Platform[] = [
     tag: 'Touch & Placement',
     desc: 'Thicker-core builds tuned for feel, dwell time, and placement — the platform for players who win the soft game. Configured to your face material, weight, and grip spec.',
     meter: 14,
+    image: '/images/products/pickleball_widebody.png',
   },
   {
     name: 'Balanced',
     tag: 'All-Court Performance',
     desc: 'The versatile middle of the range — pop without sacrificing touch. The typical base for a brand’s core model, customized end to end to your requirements.',
     meter: 50,
+    image: '/images/products/pickleball_hybrid.png',
   },
   {
     name: 'Power',
     tag: 'Drive & Speed',
     desc: 'Thinner-core, firmer-faced builds engineered for drive, speed, and put-aways. Specified to your weight target and swing profile — never a fixed retail model.',
     meter: 86,
+    image: '/images/products/pickleball elongated.png',
   },
 ];
 
@@ -165,9 +175,12 @@ const services: { title: string; items: string[] }[] = [
 function PlatformCard({ platform, index }: { platform: Platform; index: number }) {
   return (
     <article className="plat-card">
-      {/* Image placeholder — final product visuals to be supplied */}
-      <div className="plat-card__media" aria-hidden="true">
-        <span className="plat-card__media-label">Visual coming soon</span>
+      <div className="plat-card__media" aria-hidden="true" style={{ position: 'relative' }}>
+        {platform.image ? (
+          <Image src={platform.image} alt={platform.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" style={{ objectFit: 'contain', padding: '1.5rem' }} />
+        ) : (
+          <span className="plat-card__media-label">Visual coming soon</span>
+        )}
       </div>
       <div className="plat-card__body">
         <span className="plat-card__num">0{index + 1}</span>
@@ -311,6 +324,15 @@ export default function CataloguePage() {
               <Link href="/manufacturing" className="hp-link">how we manufacture</Link> or check{' '}
               <Link href="/faq" className="hp-link">common buyer questions</Link>.
             </p>
+            <div style={{ marginTop: '2.5rem' }}>
+              <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.9rem', color: 'var(--hp-ivory-60)', marginBottom: '1rem', maxWidth: '400px', lineHeight: 1.6 }}>
+                Download our full technical catalogue for an offline reference of all available platform geometries, material compositions, and manufacturing capabilities.
+              </p>
+              <a href="/images/catalogue.zip" download className="hp-btn hp-btn--outline" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <Download size={16} style={{ marginRight: '0.5rem' }} />
+                <span>DOWNLOAD CATALOGUE (.ZIP)</span>
+              </a>
+            </div>
           </div>
           <div className="opt-grid opt-grid--services">
             {services.map((group) => <OptionGroup key={group.title} {...group} />)}
@@ -368,7 +390,7 @@ export default function CataloguePage() {
         }
         .plat-card:hover { transform: translateY(-4px); }
         .plat-card__media {
-          aspect-ratio: 4 / 3;
+          aspect-ratio: 1 / 1;
           border-bottom: 1px solid var(--hp-hair);
           background:
             repeating-linear-gradient(-45deg, transparent 0 14px, rgba(240, 237, 230, 0.035) 14px 15px);

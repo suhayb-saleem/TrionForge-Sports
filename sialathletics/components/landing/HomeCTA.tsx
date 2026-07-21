@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
+import { useContactModal } from '@/lib/contactModal';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -9,6 +10,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 // untouched so /about and /manufacturing keep their existing design.
 export default function HomeCTA() {
   const reduce = useReducedMotion();
+  const { open: openContactModal } = useContactModal();
   return (
     <section className="hp-cta">
       <span className="hp-cta__mark" aria-hidden="true">SA</span>
@@ -26,9 +28,9 @@ export default function HomeCTA() {
             manufacturing program around it — samples, specs, and mold quotes included.
           </p>
           <div className="hp-cta__actions">
-            <Link href="/contact" className="hp-btn hp-btn--ink">
+            <button type="button" onClick={() => openContactModal()} className="hp-btn hp-btn--ink">
               Start an inquiry <span className="hp-btn__arrow" aria-hidden="true">→</span>
-            </Link>
+            </button>
             <Link href="/manufacturing" className="hp-btn hp-btn--outline-ink">
               Explore capabilities <span className="hp-btn__arrow" aria-hidden="true">→</span>
             </Link>
