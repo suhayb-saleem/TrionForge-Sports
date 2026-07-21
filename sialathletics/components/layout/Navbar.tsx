@@ -7,7 +7,6 @@ import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import Button from '@/components/ui/Button';
-import { useContactModal } from '@/lib/contactModal';
 
 const links = [
   { label: 'Home', href: '/' },
@@ -30,7 +29,6 @@ export default function Navbar() {
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const pathname = usePathname();
   const aboutRef = useRef<HTMLDivElement>(null);
-  const { open: openContactModal } = useContactModal();
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 20);
@@ -130,7 +128,7 @@ export default function Navbar() {
           </nav>
 
           <div className="site-nav__actions">
-            <Button onClick={() => openContactModal()} size="sm" className="hide-mobile">Start an inquiry</Button>
+            <Button href="/contact" size="sm" className="hide-mobile">Start an inquiry</Button>
             <button className="site-nav__toggle show-mobile" type="button" onClick={() => setOpen((value) => !value)} aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="mobile-navigation">
               {open ? <X size={19} /> : <Menu size={20} />}
             </button>
@@ -175,7 +173,7 @@ export default function Navbar() {
                 </AnimatePresence>
               </motion.div>
             </nav>
-            <Button size="lg" onClick={() => { closeMenu(); openContactModal(); }}>Start an inquiry</Button>
+            <Button href="/contact" size="lg" onClick={closeMenu}>Start an inquiry</Button>
           </motion.div>
         )}
       </AnimatePresence>
