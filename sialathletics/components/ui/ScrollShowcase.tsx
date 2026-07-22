@@ -16,7 +16,7 @@ export type ShowcaseItem = {
  * CSS layout — no pinning, no scroll listeners — so it behaves identically
  * everywhere (including under Lenis smooth scroll).
  */
-export default function ScrollShowcase({ items, tone = 'dark' }: { items: ShowcaseItem[]; tone?: 'dark' | 'light' }) {
+export default function ScrollShowcase({ items, tone = 'light' }: { items: ShowcaseItem[]; tone?: 'dark' | 'light' }) {
   const toneClass = tone === 'light' ? ' frows--light' : '';
 
   return (

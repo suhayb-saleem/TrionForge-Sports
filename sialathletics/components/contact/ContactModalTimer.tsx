@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useContactModal } from '@/lib/contactModal';
 
-const DELAY_MS = 15000;
+const DELAY_MS = 7000;
 const SESSION_KEY = 'sial-modal-auto-shown';
 
 // Fires the contact modal once per browser session after a short delay,

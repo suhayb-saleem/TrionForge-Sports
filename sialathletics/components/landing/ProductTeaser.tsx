@@ -11,11 +11,15 @@ const categories = [
     title: 'Padel Rackets',
     desc: 'Round, teardrop, diamond, hybrid — or a fully custom mold built to your brief.',
     href: '/catalogue#padel',
+    image: '/images/products/padel_backgroundless.png',
+    alt: 'Carbon padel racket',
   },
   {
     title: 'Pickleball Paddles',
     desc: 'Control, balanced, and power builds across carbon and composite faces.',
     href: '/catalogue#pickleball',
+    image: '/images/products/pickleball_backgroundless.png',
+    alt: 'Carbon pickleball paddle',
   },
 ];
 
@@ -60,6 +64,9 @@ export function Range() {
                 <h3 className="hp-cat__title">{cat.title}</h3>
                 <p className="hp-cat__desc">{cat.desc}</p>
                 <span className="hp-cat__cta">Explore <b aria-hidden="true">→</b></span>
+                <span className="hp-cat__media" aria-hidden="true">
+                  <Image src={cat.image} alt={cat.alt} fill sizes="(max-width: 720px) 45vw, 22vw" style={{ objectFit: 'contain', objectPosition: 'bottom right' }} />
+                </span>
               </Link>
             </motion.div>
           ))}

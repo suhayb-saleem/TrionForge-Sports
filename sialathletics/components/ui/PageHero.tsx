@@ -1,5 +1,6 @@
 'use client';
 import { motion, useReducedMotion } from 'motion/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import SectionLabel from '@/components/ui/SectionLabel';
 
@@ -8,16 +9,27 @@ type PageHeroProps = {
   title: string;
   subtitle?: string;
   crumb: string;
+  /** Full-bleed backdrop photo; a white wash keeps the ink type legible over it. */
+  image?: string;
+  imageAlt?: string;
 };
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export default function PageHero({ eyebrow, title, subtitle, crumb }: PageHeroProps) {
+export default function PageHero({ eyebrow, title, subtitle, crumb, image, imageAlt }: PageHeroProps) {
   const reduceMotion = useReducedMotion();
   const words = title.split(' ');
 
   return (
-    <section className="hp-pagehero">
+    <section className={`hp-pagehero${image ? ' hp-pagehero--media' : ''}`}>
+      {image && (
+        <>
+          <div className="hp-pagehero__bg">
+            <Image src={image} alt={imageAlt ?? ''} fill priority sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center right' }} />
+          </div>
+          <div className="hp-pagehero__scrim" aria-hidden="true" />
+        </>
+      )}
       <div className="hp-shell">
         <nav aria-label="Breadcrumb" className="hp-pagehero__crumb">
           <Link href="/">Home</Link>

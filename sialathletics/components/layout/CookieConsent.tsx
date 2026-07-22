@@ -117,8 +117,30 @@ export default function CookieConsent() {
           color: #fff;
         }
         @media (max-width: 640px) {
-          .cookie-bar__inner { flex-direction: column; align-items: stretch; }
-          .cookie-bar__actions { justify-content: flex-end; }
+          .cookie-bar {
+            padding: 0.8rem 1rem calc(0.8rem + env(safe-area-inset-bottom, 0px));
+          }
+          .cookie-bar__inner {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.7rem;
+            max-height: 65vh;
+            overflow-y: auto;
+          }
+          .cookie-bar__text { font-size: 0.74rem; line-height: 1.45; flex: 0 0 auto; }
+          .cookie-bar__actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+          }
+          .cookie-bar__btn {
+            padding: 0.6rem 0.5rem;
+            font-size: 0.66rem;
+            justify-content: center;
+            text-align: center;
+          }
+          /* "Manage preferences" (only present when not yet managing) spans the row */
+          .cookie-bar__actions .cookie-bar__btn:first-child:nth-last-child(3) { grid-column: 1 / -1; }
         }
       `}</style>
     </div>

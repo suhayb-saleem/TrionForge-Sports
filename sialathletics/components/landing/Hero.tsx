@@ -18,7 +18,7 @@ export default function Hero() {
     <section className="hp-hero">
       <div className="hp-hero__bg">
         <Image
-          src="/images/home/homePage_background.png"
+          src="/images/home/home_section_white_background.png"
           alt="A carbon padel racket and pickleball paddle on a floodlit court"
           fill
           priority

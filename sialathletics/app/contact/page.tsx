@@ -16,6 +16,8 @@ export default function ContactPage() {
         eyebrow="Let's talk"
         title="Get in touch."
         subtitle="Factory-direct quotes. Samples. Private label programs."
+        image="/images/contactpage_section.png"
+        imageAlt="SIAL Athletics contact"
       />
       <ContactForm />
       <ContactFAQ />

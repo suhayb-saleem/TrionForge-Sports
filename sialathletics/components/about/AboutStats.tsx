@@ -13,7 +13,7 @@ const capabilities = [
 
 export default function AboutStats() {
   return (
-    <section style={{ background: 'var(--hp-black)', borderBottom: '1px solid var(--hp-hair)' }}>
+    <section style={{ background: 'var(--hp-paper)', borderBottom: '1px solid var(--hp-ink-line)' }}>
       <div className="hp-stat-grid">
         {capabilities.map((c, i) => (
           <motion.div
@@ -24,7 +24,7 @@ export default function AboutStats() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
           >
-            <div className="hp-metric__label" style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'var(--hp-ivory)', fontWeight: 700, letterSpacing: '0.01em' }}>
+            <div className="hp-metric__label" style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'var(--hp-ink)', fontWeight: 700, letterSpacing: '0.01em' }}>
               {c.label}
             </div>
           </motion.div>

@@ -32,11 +32,11 @@ const values: ShowcaseItem[] = [
 
 export default function AboutValues() {
   return (
-    <section className="site-section" style={{ background: 'var(--hp-black)' }}>
+    <section className="site-section" style={{ background: 'var(--hp-paper)' }}>
       <div className="container-custom" style={{ marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
         <div style={{ maxWidth: '640px' }}>
           <SectionLabel>What drives us</SectionLabel>
-          <h2 className="display-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--hp-ivory)', marginTop: '0.9rem' }}>
+          <h2 className="display-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--hp-ink)', marginTop: '0.9rem' }}>
             Our core values.
           </h2>
           <p className="body-copy" style={{ marginTop: '1rem' }}>

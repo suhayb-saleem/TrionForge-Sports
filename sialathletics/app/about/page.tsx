@@ -18,6 +18,8 @@ export default function AboutPage() {
         eyebrow="Our story"
         title="Who we are."
         subtitle="Built in Sialkot. Trusted worldwide."
+        image="/images/about/aboutpage_section.png"
+        imageAlt="SIAL Athletics about"
       />
       <AboutStory />
       <AboutStats />

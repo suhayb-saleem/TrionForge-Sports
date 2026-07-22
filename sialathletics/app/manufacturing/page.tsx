@@ -18,6 +18,8 @@ export default function ManufacturingPage() {
         eyebrow="What we do"
         title="End-to-end manufacturing."
         subtitle="Padel rackets and pickleball paddles, from concept to courier — we handle the full production cycle."
+        image="/images/manufacturing/manufacturing_section.png"
+        imageAlt="SIAL Athletics manufacturing floor"
       />
       <CapabilityCards />
       <ProcessTimeline />

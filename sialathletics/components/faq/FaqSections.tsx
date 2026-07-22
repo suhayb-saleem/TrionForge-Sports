@@ -12,7 +12,7 @@ export default function FaqSections() {
   const id = useId();
 
   return (
-    <section style={{ background: 'var(--hp-black)', padding: 'var(--hp-gap) var(--hp-pad)' }}>
+    <section style={{ background: 'var(--hp-paper)', padding: 'var(--hp-gap) var(--hp-pad)' }}>
       <div style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '4.5rem' }}>
         {faqCategories.map((cat, ci) => (
           <motion.div
@@ -27,27 +27,27 @@ export default function FaqSections() {
               <span style={{ fontFamily: 'var(--hp-display)', fontWeight: 800, fontSize: '1.1rem', color: 'var(--hp-red)' }}>
                 0{ci + 1}
               </span>
-              <h2 className="display-title" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: 'var(--hp-ivory)', margin: 0 }}>
+              <h2 className="display-title" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: 'var(--hp-ink)', margin: 0 }}>
                 {cat.title}
               </h2>
             </div>
-            <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ivory-60)', lineHeight: 1.7, marginBottom: '1.5rem', maxWidth: '720px' }}>
+            <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7, marginBottom: '1.5rem', maxWidth: '720px' }}>
               {cat.framing}
             </p>
 
-            <div style={{ borderTop: '1px solid var(--hp-hair)' }}>
+            <div style={{ borderTop: '1px solid var(--hp-ink-line)' }}>
               {cat.items.map((item, index) => {
                 const key = `${cat.id}-${index}`;
                 const isOpen = open === key;
                 const panelId = `${id}-${key}`;
                 return (
-                  <div key={item.q} style={{ borderBottom: '1px solid var(--hp-hair)' }}>
+                  <div key={item.q} style={{ borderBottom: '1px solid var(--hp-ink-line)' }}>
                     <button
                       type="button"
                       onClick={() => setOpen(isOpen ? null : key)}
                       aria-expanded={isOpen}
                       aria-controls={panelId}
-                      style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.25rem 0', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem', color: 'var(--hp-ivory)' }}
+                      style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.25rem 0', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem', color: 'var(--hp-ink)' }}
                     >
                       <h3 className="display-title" style={{ fontSize: 'clamp(1.02rem, 1.8vw, 1.25rem)', margin: 0, fontWeight: 600 }}>{item.q}</h3>
                       {isOpen ? <Minus size={18} color="var(--hp-red)" style={{ flexShrink: 0 }} /> : <Plus size={18} color="var(--hp-red)" style={{ flexShrink: 0 }} />}

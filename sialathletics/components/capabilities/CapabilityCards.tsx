@@ -60,11 +60,11 @@ const capabilities: Capability[] = [
 // width, full-bleed photo with a scrim and the copy sitting on top.
 export default function CapabilityCards() {
   return (
-    <section className="site-section" style={{ background: 'var(--hp-panel)' }}>
+    <section className="site-section" style={{ background: 'var(--hp-paper)' }}>
       <div className="container-custom">
         <div style={{ marginBottom: 'clamp(2rem, 4vw, 3rem)', maxWidth: '640px' }}>
           <SectionLabel>Our capabilities</SectionLabel>
-          <h2 className="display-title" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--hp-ivory)', marginTop: '0.9rem' }}>
+          <h2 className="display-title" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--hp-ink)', marginTop: '0.9rem' }}>
             Built for brands who demand more.
           </h2>
         </div>
@@ -102,7 +102,8 @@ export default function CapabilityCards() {
         .cap-bento__tile {
           position: relative;
           overflow: hidden;
-          border: 1px solid var(--hp-hair);
+          border: 1px solid var(--hp-ink-line);
+          box-shadow: var(--shadow-sm);
           display: flex;
           align-items: flex-end;
         }

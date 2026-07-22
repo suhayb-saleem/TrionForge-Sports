@@ -17,7 +17,7 @@ export default function ContactFAQ() {
   const id = useId();
 
   return (
-    <section style={{ background: 'var(--hp-panel)', padding: 'var(--hp-gap) var(--hp-pad)', borderTop: '1px solid var(--hp-hair)' }}>
+    <section style={{ background: 'var(--hp-paper)', padding: 'var(--hp-gap) var(--hp-pad)', borderTop: '1px solid var(--hp-ink-line)' }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
           <SectionLabel>Common questions</SectionLabel>
@@ -28,13 +28,13 @@ export default function ContactFAQ() {
             const isOpen = open === index;
             const panelId = `${id}-${index}`;
             return (
-              <div key={q} style={{ borderBottom: '1px solid var(--hp-hair)' }}>
+              <div key={q} style={{ borderBottom: '1px solid var(--hp-ink-line)' }}>
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? null : index)}
                   aria-expanded={isOpen}
                   aria-controls={panelId}
-                  style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 0', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem', color: 'var(--hp-ivory)' }}
+                  style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 0', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem', color: 'var(--hp-ink)' }}
                 >
                   <span className="display-title" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}>{q}</span>
                   {isOpen ? <Minus size={18} color="var(--hp-red)" /> : <Plus size={18} color="var(--hp-red)" />}

@@ -175,9 +175,9 @@ const services: { title: string; items: string[] }[] = [
 function PlatformCard({ platform, index }: { platform: Platform; index: number }) {
   return (
     <article className="plat-card">
-      <div className="plat-card__media" aria-hidden="true" style={{ position: 'relative' }}>
+      <div className={`plat-card__media${platform.image ? '' : ' plat-card__media--empty'}`} aria-hidden="true" style={{ position: 'relative' }}>
         {platform.image ? (
-          <Image src={platform.image} alt={platform.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" style={{ objectFit: 'contain', padding: '1.5rem' }} />
+          <Image src={platform.image} alt={platform.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" style={{ objectFit: 'contain', padding: '0.75rem' }} />
         ) : (
           <span className="plat-card__media-label">Visual coming soon</span>
         )}
@@ -220,16 +220,18 @@ function OptionGroup({ title, items }: { title: string; items: string[] }) {
 
 export default function CataloguePage() {
   return (
-    <main style={{ background: 'var(--hp-black)' }}>
+    <main style={{ background: 'var(--hp-paper)' }}>
       <PageHero
         crumb="Products"
         eyebrow="Manufacturing platforms"
         title="Your product. Our platform."
         subtitle="You aren't choosing from pre-designed retail products. You're selecting a manufacturing platform, then customizing materials, construction, performance, branding, and packaging to your own brand's requirements."
+        image="/images/products/productpage_section.png"
+        imageAlt="Carbon padel racket manufactured by SIAL Athletics"
       />
 
       {/* How the platform model works */}
-      <section className="site-section" style={{ background: 'var(--hp-panel)', borderTop: '1px solid var(--hp-hair)' }}>
+      <section className="site-section" style={{ background: 'var(--surface-2)', borderTop: '1px solid var(--hp-ink-line)' }}>
         <div className="container-custom">
           <div className="plat-steps">
             {[
@@ -250,14 +252,14 @@ export default function CataloguePage() {
       </section>
 
       {/* ------------------------- PADEL ------------------------- */}
-      <section id="padel" className="site-section plat-anchor" style={{ background: 'var(--hp-black)', borderTop: '1px solid var(--hp-hair)' }}>
+      <section id="padel" className="site-section plat-anchor" style={{ background: 'var(--hp-paper)', borderTop: '1px solid var(--hp-ink-line)' }}>
         <div className="container-custom">
           <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', maxWidth: '680px' }}>
             <SectionLabel>Category 01</SectionLabel>
-            <h2 className="display-title" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)', color: 'var(--hp-ivory)', marginTop: '0.9rem', marginBottom: '1.25rem' }}>
+            <h2 className="display-title" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)', color: 'var(--hp-ink)', marginTop: '0.9rem', marginBottom: '1.25rem' }}>
               Padel rackets.
             </h2>
-            <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ivory-60)', lineHeight: 1.7 }}>
+            <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
               Four standard playing platforms cover the full control-to-power spectrum. Every one is
               fully configurable — and if your line needs a shape that doesn&apos;t exist yet, custom
               molds can be developed on demand.
@@ -280,14 +282,14 @@ export default function CataloguePage() {
       </section>
 
       {/* ----------------------- PICKLEBALL ----------------------- */}
-      <section id="pickleball" className="site-section plat-anchor" style={{ background: 'var(--hp-panel)', borderTop: '1px solid var(--hp-hair)' }}>
+      <section id="pickleball" className="site-section plat-anchor" style={{ background: 'var(--surface-2)', borderTop: '1px solid var(--hp-ink-line)' }}>
         <div className="container-custom">
           <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', maxWidth: '680px' }}>
             <SectionLabel>Category 02</SectionLabel>
-            <h2 className="display-title" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)', color: 'var(--hp-ivory)', marginTop: '0.9rem', marginBottom: '1.25rem' }}>
+            <h2 className="display-title" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)', color: 'var(--hp-ink)', marginTop: '0.9rem', marginBottom: '1.25rem' }}>
               Pickleball paddles.
             </h2>
-            <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ivory-60)', lineHeight: 1.7 }}>
+            <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
               Three performance platforms — control, balanced, and power — rather than fixed retail
               models. Every paddle is fully customizable to your requirements: face, core,
               thickness, weight, edge, grip, finish, and branding.
@@ -311,24 +313,24 @@ export default function CataloguePage() {
       </section>
 
       {/* ----------------------- SERVICES ----------------------- */}
-      <section className="site-section" style={{ background: 'var(--hp-black)', borderTop: '1px solid var(--hp-hair)' }}>
+      <section className="site-section" style={{ background: 'var(--hp-paper)', borderTop: '1px solid var(--hp-ink-line)' }}>
         <div className="container-custom">
           <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', maxWidth: '680px' }}>
             <SectionLabel>Beyond the build</SectionLabel>
-            <h2 className="display-title" style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', color: 'var(--hp-ivory)', marginTop: '0.9rem', marginBottom: '1.25rem' }}>
+            <h2 className="display-title" style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', color: 'var(--hp-ink)', marginTop: '0.9rem', marginBottom: '1.25rem' }}>
               A manufacturing program, not a product list.
             </h2>
-            <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ivory-60)', lineHeight: 1.7 }}>
+            <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
               Platform, spec, branding, sampling, and production quantities are all structured
               around your brand — see{' '}
               <Link href="/manufacturing" className="hp-link">how we manufacture</Link> or check{' '}
               <Link href="/faq" className="hp-link">common buyer questions</Link>.
             </p>
             <div style={{ marginTop: '2.5rem' }}>
-              <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.9rem', color: 'var(--hp-ivory-60)', marginBottom: '1rem', maxWidth: '400px', lineHeight: 1.6 }}>
+              <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.9rem', color: 'var(--hp-ink-70)', marginBottom: '1rem', maxWidth: '400px', lineHeight: 1.6 }}>
                 Download our full technical catalogue for an offline reference of all available platform geometries, material compositions, and manufacturing capabilities.
               </p>
-              <a href="/images/catalogue.zip" download className="hp-btn hp-btn--outline" style={{ display: 'inline-flex', alignItems: 'center' }}>
+              <a href="/images/catalogue.zip" download className="hp-btn hp-btn--outline-ink" style={{ display: 'inline-flex', alignItems: 'center' }}>
                 <Download size={16} style={{ marginRight: '0.5rem' }} />
                 <span>DOWNLOAD CATALOGUE (.ZIP)</span>
               </a>
@@ -367,11 +369,11 @@ export default function CataloguePage() {
           color: var(--hp-red);
           flex-shrink: 0;
         }
-        .plat-step__title { font-size: 1.1rem; color: var(--hp-ivory); margin: 0 0 0.45rem; }
+        .plat-step__title { font-size: 1.1rem; color: var(--hp-ink); margin: 0 0 0.45rem; }
         .plat-step__desc {
           font-family: var(--hp-body);
           font-size: 0.85rem;
-          color: var(--hp-ivory-60);
+          color: var(--hp-ink-70);
           line-height: 1.6;
           margin: 0;
         }
@@ -381,8 +383,9 @@ export default function CataloguePage() {
         .plat-grid--4 { grid-template-columns: repeat(4, 1fr); }
         .plat-grid--3 { grid-template-columns: repeat(3, 1fr); }
         .plat-card {
-          background: var(--hp-card);
-          border: 1px solid var(--hp-hair);
+          background: var(--surface);
+          border: 1px solid var(--hp-ink-line);
+          box-shadow: var(--shadow-sm);
           border-top: 3px solid var(--hp-red);
           display: flex;
           flex-direction: column;
@@ -391,12 +394,17 @@ export default function CataloguePage() {
         .plat-card:hover { transform: translateY(-4px); }
         .plat-card__media {
           aspect-ratio: 1 / 1;
-          border-bottom: 1px solid var(--hp-hair);
-          background:
-            repeating-linear-gradient(-45deg, transparent 0 14px, rgba(240, 237, 230, 0.035) 14px 15px);
+          border-bottom: 1px solid var(--hp-ink-line);
+          /* Clean surface so cut-out product PNGs sit flush, with no pattern behind them. */
+          background: var(--surface);
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+        /* The hatch pattern is only for cards still awaiting a photo. */
+        .plat-card__media--empty {
+          background:
+            repeating-linear-gradient(-45deg, transparent 0 14px, rgba(20, 17, 15, 0.05) 14px 15px);
         }
         .plat-card__media-label {
           font-family: var(--hp-body);
@@ -404,9 +412,9 @@ export default function CataloguePage() {
           font-weight: 700;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: var(--hp-ivory-60);
+          color: var(--hp-ink-70);
           opacity: 0.6;
-          border: 1px dashed var(--hp-hair);
+          border: 1px dashed var(--hp-ink-line);
           padding: 0.5rem 0.9rem;
         }
         .plat-card__body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
@@ -417,7 +425,7 @@ export default function CataloguePage() {
           color: var(--hp-red);
           margin-bottom: 0.7rem;
         }
-        .plat-card__name { font-size: 1.35rem; color: var(--hp-ivory); margin: 0 0 0.25rem; }
+        .plat-card__name { font-size: 1.35rem; color: var(--hp-ink); margin: 0 0 0.25rem; }
         .plat-card__tag {
           font-family: var(--hp-body);
           font-size: 0.68rem;
@@ -430,7 +438,7 @@ export default function CataloguePage() {
         .plat-card__desc {
           font-family: var(--hp-body);
           font-size: 0.83rem;
-          color: var(--hp-ivory-60);
+          color: var(--hp-ink-70);
           line-height: 1.65;
           margin: 0 0 1.4rem;
           flex: 1;
@@ -443,13 +451,13 @@ export default function CataloguePage() {
           font-weight: 700;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: var(--hp-ivory-60);
+          color: var(--hp-ink-70);
           margin-bottom: 0.45rem;
         }
         .plat-card__meter-track {
           position: relative;
           height: 2px;
-          background: var(--hp-hair);
+          background: var(--hp-ink-line);
         }
         .plat-card__meter-dot {
           position: absolute;
@@ -469,18 +477,18 @@ export default function CataloguePage() {
         .plat-card__meter-note {
           font-family: var(--hp-body);
           font-size: 0.66rem;
-          color: var(--hp-ivory-60);
+          color: var(--hp-ink-70);
           margin: 0.5rem 0 0;
           letter-spacing: 0.04em;
         }
 
         /* --- option groups --- */
         .opt-section { margin-top: clamp(3rem, 6vw, 4.5rem); }
-        .opt-section__title { font-size: clamp(1.4rem, 2.6vw, 1.8rem); color: var(--hp-ivory); margin: 0 0 0.8rem; }
+        .opt-section__title { font-size: clamp(1.4rem, 2.6vw, 1.8rem); color: var(--hp-ink); margin: 0 0 0.8rem; }
         .opt-section__intro {
           font-family: var(--hp-body);
           font-size: 0.9rem;
-          color: var(--hp-ivory-60);
+          color: var(--hp-ink-70);
           line-height: 1.65;
           max-width: 620px;
           margin: 0 0 2rem;
@@ -492,8 +500,9 @@ export default function CataloguePage() {
         }
         .opt-grid--services { grid-template-columns: repeat(3, 1fr); }
         .opt-group {
-          background: var(--hp-card);
-          border: 1px solid var(--hp-hair);
+          background: var(--surface);
+          border: 1px solid var(--hp-ink-line);
+          box-shadow: var(--shadow-sm);
           padding: 1.5rem;
         }
         .opt-group__title {
@@ -502,7 +511,7 @@ export default function CataloguePage() {
           font-weight: 800;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: var(--hp-ivory);
+          color: var(--hp-ink);
           margin: 0 0 1rem;
         }
         .opt-group__chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
@@ -511,8 +520,8 @@ export default function CataloguePage() {
           font-size: 0.72rem;
           font-weight: 600;
           letter-spacing: 0.03em;
-          color: var(--hp-ivory-60);
-          border: 1px solid var(--hp-hair);
+          color: var(--hp-ink-70);
+          border: 1px solid var(--hp-ink-line);
           padding: 0.32rem 0.6rem;
         }
         button.opt-group__chip {
@@ -520,10 +529,10 @@ export default function CataloguePage() {
           cursor: pointer;
           transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
         }
-        button.opt-group__chip:hover { border-color: rgba(226, 27, 45, 0.55); color: var(--hp-ivory); }
+        button.opt-group__chip:hover { border-color: rgba(226, 27, 45, 0.55); color: var(--hp-ink); }
         .opt-group__chip.is-selected {
           border-color: var(--hp-red);
-          color: var(--hp-ivory);
+          color: var(--hp-ink);
           background: rgba(226, 27, 45, 0.14);
         }
         .spec-bar {
@@ -534,7 +543,7 @@ export default function CataloguePage() {
           margin-top: 2rem;
         }
         .spec-bar .hp-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-        .spec-bar__count { font-family: var(--hp-body); font-size: 0.8rem; color: var(--hp-ivory-60); }
+        .spec-bar__count { font-family: var(--hp-body); font-size: 0.8rem; color: var(--hp-ink-70); }
         .spec-bar__clear {
           background: none;
           border: none;

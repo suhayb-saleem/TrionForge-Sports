@@ -12,11 +12,11 @@ const steps = [
 
 export default function ProcessTimeline() {
   return (
-    <section className="site-section" style={{ background: 'var(--hp-black)', borderTop: '1px solid var(--hp-hair)' }}>
+    <section className="site-section" style={{ background: 'var(--hp-paper)', borderTop: '1px solid var(--hp-ink-line)' }}>
       <div className="container-custom">
         <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', textAlign: 'center' }}>
           <SectionLabel>How it works</SectionLabel>
-          <h2 className="display-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--hp-ivory)', marginTop: '0.9rem' }}>
+          <h2 className="display-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--hp-ink)', marginTop: '0.9rem' }}>
             From concept to champion.
           </h2>
         </div>
@@ -31,11 +31,11 @@ export default function ProcessTimeline() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               style={{ textAlign: 'center', padding: '0 1rem', position: 'relative', zIndex: 1 }}
             >
-              <div style={{ fontFamily: 'var(--hp-display)', fontWeight: 800, fontSize: '1.6rem', letterSpacing: '-0.02em', color: 'var(--hp-red)', marginBottom: '1.4rem', background: 'var(--hp-black)' }}>
+              <div style={{ fontFamily: 'var(--hp-display)', fontWeight: 800, fontSize: '1.6rem', letterSpacing: '-0.02em', color: 'var(--hp-red)', marginBottom: '1.4rem', background: 'var(--hp-paper)' }}>
                 {num}
               </div>
-              <h3 className="display-title" style={{ fontSize: '1.2rem', color: 'var(--hp-ivory)', marginBottom: '0.5rem' }}>{title}</h3>
-              <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.8rem', color: 'var(--hp-ivory-60)', lineHeight: 1.6 }}>{desc}</p>
+              <h3 className="display-title" style={{ fontSize: '1.2rem', color: 'var(--hp-ink)', marginBottom: '0.5rem' }}>{title}</h3>
+              <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.8rem', color: 'var(--hp-ink-70)', lineHeight: 1.6 }}>{desc}</p>
             </motion.div>
           ))}
         </div>

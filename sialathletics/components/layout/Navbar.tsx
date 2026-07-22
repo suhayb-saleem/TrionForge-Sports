@@ -65,7 +65,16 @@ export default function Navbar() {
       <header className={`site-nav ${scrolled ? 'site-nav--scrolled' : ''}`}>
         <div className="site-nav__inner">
           <Link href="/" className="site-nav__brand" aria-label="SIAL Athletics home">
-            <Image src="/images/logo.png" alt="SIAL Athletics" width={142} height={38} sizes="142px" priority style={{ width: '142px', height: 'auto' }} />
+            {/* Dark logo over the bright hero; white logo once the bar turns black on scroll. */}
+            <Image
+              src={scrolled ? '/images/logo.png' : '/images/logo-dark.png'}
+              alt="SIAL Athletics"
+              width={142}
+              height={38}
+              sizes="142px"
+              priority
+              style={{ width: '142px', height: 'auto' }}
+            />
           </Link>
 
           <nav className="site-nav__links hide-mobile" aria-label="Primary navigation">
