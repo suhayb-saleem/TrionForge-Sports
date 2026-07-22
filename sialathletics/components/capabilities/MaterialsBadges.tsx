@@ -10,7 +10,7 @@ const materialFamilies = [
     tab: 'Carbon Fiber',
     title: 'Carbon Fiber Grades',
     tag: 'The face',
-    desc: 'The face material sets stiffness, response, and price point. Every grade below is available across the range, plus fiberglass/carbon hybrid and Kevlar-carbon blend layups.',
+    desc: 'The face material sets stiffness, feel, and price. All grades below are available across our range.',
     image: '/images/manufacturing/carbon-types.png',
     alt: 'Comparison of 3K, 12K, 18K, and 24K carbon fiber weave grades',
   },
@@ -19,7 +19,7 @@ const materialFamilies = [
     tab: 'EVA Core',
     title: 'Core (EVA Foam)',
     tag: 'The feel',
-    desc: 'The core defines how the racket feels at contact — from plush control to explosive power.',
+    desc: 'The core defines the feel — soft for control, firm for power.',
     image: '/images/manufacturing/eva-core.png',
     alt: 'Comparison of black EVA, soft EVA, and memory/high-rebound EVA core foams',
   },
@@ -28,7 +28,7 @@ const materialFamilies = [
     tab: 'Surface Texture',
     title: 'Surface Texture',
     tag: 'The spin',
-    desc: 'Texture is molded directly into the frame — permanent, not a sprayed-on coating that wears off.',
+    desc: 'Texture is molded into the frame, so it never wears off.',
     image: '/images/manufacturing/textures.png',
     alt: 'Comparison of 3D, matte, glossy, and sand-paint surface finish options',
   },
@@ -58,14 +58,15 @@ export default function MaterialsBadges() {
             Materials we work with.
           </h2>
           <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7, marginBottom: '1.75rem' }}>
-            Every grade, core, and finish below is available across our racket lines. We spec the combination to your target price point and play style — nothing here is a placeholder claim.
+            Every grade, core, and finish below is available across our racket lines. We match the
+            combination to your price point and play style.
           </p>
           <div className="mat-points">
             {[
-              'Carbon fiber face in 3K, 12K, 18K, and 24K grades',
-              'EVA foam core options across hardness ratings',
-              'Multiple surface textures for spin and control tuning',
-              'Precision-molded and hybrid frame constructions',
+              'Carbon fiber in 3K, 12K, 18K, and 24K grades',
+              'EVA foam cores in multiple hardness levels',
+              'Several surface textures for spin and control',
+              'Molded and hybrid frame options',
             ].map((point) => (
               <div key={point} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
                 <span style={{ color: 'var(--hp-red)', fontFamily: 'var(--hp-body)', fontWeight: 800, fontSize: '0.9rem', lineHeight: 1.5, flexShrink: 0 }}>—</span>
@@ -133,7 +134,7 @@ export default function MaterialsBadges() {
           <div style={{ borderTop: '1px solid var(--hp-ink-line)', paddingTop: '1.75rem', display: 'flex', flexWrap: 'wrap', gap: '2.5rem' }}>
             {shapes.map((shape) => (
               <div key={shape.key} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <Image src={`/images/${shape.key}_icon.png`} alt={shape.name} width={48} height={48} />
+                <Image src={`/images/${shape.key}_icon.png`} alt={`${shape.name} racket shape icon`} width={48} height={48} />
                 <div>
                   <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.85rem', fontWeight: 700, color: 'var(--hp-ink)', margin: 0 }}>{shape.name}</p>
                   <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.78rem', color: 'var(--hp-ink-70)', margin: 0 }}>{shape.desc}</p>

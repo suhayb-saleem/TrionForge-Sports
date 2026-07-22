@@ -12,7 +12,7 @@ const capabilities: Capability[] = [
   {
     title: 'OEM manufacturing',
     tag: 'Build to your spec',
-    desc: 'From design to production, we manufacture custom sports equipment tailored to your requirements using precision manufacturing processes and premium materials.',
+    desc: 'Send us your design, and we build it exactly to your requirements.',
     image: '/images/manufacturing/oem-manufacturing.png',
     alt: 'OEM prototype padel racket freshly printed with its graphic design',
     span: 'wide',
@@ -20,35 +20,35 @@ const capabilities: Capability[] = [
   {
     title: 'ODM private label',
     tag: 'Your brand, our platform',
-    desc: 'Choose from proven padel racket and pickleball paddle platforms, then customize graphics, colors, materials, finishes, branding, and packaging.',
+    desc: 'Choose one of our racket or paddle designs, then customize it with your own branding.',
     image: '/images/manufacturing/odm-manufacturing.png',
     alt: 'Three padel racket private-label design variations laid out with material and color swatches',
   },
   {
     title: 'Product Development & Prototyping',
     tag: 'From concept to prototype',
-    desc: 'Whether refining an existing design or developing something new, we support prototype development and product refinement before production.',
+    desc: 'We help you build and test a prototype before we go into full production.',
     image: '/images/manufacturing/product-prototyping.png',
     alt: 'Finished padel racket prototypes and a precision mold on the factory floor',
   },
   {
     title: 'Quality control',
     tag: 'Consistent at every stage',
-    desc: 'Every production batch undergoes quality inspections for materials, construction, finish, weight, balance, and workmanship before shipment.',
+    desc: 'We check materials, weight, and finish on every batch before it ships.',
     image: '/images/manufacturing/quality-control.png',
     alt: 'Padel racket undergoing precision testing on a quality control rig',
   },
   {
     title: 'Packaging & fulfillment',
     tag: 'Reliable & protected',
-    desc: 'Packaging solutions designed to protect your products during storage and international shipping, helping ensure they arrive in excellent condition.',
+    desc: 'Packaging that keeps your products safe in storage and shipping.',
     image: '/images/manufacturing/packaging.png',
     alt: 'Padel racket carefully bubble-wrapped and boxed for shipment',
   },
   {
     title: 'Global logistics',
     tag: 'Door to warehouse',
-    desc: 'We handle export documentation and customs compliance, with shipments coordinated through trusted logistics partners worldwide.',
+    desc: 'We handle export paperwork and shipping to your warehouse, anywhere in the world.',
     image: '/images/manufacturing/cargo-ship.jpg',
     alt: 'Container ship loaded with export cargo at port',
     span: 'wide',
@@ -65,7 +65,7 @@ export default function CapabilityCards() {
         <div style={{ marginBottom: 'clamp(2rem, 4vw, 3rem)', maxWidth: '640px' }}>
           <SectionLabel>Our capabilities</SectionLabel>
           <h2 className="display-title" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--hp-ink)', marginTop: '0.9rem' }}>
-            Built for brands who demand more.
+            What we offer.
           </h2>
         </div>
 

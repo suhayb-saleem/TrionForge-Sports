@@ -1,6 +1,6 @@
 'use client';
 import { useId, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { Plus, Minus } from 'lucide-react';
 import Link from 'next/link';
 import { faqCategories } from '@/data/faq';
@@ -52,20 +52,22 @@ export default function FaqSections() {
                       <h3 className="display-title" style={{ fontSize: 'clamp(1.02rem, 1.8vw, 1.25rem)', margin: 0, fontWeight: 600 }}>{item.q}</h3>
                       {isOpen ? <Minus size={18} color="var(--hp-red)" style={{ flexShrink: 0 }} /> : <Plus size={18} color="var(--hp-red)" style={{ flexShrink: 0 }} />}
                     </button>
-                    <AnimatePresence>
-                      {isOpen && (
-                        <motion.div
-                          id={panelId}
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25 }}
-                          style={{ overflow: 'hidden' }}
-                        >
-                          <p className="body-copy" style={{ margin: 0, paddingBottom: '1.5rem', fontSize: '.94rem', maxWidth: '720px' }}>{item.a}</p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    {/* CSS-based collapse (not conditional mounting) so the answer
+                        stays in the server-rendered HTML for crawlers, even though
+                        it's visually collapsed until the user opens it. */}
+                    <div
+                      id={panelId}
+                      aria-hidden={!isOpen}
+                      style={{
+                        display: 'grid',
+                        gridTemplateRows: isOpen ? '1fr' : '0fr',
+                        transition: 'grid-template-rows 0.25s ease',
+                      }}
+                    >
+                      <div style={{ overflow: 'hidden', minHeight: 0 }}>
+                        <p className="body-copy" style={{ margin: 0, paddingBottom: '1.5rem', fontSize: '.94rem', maxWidth: '720px' }}>{item.a}</p>
+                      </div>
+                    </div>
                   </div>
                 );
               })}

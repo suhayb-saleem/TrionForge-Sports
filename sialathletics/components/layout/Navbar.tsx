@@ -37,6 +37,23 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', update);
   }, []);
 
+  // Lock body scroll while the mobile menu is open so the underlying page
+  // can't scroll behind it and flip the header's scrolled state mid-menu.
+  useEffect(() => {
+    if (!open) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [open]);
+
+  // Close the mobile menu whenever the route changes (e.g. tapping a link).
+  useEffect(() => {
+    setOpen(false);
+    setMobileAboutOpen(false);
+  }, [pathname]);
+
   useEffect(() => {
     if (!aboutOpen) return;
     const handleClick = (e: MouseEvent) => {

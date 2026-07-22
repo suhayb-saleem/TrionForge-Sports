@@ -22,8 +22,7 @@ export default function HomeCTA() {
           <span className="hp-eyebrow hp-eyebrow--ink">Start at the source</span>
           <h2 className="hp-display hp-cta__title">Build a better<br />racket line<em>.</em></h2>
           <p className="hp-cta__copy">
-            Bring us your target player, price point, and design direction. We&apos;ll shape the
-            manufacturing program around it — samples, specs, and mold quotes included.
+            Tell us what you want to build and your budget. We&apos;ll send samples, specs, and a quote.
           </p>
           <div className="hp-cta__actions">
             <Link href="/contact" className="hp-btn hp-btn--ink">

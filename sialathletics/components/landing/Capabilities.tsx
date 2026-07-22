@@ -11,7 +11,7 @@ const capabilities = [
     num: '01',
     title: 'OEM Manufacturing',
     tag: 'Build to your spec',
-    desc: 'Send us your designs and specifications. We build to your exact measurements, tolerances, and stiffness profiles using 3K–24K carbon fiber precision molding.',
+    desc: 'Send us your designs and specs. We build it to your exact measurements and materials.',
     image: '/images/manufacturing/oem-manufacturing.png',
     alt: 'Macro detail of woven carbon fiber sheet — the raw material behind every build',
   },
@@ -19,7 +19,7 @@ const capabilities = [
     num: '02',
     title: 'ODM Private Label',
     tag: 'Your brand, our platform',
-    desc: 'Leverage our proven padel geometries and pickleball profiles with carbon fiber faces. Customize graphics, colorways, surface textures, and grip accessories to own the shelf.',
+    desc: 'Pick one of our racket or paddle designs, then add your own graphics, colors, and branding.',
     image: '/images/manufacturing/odm-manufacturing.png',
     alt: 'Indoor padel court with blue playing surface',
   },
@@ -27,7 +27,7 @@ const capabilities = [
     num: '03',
     title: 'Quality & Compliance',
     tag: 'Verified batch by batch',
-    desc: 'Every batch undergoes rigorous quality assurance at our Sialkot facility. All paddles meet global guidelines for surface roughness, deflection, and dimensional limits.',
+    desc: 'Every batch is checked at our Sialkot facility before it ships.',
     image: '/images/manufacturing/quality-control.png',
     alt: 'Vernier caliper measuring a component during quality inspection',
   },
@@ -46,11 +46,10 @@ export function Capabilities() {
         >
           <span className="hp-eyebrow hp-eyebrow--ink">Manufacturing power</span>
           <div className="cap-head__row">
-            <h2 className="hp-display hp-craft__title">Engineered at the source.</h2>
+            <h2 className="hp-display hp-craft__title">What we do for you.</h2>
             <p className="hp-craft__intro">
-              B2B OEM manufacturing, private-label ODM, and white-label fulfillment for padel
-              rackets and pickleball paddles — from raw material to final landed delivery,
-              handled under one roof.
+              We manufacture padel rackets and pickleball paddles for brands and resellers,
+              start to finish, under one roof. <Link href="/about" className="hp-link hp-link--ink">See who we are</Link>.
             </p>
           </div>
         </motion.div>

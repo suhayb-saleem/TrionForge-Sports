@@ -10,8 +10,9 @@ import HomeCTA from '@/components/landing/HomeCTA';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: { absolute: 'SIAL Athletics — Padel Racket & Pickleball Paddle OEM Manufacturer' },
-  description: 'Factory-direct padel racket and pickleball paddle manufacturing from Sialkot, Pakistan. 3K–24K carbon fiber layups, OEM/ODM private-label programs with low MOQs for brands, clubs, and distributors.',
+  title: { absolute: 'SIAL Athletics — Padel & Pickleball Paddle OEM Manufacturer' },
+  description: 'Factory-direct padel racket and pickleball paddle manufacturing from Sialkot, Pakistan. OEM/ODM private-label programs, low MOQs for brands and distributors.',
+  alternates: { canonical: '/' },
 };
 
 const organizationJsonLd = {

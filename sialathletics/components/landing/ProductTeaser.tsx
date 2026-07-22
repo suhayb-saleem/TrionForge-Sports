@@ -9,14 +9,14 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const categories = [
   {
     title: 'Padel Rackets',
-    desc: 'Round, teardrop, diamond, hybrid — or a fully custom mold built to your brief.',
+    desc: 'Round, teardrop, diamond, hybrid — or a custom shape we build for you.',
     href: '/catalogue#padel',
     image: '/images/products/padel_backgroundless.png',
     alt: 'Carbon padel racket',
   },
   {
     title: 'Pickleball Paddles',
-    desc: 'Control, balanced, and power builds across carbon and composite faces.',
+    desc: 'Control, balanced, and power builds in carbon and composite.',
     href: '/catalogue#pickleball',
     image: '/images/products/pickleball_backgroundless.png',
     alt: 'Carbon pickleball paddle',
@@ -41,12 +41,10 @@ export function Range() {
         >
           <span className="hp-eyebrow">What we make</span>
           <h2 className="hp-display hp-range__title">
-            Padel &amp; pickleball,<br /><span>built to spec.</span>
+            Padel &amp; pickleball,<br /><span>made to order.</span>
           </h2>
           <p className="hp-range__intro">
-            Custom shapes, custom molds, and full control over materials, weight, and finish —
-            across both padel rackets and pickleball paddles. Nothing here is a fixed catalog;
-            the platform is built around your brief.
+            Pick your shape, materials, weight, and finish. We build it for you.
           </p>
         </motion.div>
 

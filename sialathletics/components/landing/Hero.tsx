@@ -39,8 +39,8 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p className="hp-hero__copy" {...rise(0.18)}>
-          Performance padel rackets and pickleball paddles, engineered for brands, clubs, and
-          distributors — built at the source, from carbon layup to retail-ready delivery.
+          We make padel rackets and pickleball paddles for brands, clubs, and distributors —
+          built in our own factory, start to finish.
         </motion.p>
 
         <motion.div className="hp-hero__actions" {...rise(0.26)}>

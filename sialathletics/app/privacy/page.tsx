@@ -1,6 +1,10 @@
 import Link from 'next/link';
 
-export const metadata = { title: 'Privacy Policy' };
+export const metadata = {
+  title: 'Privacy Policy',
+  description: 'How SIAL Athletics collects, uses, and protects your information when you visit our site or request a manufacturing quote.',
+  alternates: { canonical: '/privacy' },
+};
 
 const sections = [
   {

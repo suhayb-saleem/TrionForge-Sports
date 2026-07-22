@@ -4,22 +4,25 @@ import PageHero from '@/components/ui/PageHero';
 import AboutStory from '@/components/about/AboutStory';
 import AboutStats from '@/components/about/AboutStats';
 import AboutValues from '@/components/about/AboutValues';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'About Us — Padel & Pickleball Manufacturer in Sialkot, Pakistan',
-  description: 'SIAL Athletics manufactures carbon fiber padel rackets and pickleball paddles in Sialkot, Pakistan — combining the city\'s sporting-goods heritage with modern manufacturing and factory-direct OEM/ODM programs.',
+  title: 'About Us — Padel & Pickleball Manufacturer',
+  description: 'SIAL Athletics manufactures carbon fiber padel rackets and pickleball paddles in Sialkot, Pakistan, with factory-direct OEM/ODM programs.',
+  alternates: { canonical: '/about' },
 };
 
 export default function AboutPage() {
   return (
     <main>
+      <JsonLd data={breadcrumbJsonLd('About', '/about')} />
       <PageHero
         crumb="About"
         eyebrow="Our story"
         title="Who we are."
-        subtitle="Built in Sialkot. Trusted worldwide."
         image="/images/about/aboutpage_section.png"
-        imageAlt="SIAL Athletics about"
+        imageAlt="SIAL Athletics factory exterior at sunset, with a branded delivery truck and forklift loading cargo"
       />
       <AboutStory />
       <AboutStats />

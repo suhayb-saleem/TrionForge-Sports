@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
 
-export const metadata = { title: 'Terms & Conditions' };
+export const metadata = {
+  title: 'Terms & Conditions',
+  description: 'The terms that govern use of the SIAL Athletics website and our OEM/ODM manufacturing services.',
+  alternates: { canonical: '/terms' },
+};
 
 const sections = [
   {

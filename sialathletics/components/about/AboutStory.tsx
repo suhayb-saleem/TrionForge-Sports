@@ -38,15 +38,17 @@ export default function AboutStory() {
             From Sialkot<br />to your shelves.
           </h2>
           <p className="body-copy" style={{ color: 'var(--hp-ink-70)', marginBottom: '1.25rem' }}>
-            SIAL Athletics was born from a simple belief: premium sports equipment shouldn&apos;t require a premium middleman. We manufacture padel rackets and pickleball paddles in Sialkot, Pakistan — a city with over a century of sporting-goods manufacturing behind it, from hand-stitched footballs to the composite equipment of today.
+            We manufacture padel rackets and pickleball paddles in Sialkot, Pakistan — a city with
+            over a century of experience making sporting goods.
           </p>
           <p className="body-copy" style={{ color: 'var(--hp-ink-70)', marginBottom: '1.25rem' }}>
-            Our facility pairs that craftsmanship heritage with modern composite engineering: 3K–24K carbon fiber layups, precision molding, controlled drilling processes, and stage-by-stage quality control that gates every step of the line. Every racket and paddle leaves the factory verified against its build tolerances.
+            Our factory combines that experience with modern materials and equipment. Every racket
+            and paddle is checked before it leaves the factory.
           </p>
           <p className="body-copy" style={{ color: 'var(--hp-ink-70)', marginBottom: '2rem' }}>
-            We work as a manufacturing partner, not just a supplier — brands, retailers, and distributors come to us for{' '}
-            <Link href="/manufacturing" style={{ color: 'var(--hp-ink)', textDecorationColor: 'var(--hp-red)' }}>OEM builds to their exact spec</Link>{' '}
-            or ODM private-label programs on our proven geometries, factory-direct from the source.
+            Brands, retailers, and distributors come to us for{' '}
+            <Link href="/manufacturing" style={{ color: 'var(--hp-ink)', textDecorationColor: 'var(--hp-red)' }}>custom builds to their own spec</Link>{' '}
+            or one of our own designs with their branding.
           </p>
           <Button href="/catalogue" variant="primary">Explore our products <span className="hp-btn__arrow" aria-hidden="true">→</span></Button>
         </motion.div>

@@ -73,9 +73,8 @@ export default function GlobalReach() {
             Built in Sialkot.<br /><span style={{ color: 'var(--hp-ink-45)' }}>Shipped worldwide.</span>
           </h2>
           <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
-            One factory, six regions. From North America and Europe to the Middle East and
-            Asia-Pacific, we ship worldwide through trusted logistics partners — export
-            documentation and freight handled from our side, door to warehouse.
+            We ship to North America, Europe, the Middle East, Asia-Pacific, and beyond —
+            we handle the paperwork and freight for you.
           </p>
         </motion.div>
 

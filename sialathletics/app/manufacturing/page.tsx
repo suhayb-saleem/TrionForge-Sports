@@ -4,22 +4,26 @@ import PageHero from '@/components/ui/PageHero';
 import CapabilityCards from '@/components/capabilities/CapabilityCards';
 import ProcessTimeline from '@/components/capabilities/ProcessTimeline';
 import MaterialsBadges from '@/components/capabilities/MaterialsBadges';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Padel Racket & Pickleball Paddle Manufacturing — OEM/ODM Capabilities',
-  description: 'How SIAL Athletics builds padel rackets and pickleball paddles: 3K–24K carbon layups, EVA and polypropylene honeycomb cores, precision molding, mold design, QC testing, and export logistics from Sialkot.',
+  title: 'OEM/ODM Padel & Pickleball Paddle Manufacturing',
+  description: 'How SIAL Athletics builds padel rackets and pickleball paddles: carbon layups, precision molding, mold design, QC testing, and export logistics.',
+  alternates: { canonical: '/manufacturing' },
 };
 
 export default function ManufacturingPage() {
   return (
     <main>
+      <JsonLd data={breadcrumbJsonLd('Manufacturing', '/manufacturing')} />
       <PageHero
         crumb="Manufacturing"
         eyebrow="What we do"
         title="End-to-end manufacturing."
-        subtitle="Padel rackets and pickleball paddles, from concept to courier — we handle the full production cycle."
+        subtitle="Padel rackets and pickleball paddles, made start to finish in our factory."
         image="/images/manufacturing/manufacturing_section.png"
-        imageAlt="SIAL Athletics manufacturing floor"
+        imageAlt="Studio product photo of a SIAL Athletics carbon fiber padel racket"
       />
       <CapabilityCards />
       <ProcessTimeline />

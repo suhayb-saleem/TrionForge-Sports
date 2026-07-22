@@ -309,7 +309,7 @@ a { color: inherit; }
 .site-nav--scrolled .site-nav__toggle { color: var(--hp-ivory); border-color: rgba(246,245,241,.22); }
 .site-nav__underline { position: absolute; right: 0; bottom: -.7rem; left: 0; height: 1px; background: var(--red); }
 .site-nav__actions { display: flex; align-items: center; gap: .75rem; }
-.site-nav__toggle { width: 42px; height: 42px; display: grid; place-items: center; background: transparent; color: var(--hp-ink); border: 1px solid var(--hp-ink-line); border-radius: 8px; cursor: pointer; }
+.site-nav__toggle { width: 44px; height: 44px; display: grid; place-items: center; background: transparent; color: var(--hp-ink); border: 1px solid var(--hp-ink-line); border-radius: 8px; cursor: pointer; }
 
 /* ---- Desktop "About Us" dropdown ---- */
 .site-nav__dropdown { position: relative; }
@@ -385,22 +385,16 @@ a { color: inherit; }
 .hp-pagehero__scrim {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(255,255,255,0.93) 0%, rgba(255,255,255,0.5) 28%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 65%, rgba(255,255,255,0) 100%),
+    linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.86) 34%, rgba(255,255,255,0.55) 58%, rgba(255,255,255,0.12) 78%, rgba(255,255,255,0) 100%),
     radial-gradient(120% 90% at 92% 10%, rgba(226,27,45,0.07), transparent 48%);
 }
 @media (max-width: 940px) {
-  /* Full-bleed single-column image on mobile — the section-wide wash stays
-     faint everywhere; a halo hugging the actual text block (below) carries
-     the real contrast, so opacity tracks the text itself, not a guessed edge. */
+  /* Full-bleed single-column image on mobile — the wash needs to sit solidly
+     over the whole text block, not just fade in from an edge. */
   .hp-pagehero__scrim {
     background:
-      linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.10) 100%),
+      linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.9) 44%, rgba(255,255,255,0.55) 68%, rgba(255,255,255,0.2) 100%),
       radial-gradient(120% 90% at 92% 10%, rgba(226,27,45,0.05), transparent 48%);
-  }
-  .hp-pagehero--media .hp-shell::before {
-    content: ""; position: absolute; z-index: -1; pointer-events: none;
-    inset: -1.25rem -1rem;
-    background: radial-gradient(120% 100% at 28% 35%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.6) 55%, rgba(255,255,255,0) 100%);
   }
 }
 .hp-pagehero__crumb { display: inline-flex; align-items: center; gap: .7rem; margin-bottom: 1.75rem; color: var(--hp-ink-45); font-family: var(--hp-body); font-size: .68rem; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; }
@@ -426,7 +420,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 }
 .contact-modal__close {
   position: absolute; top: 1rem; right: 1rem; display: grid; place-items: center;
-  width: 2.25rem; height: 2.25rem; border: 1px solid var(--hp-ink-line); background: transparent;
+  width: 2.75rem; height: 2.75rem; border: 1px solid var(--hp-ink-line); background: transparent;
   color: var(--hp-ink); cursor: pointer; transition: background 0.2s var(--hp-ease), color 0.2s var(--hp-ease);
 }
 .contact-modal__close:hover { background: var(--hp-ink); color: var(--hp-paper); }

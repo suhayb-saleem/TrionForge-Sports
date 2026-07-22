@@ -3,11 +3,13 @@ import PageHero from '@/components/ui/PageHero';
 import FaqSections from '@/components/faq/FaqSections';
 import CTABanner from '@/components/landing/CTABanner';
 import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd } from '@/lib/seo';
 import { faqCategories } from '@/data/faq';
 
 export const metadata: Metadata = {
-  title: 'FAQ — Padel Racket & Pickleball Paddle OEM Manufacturing',
-  description: 'Answers for B2B buyers: MOQ for custom padel rackets and wholesale pickleball paddles, sampling and lead times, private-label branding, quality control, and shipping from Sialkot, Pakistan.',
+  title: 'FAQ — Padel & Pickleball OEM Manufacturing',
+  description: 'Answers for B2B buyers: minimum order quantities, sampling and lead times, private-label branding, quality control, and shipping from Sialkot, Pakistan.',
+  alternates: { canonical: '/faq' },
 };
 
 const faqJsonLd = {
@@ -26,11 +28,12 @@ export default function FaqPage() {
   return (
     <main>
       <JsonLd data={faqJsonLd} />
+      <JsonLd data={breadcrumbJsonLd('FAQ', '/faq')} />
       <PageHero
         crumb="FAQ"
         eyebrow="Buyer questions"
         title="Frequently asked questions."
-        subtitle="Everything a brand, distributor, or club needs to know before starting a manufacturing program with us."
+        subtitle="Answers to what buyers ask us most."
       />
       <FaqSections />
       <CTABanner

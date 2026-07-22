@@ -17,7 +17,7 @@ export default function ProcessTimeline() {
         <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', textAlign: 'center' }}>
           <SectionLabel>How it works</SectionLabel>
           <h2 className="display-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--hp-ink)', marginTop: '0.9rem' }}>
-            From concept to champion.
+            From idea to finished product.
           </h2>
         </div>
         <div className="process-grid" style={{ display: 'grid', position: 'relative' }}>

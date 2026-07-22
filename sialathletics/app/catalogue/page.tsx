@@ -6,10 +6,13 @@ import PageHero from '@/components/ui/PageHero';
 import CTABanner from '@/components/landing/CTABanner';
 import SectionLabel from '@/components/ui/SectionLabel';
 import SpecConfigurator from '@/components/catalogue/SpecConfigurator';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Padel & Pickleball Manufacturing Platforms — OEM Product Range',
-  description: 'Configure your padel racket or pickleball paddle line on SIAL Athletics manufacturing platforms: round, teardrop, diamond, and hybrid padel molds plus control, balanced, and power paddle builds — every material, finish, and spec customizable.',
+  title: 'Padel & Pickleball Manufacturing Platforms',
+  description: 'Configure your padel racket or pickleball paddle line on our manufacturing platforms: round, teardrop, diamond, and hybrid molds, fully customizable.',
+  alternates: { canonical: '/catalogue' },
 };
 
 /* ------------------------------------------------------------------ */
@@ -28,28 +31,28 @@ const padelPlatforms: Platform[] = [
   {
     name: 'Round',
     tag: 'Control',
-    desc: 'The control platform — largest sweet spot and lowest balance for precision, defense, and consistency. The natural base for club, academy, and beginner-to-intermediate lines.',
+    desc: 'The largest sweet spot, for precision and consistency. Good for club and beginner lines.',
     meter: 14,
     image: '/images/products/round_padel.png',
   },
   {
     name: 'Teardrop',
     tag: 'Balanced Performance',
-    desc: 'The all-round platform — a mid balance that bridges control and power. The most versatile base geometry, and the most common choice for a flagship model.',
+    desc: 'A balance of control and power. Our most popular shape for a flagship model.',
     meter: 50,
     image: '/images/products/teardrop_padel.png',
   },
   {
     name: 'Diamond',
     tag: 'Maximum Power',
-    desc: 'The power platform — head-weighted with a higher sweet spot for aggressive, attacking play. Built for advanced and competition-tier lines.',
+    desc: 'Head-weighted for aggressive play. Built for advanced and competition lines.',
     meter: 88,
     image: '/images/products/Diamond_padel.png',
   },
   {
     name: 'Hybrid',
     tag: 'To Your Specification',
-    desc: 'A blended geometry developed around your target play profile — sitting anywhere between round and diamond. Custom molds can be developed on demand for fully exclusive shapes.',
+    desc: 'A shape built around your play style, anywhere between round and diamond. We can also build a fully custom mold.',
     meter: null,
     image: '/images/products/hybrid_padel.png',
   },
@@ -59,21 +62,21 @@ const pickleballPlatforms: Platform[] = [
   {
     name: 'Control',
     tag: 'Touch & Placement',
-    desc: 'Thicker-core builds tuned for feel, dwell time, and placement — the platform for players who win the soft game. Configured to your face material, weight, and grip spec.',
+    desc: 'A thicker core tuned for feel and placement — for players who win with the soft game.',
     meter: 14,
     image: '/images/products/pickleball_widebody.png',
   },
   {
     name: 'Balanced',
     tag: 'All-Court Performance',
-    desc: 'The versatile middle of the range — pop without sacrificing touch. The typical base for a brand’s core model, customized end to end to your requirements.',
+    desc: 'Pop without losing touch. A good base for a brand\'s core model.',
     meter: 50,
     image: '/images/products/pickleball_hybrid.png',
   },
   {
     name: 'Power',
     tag: 'Drive & Speed',
-    desc: 'Thinner-core, firmer-faced builds engineered for drive, speed, and put-aways. Specified to your weight target and swing profile — never a fixed retail model.',
+    desc: 'A thinner core and firmer face for drive, speed, and put-aways.',
     meter: 86,
     image: '/images/products/pickleball elongated.png',
   },
@@ -172,12 +175,12 @@ const services: { title: string; items: string[] }[] = [
 /* Static building blocks (server-rendered, CSS-only effects)          */
 /* ------------------------------------------------------------------ */
 
-function PlatformCard({ platform, index }: { platform: Platform; index: number }) {
+function PlatformCard({ platform, category, index }: { platform: Platform; category: string; index: number }) {
   return (
     <article className="plat-card">
       <div className={`plat-card__media${platform.image ? '' : ' plat-card__media--empty'}`} aria-hidden="true" style={{ position: 'relative' }}>
         {platform.image ? (
-          <Image src={platform.image} alt={platform.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" style={{ objectFit: 'contain', padding: '0.75rem' }} />
+          <Image src={platform.image} alt={`SIAL Athletics ${platform.name} ${category} — ${platform.tag}`} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" style={{ objectFit: 'contain', padding: '0.75rem' }} />
         ) : (
           <span className="plat-card__media-label">Visual coming soon</span>
         )}
@@ -215,17 +218,39 @@ function OptionGroup({ title, items }: { title: string; items: string[] }) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Structured data — Product schema built from the actual platform     */
+/* data above (no invented pricing/availability: these are build-to-   */
+/* order manufacturing platforms, not fixed retail SKUs).               */
+/* ------------------------------------------------------------------ */
+
+function platformJsonLd(platform: Platform, category: 'Padel Racket' | 'Pickleball Paddle') {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `SIAL Athletics ${platform.name} ${category}`,
+    description: platform.desc,
+    category,
+    brand: { '@type': 'Brand', name: 'SIAL Athletics' },
+    ...(platform.image ? { image: `https://www.sialathletics.com${encodeURI(platform.image)}` } : {}),
+  };
+}
+
+/* ------------------------------------------------------------------ */
 /* Page                                                                */
 /* ------------------------------------------------------------------ */
 
 export default function CataloguePage() {
   return (
     <main style={{ background: 'var(--hp-paper)' }}>
+      <JsonLd data={breadcrumbJsonLd('Products', '/catalogue')} />
+      {[...padelPlatforms.map((p) => platformJsonLd(p, 'Padel Racket')), ...pickleballPlatforms.map((p) => platformJsonLd(p, 'Pickleball Paddle'))].map((p, i) => (
+        <JsonLd key={i} data={p} />
+      ))}
       <PageHero
         crumb="Products"
         eyebrow="Manufacturing platforms"
         title="Your product. Our platform."
-        subtitle="You aren't choosing from pre-designed retail products. You're selecting a manufacturing platform, then customizing materials, construction, performance, branding, and packaging to your own brand's requirements."
+        subtitle="Pick a shape, then customize the materials, branding, and packaging."
         image="/images/products/productpage_section.png"
         imageAlt="Carbon padel racket manufactured by SIAL Athletics"
       />
@@ -235,9 +260,9 @@ export default function CataloguePage() {
         <div className="container-custom">
           <div className="plat-steps">
             {[
-              { num: '01', title: 'Choose your platform', desc: 'Start from a proven playing geometry — the shape and performance character of the product.' },
-              { num: '02', title: 'Spec the build', desc: 'Select face materials, core, construction, texture, weight, and balance from the full options list.' },
-              { num: '03', title: 'Make it yours', desc: 'Apply your logo, graphics, colors, grip, and packaging. We sample it, you approve it, we produce it.' },
+              { num: '01', title: 'Choose your shape', desc: 'Start from one of our existing racket or paddle shapes.' },
+              { num: '02', title: 'Spec the build', desc: 'Pick the materials, weight, and balance you want.' },
+              { num: '03', title: 'Make it yours', desc: 'Add your logo and colors. We sample it, you approve it, we produce it.' },
             ].map((step) => (
               <div key={step.num} className="plat-step">
                 <span className="plat-step__num">{step.num}</span>
@@ -260,21 +285,19 @@ export default function CataloguePage() {
               Padel rackets.
             </h2>
             <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
-              Four standard playing platforms cover the full control-to-power spectrum. Every one is
-              fully configurable — and if your line needs a shape that doesn&apos;t exist yet, custom
-              molds can be developed on demand.
+              Four shapes, from control to power. Every one is fully customizable, and we can
+              build a custom mold if you need something different.
             </p>
           </div>
 
           <div className="plat-grid plat-grid--4">
-            {padelPlatforms.map((p, i) => <PlatformCard key={p.name} platform={p} index={i} />)}
+            {padelPlatforms.map((p, i) => <PlatformCard key={p.name} platform={p} category="Padel Racket" index={i} />)}
           </div>
 
           <div className="opt-section">
             <h3 className="display-title opt-section__title">Padel manufacturing options</h3>
             <p className="opt-section__intro">
-              Tap the specifications you want for your line — then send the whole configuration
-              straight to our team. It arrives pre-filled in your inquiry, ready for a quote.
+              Tap the specs you want, then send them straight to our team for a quote.
             </p>
             <SpecConfigurator category="Padel racket" productLine="Padel Rackets" groups={padelOptions} />
           </div>
@@ -290,22 +313,19 @@ export default function CataloguePage() {
               Pickleball paddles.
             </h2>
             <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
-              Three performance platforms — control, balanced, and power — rather than fixed retail
-              models. Every paddle is fully customizable to your requirements: face, core,
-              thickness, weight, edge, grip, finish, and branding.
+              Three builds — control, balanced, and power. Every paddle is fully customizable:
+              face, core, weight, grip, and branding.
             </p>
           </div>
 
           <div className="plat-grid plat-grid--3">
-            {pickleballPlatforms.map((p, i) => <PlatformCard key={p.name} platform={p} index={i} />)}
+            {pickleballPlatforms.map((p, i) => <PlatformCard key={p.name} platform={p} category="Pickleball Paddle" index={i} />)}
           </div>
 
           <div className="opt-section">
             <h3 className="display-title opt-section__title">Pickleball manufacturing options</h3>
             <p className="opt-section__intro">
-              Tap to configure each model from the full options list — from raw carbon faces to
-              honeycomb core chemistry, edge construction, and print method — then send the
-              configuration to us as a quote request.
+              Tap to configure your paddle, then send it to us as a quote request.
             </p>
             <SpecConfigurator category="Pickleball paddle" productLine="Pickleball Paddles" groups={pickleballOptions} />
           </div>
@@ -318,17 +338,16 @@ export default function CataloguePage() {
           <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', maxWidth: '680px' }}>
             <SectionLabel>Beyond the build</SectionLabel>
             <h2 className="display-title" style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', color: 'var(--hp-ink)', marginTop: '0.9rem', marginBottom: '1.25rem' }}>
-              A manufacturing program, not a product list.
+              More than a product list.
             </h2>
             <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
-              Platform, spec, branding, sampling, and production quantities are all structured
-              around your brand — see{' '}
+              See{' '}
               <Link href="/manufacturing" className="hp-link">how we manufacture</Link> or check{' '}
               <Link href="/faq" className="hp-link">common buyer questions</Link>.
             </p>
             <div style={{ marginTop: '2.5rem' }}>
               <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.9rem', color: 'var(--hp-ink-70)', marginBottom: '1rem', maxWidth: '400px', lineHeight: 1.6 }}>
-                Download our full technical catalogue for an offline reference of all available platform geometries, material compositions, and manufacturing capabilities.
+                Download our full catalogue for an offline reference of every shape, material, and option.
               </p>
               <a href="/images/catalogue.zip" download className="hp-btn hp-btn--outline-ink" style={{ display: 'inline-flex', alignItems: 'center' }}>
                 <Download size={16} style={{ marginRight: '0.5rem' }} />

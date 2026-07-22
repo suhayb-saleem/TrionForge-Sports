@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 
 type ButtonProps = {
   href?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: () => void;
   variant?: 'primary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   type?: 'button' | 'submit' | 'reset';
@@ -23,6 +23,6 @@ export default function Button({ href, onClick, variant = 'primary', size = 'md'
   const classes = `hp-btn hp-btn--${variant} ${sizeClass[size]} ${className}`.trim();
   const motionProps = disabled ? {} : { whileTap: { scale: 0.98 }, transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] as const } };
 
-  if (href) return <MotionLink href={href} className={classes} {...motionProps}>{children}</MotionLink>;
+  if (href) return <MotionLink href={href} className={classes} onClick={onClick} {...motionProps}>{children}</MotionLink>;
   return <motion.button type={type} onClick={onClick} disabled={disabled} className={classes} {...motionProps}>{children}</motion.button>;
 }

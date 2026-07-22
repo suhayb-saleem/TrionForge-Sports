@@ -20,7 +20,7 @@ export default function Footer() {
               />
             </Link>
             <p style={{ color: 'var(--white-60)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>
-              Premium padel rackets and pickleball paddles, manufactured in Sialkot, Pakistan for sports brands, distributors, and importers worldwide.
+              Carbon fiber padel rackets and pickleball paddles, manufactured in Sialkot, Pakistan for sports brands, distributors, and importers worldwide.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--white-60)', transition: 'color 0.2s ease' }}

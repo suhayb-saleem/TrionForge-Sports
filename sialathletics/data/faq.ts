@@ -16,15 +16,15 @@ export const faqCategories: FaqCategory[] = [
     id: 'shipping-pricing',
     title: 'Shipping & Pricing',
     framing:
-      'SIAL Athletics ships factory-direct from Sialkot, Pakistan. We handle export documentation on our side and coordinate freight to your warehouse or 3PL, so your landed cost is clear before production begins.',
+      'We ship factory-direct from Sialkot, Pakistan, and handle the export paperwork for you.',
     items: [
       {
         q: 'Which regions does SIAL Athletics ship to?',
-        a: 'We support worldwide shipping through trusted logistics partners. Our manufacturing solutions are available to customers across North America, Europe, the Middle East, Asia-Pacific, Latin America, and Africa. If your destination isn\'t listed, our team will work with you to arrange the most suitable shipping solution.',
+        a: 'We ship worldwide, with regular shipments to North America, Europe, the Middle East, Asia-Pacific, Latin America, and Africa. If your destination isn\'t listed, our team will work with you to arrange shipping.',
       },
       {
         q: 'What shipping terms do you offer?',
-        a: 'Standard terms are FOB Karachi, with EXW Sialkot available on request. Other Incoterms can be discussed depending on your requirements.',
+        a: 'By default we ship FOB Karachi (we cover the cost to the port). EXW Sialkot (you arrange pickup) is available on request, and other terms can be discussed.',
       },
       {
         q: 'How is pricing structured for OEM and private-label orders?',
@@ -37,7 +37,7 @@ export const faqCategories: FaqCategory[] = [
     id: 'customization-technical',
     title: 'Customization & Technical Standards',
     framing:
-      'Every specification on our padel rackets and pickleball paddles is selectable — face material, core, surface texture, weight, and balance — so your line hits the exact price point and play profile your market demands.',
+      'You choose the face material, core, texture, weight, and balance on every racket and paddle.',
     items: [
       {
         q: 'What can be customized on a padel racket?',
@@ -53,7 +53,7 @@ export const faqCategories: FaqCategory[] = [
       },
       {
         q: 'Where do your raw materials come from?',
-        a: 'We use premium carbon fiber materials sourced from qualified suppliers. Material options are selected according to your specification and product requirements.',
+        a: 'We use carbon fiber in 3K, 12K, 18K, and 24K grades, selected to match your specification and product requirements.',
       },
       {
         q: 'Can I order multiple models or both sports in a single program?',
@@ -66,7 +66,7 @@ export const faqCategories: FaqCategory[] = [
     id: 'branding-design',
     title: 'Branding & Design Support',
     framing:
-      'You bring the brand; we bring the build. From CAD-to-mold OEM development to private-label programs on our proven geometries, our team carries your design through to retail-ready product.',
+      'You bring the brand, we bring the build — from your own design to one of ours with your branding.',
     items: [
       {
         q: 'Can I put my own branding on the rackets and paddles?',
@@ -74,7 +74,7 @@ export const faqCategories: FaqCategory[] = [
       },
       {
         q: 'Do you help with design and technical specifications?',
-        a: 'Yes. For OEM projects, send us your CAD files and tolerances and we build to spec. For ODM, our team helps you configure proven teardrop, round, and diamond geometries — and our mold design and prototyping team can develop new shapes, with physical prototypes in 3-4 weeks.',
+        a: 'Yes. Send us your design files and we build to spec, or our team can help you configure one of our existing shapes. We can also develop a new mold, with a physical prototype in 3-4 weeks.',
       },
       {
         q: 'What packaging options are available?',
@@ -91,7 +91,7 @@ export const faqCategories: FaqCategory[] = [
     id: 'orders-moq-payment',
     title: 'Orders, MOQ & Payment',
     framing:
-      'We keep the barrier to entry low so emerging brands and established distributors alike can test, launch, and scale without heavy upfront commitment.',
+      'Low minimums so you can test, launch, and grow without a big upfront commitment.',
     items: [
       {
         q: 'What is your minimum order quantity?',
@@ -103,7 +103,7 @@ export const faqCategories: FaqCategory[] = [
       },
       {
         q: 'What are your payment terms?',
-        a: 'Standard terms are 30% by T/T to confirm production, with the remaining 70% due before shipment following final inspection. Letter of Credit (L/C) can be discussed for larger or repeat orders.',
+        a: 'You pay 30% upfront by bank transfer to start production, and the remaining 70% before shipment. Letter of Credit is available for larger or repeat orders.',
       },
       {
         q: 'How do I start an order?',
@@ -116,7 +116,7 @@ export const faqCategories: FaqCategory[] = [
     id: 'quality-aftersales',
     title: 'Quality Assurance & After-Sales',
     framing:
-      'Quality at SIAL Athletics is prevention, not correction: every batch passes a fixed inspection sequence before it ships, and every order is documented so you can stand behind what you sell.',
+      'Every batch is inspected before it ships, and every order comes with documentation.',
     items: [
       {
         q: 'How do you ensure quality before shipment?',

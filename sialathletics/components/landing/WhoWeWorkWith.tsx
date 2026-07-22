@@ -12,7 +12,7 @@ const segments = [
   {
     num: '01',
     title: 'Brands',
-    desc: 'Build your own padel and pickleball product line with flexible OEM and private label manufacturing. We help bring your ideas to life with reliable production, premium materials, and consistent quality.',
+    desc: 'Build your own padel and pickleball product line. We handle production, materials, and quality.',
     tags: ['OEM & Private Label', 'Flexible Customization'],
     image: '/images/home/brands.png',
     alt: 'Padel and pickleball equipment representing a brand product line',
@@ -21,7 +21,7 @@ const segments = [
   {
     num: '02',
     title: 'Distributors & Wholesalers',
-    desc: 'Expand your product portfolio with dependable manufacturing solutions designed for growing markets. Benefit from consistent production quality, scalable capacity, and reliable supply.',
+    desc: 'Grow your product line with steady supply and consistent quality, at any volume.',
     tags: ['Scalable Production', 'Consistent Quality'],
     image: '/images/home/distributors.png',
     alt: 'Wholesale distribution of padel and pickleball equipment',
@@ -29,7 +29,7 @@ const segments = [
   {
     num: '03',
     title: 'Clubs & Academies',
-    desc: 'Equip your coaches, members, and players with professionally manufactured rackets and paddles designed for regular training, club programs, and retail opportunities.',
+    desc: 'Equip your coaches and players with rackets and paddles built for regular training and club programs.',
     tags: ['Club Branding', 'Training & Retail'],
     image: '/images/home/clubs.png',
     alt: 'Club and academy players training with padel and pickleball equipment',
@@ -37,7 +37,7 @@ const segments = [
   {
     num: '04',
     title: 'Retailers',
-    desc: 'Launch your own branded sports products with manufacturing, packaging, and export support designed to help bring quality products to your customers.',
+    desc: 'Launch your own branded products, with packaging and shipping handled for you.',
     tags: ['Retail Packaging', 'Global Shipping Support'],
     image: '/images/home/retailers.png',
     alt: 'Retail-ready packaged padel and pickleball products',
@@ -63,8 +63,7 @@ export default function WhoWeWorkWith() {
             One factory.<br />Four kinds of partner.
           </h2>
           <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
-            Every program starts from the same production line — what changes is how we structure
-            specs, volumes, and branding around your business.
+            Same factory, same quality — we just tailor volume and branding to your business.
           </p>
         </motion.div>
 
