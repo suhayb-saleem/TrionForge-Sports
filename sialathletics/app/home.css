@@ -3,7 +3,6 @@
    Design tokens and shared primitives (buttons, eyebrow, display type,
    shell, forms, info cards) now live in globals.css as the site-wide
    system — this file only holds homepage-specific section layouts.
-   Concept: "Engineered in the dark, finished in the light."
    ========================================================================= */
 
 .hp { position: relative; background: var(--hp-paper); color: var(--hp-ink); font-family: var(--hp-body); overflow-x: clip; }
@@ -25,7 +24,7 @@
 .hp-hero__scrim {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.72) 38%, rgba(255,255,255,0.20) 70%, rgba(255,255,255,0) 100%),
+    linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.5) 26%, rgba(255,255,255,0.08) 48%, rgba(255,255,255,0) 62%, rgba(255,255,255,0) 100%),
     radial-gradient(120% 90% at 92% 22%, rgba(226,27,45,0.06), transparent 48%);
 }
 .hp-hero__inner { position: relative; z-index: 2; max-width: 42rem; }
@@ -58,10 +57,23 @@
 @media (max-width: 940px) {
   .hp-hero { min-height: 92svh; padding-top: 7.5rem; }
   .hp-hero__title { font-size: clamp(3rem, 13vw, 5.5rem); }
+  /* Full-bleed single-column image on mobile — the section-wide wash stays
+     faint everywhere; a halo hugging the actual text block (below) carries
+     the real contrast, so opacity tracks the text itself, not a guessed edge. */
   .hp-hero__scrim {
     background:
-      linear-gradient(0deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.78) 48%, rgba(255,255,255,0.42) 100%),
-      radial-gradient(120% 90% at 92% 16%, rgba(226,27,45,0.07), transparent 46%);
+      linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.10) 100%),
+      radial-gradient(120% 90% at 92% 16%, rgba(226,27,45,0.05), transparent 46%);
+  }
+  .hp-hero__inner::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    inset: -1.5rem -1.25rem;
+    background: radial-gradient(120% 100% at 28% 38%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.62) 55%, rgba(255,255,255,0) 100%);
+  }
+  .hp-hero__scroll::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    inset: -0.6rem -1rem;
+    background: radial-gradient(closest-side, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0) 100%);
   }
 }
 @media (max-width: 520px) {
@@ -95,7 +107,7 @@
 .hp-range__scrim {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(250,249,244,0.90) 0%, rgba(250,249,244,0.70) 46%, rgba(250,249,244,0.94) 100%),
+    linear-gradient(180deg, rgba(250,249,244,0.88) 0%, rgba(250,249,244,0.42) 32%, rgba(250,249,244,0.08) 55%, rgba(250,249,244,0.08) 100%),
     radial-gradient(90% 80% at 12% 18%, rgba(226,27,45,0.07), transparent 55%);
 }
 .hp-range__inner { position: relative; z-index: 2; }
@@ -138,84 +150,6 @@
 @media (max-width: 720px) {
   .hp-range__cats { grid-template-columns: 1fr; }
 }
-
-/* =========================================================================
-   MANUFACTURING / CRAFT  (LIGHT section — the rhythm break)
-   ========================================================================= */
-.hp-craft { position: relative; isolation: isolate; padding-block: var(--hp-gap); background: var(--hp-paper); color: var(--hp-ink); overflow: hidden; }
-.hp-craft__inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
-.hp-craft__media { position: relative; align-self: stretch; min-height: 100%; }
-.hp-craft__media-frame {
-  position: sticky; top: 6rem; overflow: hidden; border: 1px solid var(--hp-ink-line);
-  aspect-ratio: 4 / 5;
-}
-.hp-craft__media-frame img { object-fit: cover; transition: transform 1.2s var(--hp-ease); }
-.hp-craft__media-frame:hover img { transform: scale(1.04); }
-.hp-craft__media-cap {
-  position: absolute; left: 1.1rem; bottom: 1.1rem; z-index: 2;
-  padding: 0.55rem 0.8rem; background: rgba(8,9,10,0.72); backdrop-filter: blur(6px);
-  color: var(--hp-ivory); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-}
-.hp-craft__media-cap b { color: var(--hp-red-bright); }
-.hp-craft__title { margin: 1.3rem 0 1.4rem; font-size: clamp(2.4rem, 4.6vw, 4rem); letter-spacing: -0.035em; color: var(--hp-ink); }
-.hp-craft__intro { max-width: 34rem; margin: 0 0 2.6rem; font-size: clamp(1rem, 1.15vw, 1.14rem); line-height: 1.66; color: var(--hp-ink-70); }
-.hp-craft__list { display: grid; gap: 0; border-top: 1px solid var(--hp-ink-line); }
-.hp-cap {
-  display: grid; grid-template-columns: auto 1fr; gap: 1.4rem 1.6rem; align-items: start;
-  padding: 1.9rem 0; border-bottom: 1px solid var(--hp-ink-line);
-  transition: padding-left 0.4s var(--hp-ease);
-}
-.hp-cap:hover { padding-left: 0.6rem; }
-.hp-cap__num { font-family: var(--hp-display); font-weight: 800; font-size: 0.82rem; letter-spacing: 0.1em; color: var(--hp-red-deep); padding-top: 0.35rem; }
-.hp-cap__title { margin: 0 0 0.55rem; font-family: var(--hp-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; font-size: clamp(1.35rem, 2vw, 1.7rem); color: var(--hp-ink); }
-.hp-cap__desc { margin: 0; font-size: 0.92rem; line-height: 1.62; color: var(--hp-ink-70); max-width: 40rem; }
-.hp-cap__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem; }
-.hp-cap__tag { padding: 0.28rem 0.55rem; border: 1px solid var(--hp-ink-line); border-radius: 999px;
-  font-size: 0.56rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hp-ink-45); }
-.hp-craft__foot { margin-top: 2.4rem; }
-
-@media (max-width: 900px) {
-  .hp-craft__inner { grid-template-columns: 1fr; }
-  .hp-craft__media-frame { position: relative; top: 0; aspect-ratio: 16 / 10; }
-}
-
-/* =========================================================================
-   METRICS / SOURCE (dark)
-   ========================================================================= */
-.hp-metrics { position: relative; isolation: isolate; padding-block: var(--hp-gap); background: var(--hp-paper); overflow: hidden; }
-.hp-metrics__inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2.5rem, 5vw, 5rem); align-items: center; }
-.hp-metrics__title { margin: 1.3rem 0 1.5rem; font-size: clamp(2.4rem, 4.4vw, 3.9rem); letter-spacing: -0.035em; color: var(--hp-ink); }
-.hp-metrics__title span { color: var(--hp-ink-45); }
-.hp-metrics__copy { max-width: 34rem; margin: 0 0 2.4rem; font-size: clamp(1rem, 1.1vw, 1.12rem); line-height: 1.66; color: var(--hp-ink-70); }
-.hp-metrics__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--hp-ink-line); border: 1px solid var(--hp-ink-line); box-shadow: var(--shadow-sm); }
-@media (max-width: 900px) { .hp-metrics__inner { grid-template-columns: 1fr; } }
-@media (max-width: 460px) { .hp-metrics__grid { grid-template-columns: 1fr; } }
-/* .hp-metric primitive (individual stat cell) now lives in globals.css — shared with AboutStats */
-
-/* .hp-cta primitive now lives in globals.css (shared with the site-wide CTABanner) */
-
-/* =========================================================================
-   CONTACT (dark)
-   ========================================================================= */
-.hp-contact { position: relative; isolation: isolate; padding-block: var(--hp-gap); background: var(--hp-paper); border-top: 1px solid var(--hp-ink-line); overflow: hidden; }
-.hp-contact__inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: clamp(2.5rem, 5vw, 4.5rem); align-items: start; }
-.hp-contact__title { margin: 1.3rem 0 1.4rem; font-size: clamp(2.4rem, 4.4vw, 3.7rem); letter-spacing: -0.035em; color: var(--hp-ink); }
-.hp-contact__copy { max-width: 26rem; margin: 0 0 2.6rem; font-size: 1rem; line-height: 1.64; color: var(--hp-ink-70); }
-
-/* Paper variant kept as an explicit alias (base is already paper now) */
-.hp-contact--paper { background: var(--hp-paper); border-top: 1px solid var(--hp-ink-line); }
-.hp-contact--paper .hp-contact__title { color: var(--hp-ink); }
-.hp-contact--paper .hp-contact__copy { color: var(--hp-ink-70); }
-
-/* Centered single-column variant: form only, no side info panel */
-.hp-contact__inner--centered { grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; justify-items: center; text-align: center; }
-.hp-contact__inner--centered .hp-contact__intro { display: flex; flex-direction: column; align-items: center; }
-.hp-contact__inner--centered .hp-contact__copy { margin-inline: auto; }
-.hp-contact__inner--centered .hp-form { width: 100%; }
-
-/* .hp-contact__rows / .hp-form / .hp-field primitives now live in globals.css (shared with ContactForm) */
-
-@media (max-width: 900px) { .hp-contact__inner { grid-template-columns: 1fr; } }
 
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {

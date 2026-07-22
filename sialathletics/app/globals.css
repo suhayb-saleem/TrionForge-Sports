@@ -2,21 +2,11 @@
 
 :root {
   --bg-base: #090a0b;
-  --bg-raised: #101214;
-  --bg-card: #171a1d;
-  --text-strong: #f7f7f3;
-  --text: rgba(247, 247, 243, 0.78);
-  --text-muted: rgba(247, 247, 243, 0.56);
-  --line: rgba(247, 247, 243, 0.12);
-  --line-strong: rgba(247, 247, 243, 0.22);
   --red: #e21b2d;
   --red-dark: #bd1020;
-  --red-border: rgba(226, 27, 45, 0.48);
   --white: #f7f7f3;
-  --white-90: rgba(247, 247, 243, 0.9);
   --white-60: rgba(247, 247, 243, 0.62);
   --white-30: rgba(247, 247, 243, 0.3);
-  --white-20: rgba(247, 247, 243, 0.2);
   --white-08: rgba(247, 247, 243, 0.08);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
@@ -29,16 +19,10 @@
      below plus the homepage section compositions in home.css.
      ======================================================================= */
   --hp-black: #08090a;
-  --hp-panel: #0c0e10;
-  --hp-card: #121517;
-  --hp-card-2: #171a1d;
   --hp-hair: rgba(246, 245, 241, 0.10);
-  --hp-hair-soft: rgba(246, 245, 241, 0.06);
-  --hp-hair-strong: rgba(246, 245, 241, 0.22);
   --hp-ivory: #f6f5f1;
   --hp-ivory-80: rgba(246, 245, 241, 0.80);
   --hp-ivory-60: rgba(246, 245, 241, 0.58);
-  --hp-ivory-40: rgba(246, 245, 241, 0.40);
   --hp-ivory-25: rgba(246, 245, 241, 0.22);
 
   --hp-paper: #f4f2ec;
@@ -235,14 +219,6 @@ a { color: inherit; }
   background-image: repeating-linear-gradient(115deg, transparent 0 6px, rgba(20,17,15,0.022) 6px 7px);
 }
 
-/* ---- Contact info rows (icon + key/value) ---- */
-.hp-contact__rows { display: grid; gap: 0; border-top: 1px solid var(--hp-ink-line); }
-.hp-contact__row { display: flex; align-items: center; gap: 1rem; padding: 1.15rem 0; border-bottom: 1px solid var(--hp-ink-line); text-decoration: none; color: inherit; }
-.hp-contact__row svg { color: var(--hp-red); flex: 0 0 auto; }
-.hp-contact__row-k { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hp-ink-45); }
-.hp-contact__row-v { margin-top: 0.2rem; font-size: 0.95rem; font-weight: 600; color: var(--hp-ink); transition: color 0.25s var(--hp-ease); }
-a.hp-contact__row:hover .hp-contact__row-v { color: var(--hp-red); }
-
 /* ---- Forms ---- */
 .hp-form { background: var(--surface); border: 1px solid var(--hp-ink-line); box-shadow: var(--shadow-md); padding: clamp(1.6rem, 3vw, 2.6rem); }
 .hp-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 1.2rem; }
@@ -409,14 +385,22 @@ a.hp-contact__row:hover .hp-contact__row-v { color: var(--hp-red); }
 .hp-pagehero__scrim {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.76) 40%, rgba(255,255,255,0.24) 72%, rgba(255,255,255,0) 100%),
+    linear-gradient(90deg, rgba(255,255,255,0.93) 0%, rgba(255,255,255,0.5) 28%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 65%, rgba(255,255,255,0) 100%),
     radial-gradient(120% 90% at 92% 10%, rgba(226,27,45,0.07), transparent 48%);
 }
 @media (max-width: 940px) {
+  /* Full-bleed single-column image on mobile — the section-wide wash stays
+     faint everywhere; a halo hugging the actual text block (below) carries
+     the real contrast, so opacity tracks the text itself, not a guessed edge. */
   .hp-pagehero__scrim {
     background:
-      linear-gradient(0deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.80) 50%, rgba(255,255,255,0.46) 100%),
-      radial-gradient(120% 90% at 92% 10%, rgba(226,27,45,0.07), transparent 48%);
+      linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.10) 100%),
+      radial-gradient(120% 90% at 92% 10%, rgba(226,27,45,0.05), transparent 48%);
+  }
+  .hp-pagehero--media .hp-shell::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    inset: -1.25rem -1rem;
+    background: radial-gradient(120% 100% at 28% 35%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.6) 55%, rgba(255,255,255,0) 100%);
   }
 }
 .hp-pagehero__crumb { display: inline-flex; align-items: center; gap: .7rem; margin-bottom: 1.75rem; color: var(--hp-ink-45); font-family: var(--hp-body); font-size: .68rem; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; }
