@@ -424,11 +424,11 @@ input:not([type="checkbox"]):not([type="radio"]), select, textarea { border-radi
 input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--red) !important; outline-offset: 2px; border-color: var(--red) !important; }
 
 /* ---- Contact modal ---- */
-.contact-modal { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; padding: 1.5rem; }
+.contact-modal { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; padding: 1.5rem; overscroll-behavior: contain; }
 .contact-modal__scrim { position: absolute; inset: 0; background: rgba(8,9,10,0.72); backdrop-filter: blur(6px); }
 .contact-modal__panel {
   position: relative; z-index: 1; width: 100%; max-width: 560px; max-height: min(88vh, 780px);
-  overflow-y: auto; background: var(--hp-paper); border: 1px solid var(--hp-ink-line);
+  overflow-y: auto; overscroll-behavior: contain; background: var(--hp-paper); border: 1px solid var(--hp-ink-line);
   box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5);
   padding: clamp(2rem, 4vw, 2.75rem); -webkit-overflow-scrolling: touch;
 }

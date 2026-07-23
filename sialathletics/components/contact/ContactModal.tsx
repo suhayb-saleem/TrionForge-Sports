@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { X } from 'lucide-react';
+import { useLenis } from '@studio-freight/react-lenis';
 import { useContactModal } from '@/lib/contactModal';
 import ContactFormFields from '@/components/contact/ContactFormFields';
 
@@ -14,16 +15,26 @@ const FOCUSABLE = 'a[href], button:not([disabled]), textarea, input, select, [ta
 export default function ContactModal() {
   const { isOpen, prefill, close, triggerRef } = useContactModal();
   const panelRef = useRef<HTMLDivElement>(null);
+  const lenis = useLenis();
 
-  // Lock body scroll while open.
+  // Lock body & Lenis scroll while open.
   useEffect(() => {
     if (!isOpen) return;
-    const prevOverflow = document.body.style.overflow;
+
+    lenis?.stop();
+
+    const prevBodyOverflow = document.body.style.overflow;
+    const prevDocOverflow = document.documentElement.style.overflow;
+
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
     return () => {
-      document.body.style.overflow = prevOverflow;
+      document.body.style.overflow = prevBodyOverflow;
+      document.documentElement.style.overflow = prevDocOverflow;
+      lenis?.start();
     };
-  }, [isOpen]);
+  }, [isOpen, lenis]);
 
   // Escape to close, focus trap while open, restore focus to trigger on close.
   useEffect(() => {
@@ -67,7 +78,7 @@ export default function ContactModal() {
   return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="contact-modal">
+        <div className="contact-modal" data-lenis-prevent>
           <motion.div
             className="contact-modal__scrim"
             initial={{ opacity: 0 }}
@@ -83,6 +94,7 @@ export default function ContactModal() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-modal-title"
+            data-lenis-prevent
             initial={{ opacity: 0, y: 24, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}

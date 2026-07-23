@@ -15,6 +15,14 @@ const archivo = Archivo({ subsets: ['latin'], weight: ['500', '600', '700', '800
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sialathletics.com'),
+  icons: {
+    icon: [
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/icon.png',
+    apple: '/icon.png',
+  },
   title: {
     default: 'SIAL Athletics — Padel Racket & Pickleball Paddle OEM Manufacturer',
     template: '%s — SIAL Athletics',
